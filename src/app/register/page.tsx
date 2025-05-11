@@ -1,7 +1,9 @@
+"use client";
 import styles from "./page.module.css";
 import Link from "next/link";
-
+import { useState } from "react";
 export default function Register() {
+  const [rol, setRol] = useState("");
   return (
     <div className={styles.mainDiv}>
       <form className={styles.form}>
@@ -52,6 +54,45 @@ export default function Register() {
               className={styles.credentialsInput}
             />
           </div>
+          <div className={styles.phoneDiv}>
+            <p>Teléfono</p>
+
+            <input
+              type="number"
+              placeholder="(123) 456-7890"
+              required
+              className={styles.phoneInput}
+            />
+          </div>
+          <div className={styles.userRoleRow}>
+            <div className={styles.radioGroup}>
+              <label className={styles.radioOption}>
+                <input
+                  type="radio"
+                  name="rol"
+                  value="estudiante"
+                  checked={rol === "estudiante"}
+                  onChange={() => setRol("estudiante")}
+                />
+                <span className={styles.customRadio}></span>
+                Soy estudiante
+              </label>
+
+              <label className={styles.radioOption}>
+                <input
+                  type="radio"
+                  name="rol"
+                  value="instructor"
+                  checked={rol === "instructor"}
+                  onChange={() => setRol("instructor")}
+                />
+                <span className={styles.customRadio}></span>
+                Soy instructor
+              </label>
+            </div>
+          </div>
+
+          <button className={styles.formButton}>Entrar</button>
         </div>
       </form>
     </div>
