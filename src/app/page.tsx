@@ -10,17 +10,18 @@ export default function Home() {
           Desbloquea tu progreso: Inicia sesión.
         </p>
         <input
-          type="text"
+          type="email"
           placeholder="Correo electrónico"
           required
           className={styles.formInput}
         />
         <input
-          type="text"
+          type="password"
           placeholder="Contraseña"
           required
           className={styles.formInput}
         />
+        <button className={styles.formButton}>Entrar</button>
       </div>
     </form>
   );
