@@ -1,5 +1,24 @@
-.divPrincipal {
+.mainDiv {
   width: 100%;
   height: 100%;
+
+  background-image: url("../../public/images/loginbackground.png");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.form {
+  position: relative;
+  top: 13.88%;
+  left: 5.2%;
+  width: 41.66%;
+  height: 52%;
   background-color: orange;
+  display: flex;
+  flex-direction: column;
+}
+
+.prueba {
+  font-family: "The Seasons", serif;
+  font-size: 4.5rem;
 }
