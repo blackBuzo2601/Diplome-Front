@@ -2,8 +2,10 @@
 import styles from "./page.module.css";
 import Link from "next/link";
 import { useState } from "react";
+
 export default function Register() {
   const [rol, setRol] = useState("");
+
   return (
     <div className={styles.mainDiv}>
       <form className={styles.form}>
@@ -56,12 +58,12 @@ export default function Register() {
           </div>
           <div className={styles.phoneDiv}>
             <p>Teléfono</p>
-
             <input
-              type="number"
+              type="tel"
               placeholder="(123) 456-7890"
               required
               className={styles.phoneInput}
+              pattern="[0-9]{10,15}"
             />
           </div>
           <div className={styles.userRoleRow}>
@@ -77,7 +79,6 @@ export default function Register() {
                 <span className={styles.customRadio}></span>
                 Soy estudiante
               </label>
-
               <label className={styles.radioOption}>
                 <input
                   type="radio"
@@ -91,8 +92,12 @@ export default function Register() {
               </label>
             </div>
           </div>
-
-          <button className={styles.formButton}>Entrar</button>
+          <button type="submit" className={styles.formButton}>
+            Registrarse
+          </button>
+          <Link className={styles.registerLabel} href="/">
+            ¿Ya tienes una cuenta? Inicia sesión aquí
+          </Link>
         </div>
       </form>
     </div>
