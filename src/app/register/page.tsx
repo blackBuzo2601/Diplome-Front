@@ -2,13 +2,29 @@
 import styles from "./page.module.css";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
-  const [rol, setRol] = useState("");
+  const [rol, setRol] = useState("estudiante");
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const router = useRouter();
+
+  //por mientras pongo este event como any, para que no chille
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    if (password !== repeatPassword) {
+      alert("Las contraseñas no coinciden");
+      return;
+    }
+
+    router.push("/");
+  };
 
   return (
     <div className={styles.mainDiv}>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <p className={styles.mainTitle}>Regístrate</p>
         <p className={styles.subtitle}>¡Empieza a aprender gratis!</p>
         <div className={styles.nameAndLastNameDiv}>
@@ -48,12 +64,16 @@ export default function Register() {
               placeholder="Contraseña"
               required
               className={styles.credentialsInput}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <input
               type="password"
               placeholder="Repetir contraseña"
               required
               className={styles.credentialsInput}
+              value={repeatPassword}
+              onChange={(e) => setRepeatPassword(e.target.value)}
             />
           </div>
           <div className={styles.phoneDiv}>
