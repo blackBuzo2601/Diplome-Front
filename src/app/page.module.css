@@ -71,3 +71,22 @@
 .formButton:hover {
   background: rgb(103, 103, 103);
 }
+
+.labelDiv {
+  width: 75%;
+  height: 3vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  align-items: center;
+}
+.registerLabel {
+  font-family: "The Seasons", serif;
+  font-size: 1.5vw;
+  color: black; /* Cambia el color del enlace */
+  text-decoration: none; /* Quita el subrayado */
+}
+.registerLabel:hover {
+  color: rgb(103, 103, 103);
+}

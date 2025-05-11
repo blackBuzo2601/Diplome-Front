@@ -1,5 +1,5 @@
-import Image from "next/image";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -22,6 +22,11 @@ export default function Home() {
           className={styles.formInput}
         />
         <button className={styles.formButton}>Entrar</button>
+        <div className={styles.labelDiv}>
+          <Link className={styles.registerLabel} href="/register">
+            ¿No tienes cuenta? Regístrate aquí
+          </Link>
+        </div>
       </div>
     </form>
   );
