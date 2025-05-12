@@ -3,15 +3,29 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from '../../hooks/useAuth.js'
 
 export default function Register() {
   const [rol, setRol] = useState("estudiante");
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState('');
   const [repeatPassword, setRepeatPassword] = useState("");
   const router = useRouter();
+  const { register } = useAuth();
 
   //por mientras pongo este event como any, para que no chille
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
+	e.preventDefault();
+	try {
+		await register(firstName, lastName, email, password, phone);
+		router.push("/dashboard");
+	} catch {
+		router.push("/");
+	}
+
     e.preventDefault();
 
     if (password !== repeatPassword) {
@@ -32,12 +46,16 @@ export default function Register() {
             type="text"
             placeholder="Nombre"
             required
+			value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             className={styles.formInput}
           />
           <input
             type="text"
             placeholder="Apellido"
             required
+			value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             className={styles.formInput}
           />
         </div>
@@ -57,6 +75,8 @@ export default function Register() {
               type="email"
               placeholder="Correo electrónico"
               required
+			  value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className={styles.credentialsInput}
             />
             <input
@@ -82,6 +102,8 @@ export default function Register() {
               type="tel"
               placeholder="(123) 456-7890"
               required
+			  value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               className={styles.phoneInput}
               pattern="[0-9]{10,15}"
             />
