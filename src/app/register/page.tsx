@@ -20,7 +20,8 @@ export default function Register() {
   const handleSubmit = async (e: any) => {
 	e.preventDefault();
 	try {
-		await register(firstName, lastName, email, password, phone);
+		const role = rol === "estudiante" ? '0x01' : '0x02';
+		await register(firstName, lastName, email, password, phone, role);
 		router.push("/dashboard");
 	} catch {
 		router.push("/");
