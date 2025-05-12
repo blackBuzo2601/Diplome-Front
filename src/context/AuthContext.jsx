@@ -39,11 +39,11 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const register = async ( first_name, last_name, email, password, phone ) => {
+  const register = async ( first_name, last_name, email, password, phone, role ) => {
 	console.log("Received")
-	console.log({ first_name, last_name, email, password, phone })
+	console.log({ first_name, last_name, email, password, phone, role })
     try {
-      const response = await axios.post('http://localhost:5005/diplome/auth/register', { first_name, last_name, email, password, phone },  { withCredentials: true });
+      const response = await axios.post('http://localhost:5005/diplome/auth/register', { first_name, last_name, email, password, phone, role },  { withCredentials: true });
 	  console.log(response.data);
       const { user } = response.data;
 
