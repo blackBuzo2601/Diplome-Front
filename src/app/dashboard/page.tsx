@@ -13,6 +13,8 @@ export default function Dashboard() {
 	return <div>
 		<p>Dashboard</p>
 		<p>{`Usuario: ${currentUser.first_name} ${currentUser.last_name}`}</p>
+		<p>{`Correo: ${currentUser.email}`}</p>
+		<p>{`Rol: ${currentUser.role}`}</p>
 		<button onClick={() => logout()}>log out</button>
   </div>;
 
