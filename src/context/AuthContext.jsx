@@ -1,14 +1,15 @@
+"use client";
 import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from "next/navigation";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
+  const router = useRouter();
   
   useEffect(() => {
 	const initAuth = async () => {
@@ -37,6 +38,23 @@ export const AuthProvider = ({ children }) => {
       throw new Error(error.response?.data?.message || 'Error al iniciar sesión');
     }
   };
+
+  const register = async ( first_name, last_name, email, password, phone ) => {
+	console.log("Received")
+	console.log({ first_name, last_name, email, password, phone })
+    try {
+      const response = await axios.post('http://localhost:5005/diplome/auth/register', { first_name, last_name, email, password, phone },  { withCredentials: true });
+	  console.log(response.data);
+      const { user } = response.data;
+
+      setCurrentUser(user);
+      
+      return user;
+    } catch (error) {
+		console.log(error)
+      throw new Error(error.response?.data?.message || 'Error al iniciar sesión');
+    }
+  };
   
   const getUserData = async () => {
     try {
@@ -54,7 +72,7 @@ export const AuthProvider = ({ children }) => {
   };
   
   const logout = async () => {
-	navigate('/login');
+	router.push("/");
     await axios.get('http://localhost:5005/diplome/auth/logout',  { withCredentials: true });
     setCurrentUser(null);
   };
@@ -72,6 +90,7 @@ export const AuthProvider = ({ children }) => {
     currentUser,
     isAuthenticated: !!currentUser,
     isLoading,
+	register,
     login,
     logout,
     resetPassword
