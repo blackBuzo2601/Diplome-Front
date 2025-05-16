@@ -2,86 +2,113 @@
 
 .dashboard {
   display: flex;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+
   font-family: "The Seasons", sans-serif;
 }
 
 /* === ASIDE === */
 .sidebar {
-  width: 250px;
-  height: 100vh;
-  background-color: white;
-  padding: 20px;
+  width: 21.2%;
+  height: 100%;
   border-right: 1px solid #ccc;
   box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.1);
   z-index: 10;
 }
+.logoContainer {
+  padding-top: 4.5vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
 .sidebarLogo {
-  margin-bottom: 15px;
+  width: 58%;
+  height: 50%;
 }
 
 .sidebarUser {
+  margin-top: 6%;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 8%;
+}
+.sidebarUserName {
+  font-family: "The Seasons", serif;
+  font-size: 1.49rem;
 }
 
 .userImage {
-  width: 60px;
+  width: 27%;
+  height: 33%;
   border-radius: 50%;
 }
 
 .sidebarNav {
+  padding-left: 7.5%;
+  padding-right: 7.5%;
+
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  justify-content: space-between;
+  width: 100%;
+  height: 25%;
 }
 
 .sidebarLink {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 3.5%;
   color: black;
   text-decoration: none;
+  font-size: 1.3rem;
 }
 
 .logout {
   color: red;
-  margin-top: 32vh;
+  margin-top: 28vh;
   display: flex;
   align-items: center;
-  gap: 10px;
-  cursor: pointer;
+  gap: 3.5%;
+  padding-left: 7.5%;
+  padding-right: 7.5%;
+  font-size: 1.3rem;
 }
 
 /* === MAIN === */
 .mainContent {
   flex: 1;
-  padding: 20px;
+  padding-left: 2.4%;
   background-color: #eef1f3;
 }
 
 /* === SEARCH === */
 .searchContainer {
+  margin-top: 1.8vh;
   position: relative;
-  width: 300px;
-  padding-bottom: 25px;
+  width: 50%;
+  height: 10.5%;
 }
 
 .searchInput {
-  padding: 10px 10px 10px 35px;
-  border-radius: 10px;
+  margin-left: 7.5%;
+  padding: 1.8% 1.8% 1.8% 5%;
+  border-radius: 20px;
   border: 1px solid #ccc;
-  width: 500px;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
+  width: 80%;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
   outline: none;
+  height: 68%;
+  font-size: 1.3rem;
 }
 
 /* === SECTIONS CONTAINER === */
 .sectionsWrapper {
   background-color: #91b3cc;
-  padding: 20px;
-  border-radius: 20px;
+  padding: 1.75%;
+  border-radius: 25px;
 }
 
 /* === INDIVIDUAL SECTIONS === */
@@ -90,7 +117,8 @@
 }
 
 .sectionTitle {
-  margin-bottom: 15px;
+  margin-bottom: 1%;
+  font-size: 1.94rem;
 }
 
 .cardScroll {

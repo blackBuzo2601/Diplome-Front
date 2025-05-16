@@ -1,4 +1,4 @@
-import { BookOpenText, BadgeCheck, Settings, Link } from "lucide-react";
+import { BookOpenText, BadgeCheck, Settings, Link, LogOut } from "lucide-react";
 import styles from "./page.module.css";
 import logo from "../../../public/images/logo.png";
 import user from "../../../public/images/user-example.png";
@@ -15,41 +15,44 @@ export default function AdminDashboard() {
   return (
     <div className={styles.dashboard}>
       {/* Barra/Menu lateral */}
+
       <aside className={styles.sidebar}>
-        <Image
-          src={logo}
-          alt="Diplôme Logo"
-          className={styles.sidebarLogo}
-          width={200}
-          height={70}
-        />
+        <div className={styles.logoContainer}>
+          <Image
+            src={logo}
+            alt="Diplôme Logo"
+            className={styles.sidebarLogo}
+            width={200}
+            height={70}
+          />
+        </div>
         <div className={styles.sidebarUser}>
           <Image
             src={user}
             alt="user example"
             className={styles.userImage}
-            width={150}
-            height={50}
+            width={200}
+            height={65}
           />
-          <p>Nombre de Usuario</p>
+          <p className={styles.sidebarUserName}>Nombre de Usuario</p>
         </div>
         <nav className={styles.sidebarNav}>
           <a href="#" className={styles.sidebarLink}>
-            <BookOpenText size={18} /> Mis cursos
+            <BookOpenText size={30} /> Mis cursos
           </a>
           <a href="#" className={styles.sidebarLink}>
-            <BadgeCheck size={18} /> Verificación de Cursos
+            <BadgeCheck size={30} /> Verificación de Cursos
           </a>
           <a href="#" className={styles.sidebarLink}>
-            <BadgeCheck size={18} /> Verificación de Instructores
+            <BadgeCheck size={30} /> Verificación de Instructores
           </a>
           <a href="#" className={styles.sidebarLink}>
-            <Settings size={18} /> Ajustes
+            <Settings size={30} /> Ajustes
           </a>
         </nav>
-        <div className={styles.logout}>
-          <Settings size={18} /> Cerrar Sesión
-        </div>
+        <article className={styles.logout}>
+          <LogOut size={30} /> Cerrar Sesión
+        </article>
       </aside>
 
       <main className={styles.mainContent}>
@@ -57,7 +60,7 @@ export default function AdminDashboard() {
         <div className={styles.searchContainer}>
           <input
             type="text"
-            placeholder="Búsqueda"
+            placeholder="Buscar un curso"
             className={styles.searchInput}
           />
         </div>
