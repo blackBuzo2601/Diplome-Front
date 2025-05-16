@@ -1,0 +1,143 @@
+/* Cosillas del front */
+
+.dashboard {
+  display: flex;
+  height: 100vh;
+  font-family: "The Seasons", sans-serif;
+}
+
+/* === ASIDE === */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: white;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+  box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.sidebarLogo {
+  margin-bottom: 15px;
+}
+
+.sidebarUser {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.userImage {
+  width: 60px;
+  border-radius: 50%;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebarLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.logout {
+  color: red;
+  margin-top: 32vh;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* === MAIN === */
+.mainContent {
+  flex: 1;
+  padding: 20px;
+  background-color: #eef1f3;
+}
+
+/* === SEARCH === */
+.searchContainer {
+  position: relative;
+  width: 300px;
+  padding-bottom: 25px;
+}
+
+.searchInput {
+  padding: 10px 10px 10px 35px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 500px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
+  outline: none;
+}
+
+/* === SECTIONS CONTAINER === */
+.sectionsWrapper {
+  background-color: #91b3cc;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+/* === INDIVIDUAL SECTIONS === */
+.section {
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  margin-bottom: 15px;
+}
+
+.cardScroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 10px;
+  width: 200px;
+}
+
+.courseImage {
+  width: 180px;
+  border-radius: 50%;
+}
+
+.cardTitle {
+  margin: 10px 0 5px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cardUserImage {
+  width: 60px;
+  border-radius: 50%;
+}
+
+.cardUserText {
+  font-size: 12px;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
