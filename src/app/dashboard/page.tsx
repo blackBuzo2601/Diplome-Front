@@ -71,7 +71,7 @@ export default function AdminDashboard() {
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>Cursos</h3>
             <div className={styles.cardScroll}>
-              {[1, 2, 3, 4].map((id) => (
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((id) => (
                 <div key={id} className={styles.card}>
                   <Image
                     src={curso}

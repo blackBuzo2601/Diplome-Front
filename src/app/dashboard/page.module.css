@@ -13,6 +13,7 @@
   border-right: 1px solid #ccc;
   box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.1);
   z-index: 10;
+  flex-shrink: 0;
 }
 .logoContainer {
   padding-top: 4.5vh;
@@ -78,6 +79,7 @@
 /* === MAIN === */
 .mainContent {
   flex: 1;
+  min-width: 0;
   padding-left: 2.4%;
   padding-right: 2.4%;
   background-color: #eef1f3;
@@ -112,6 +114,7 @@
 
 /* === INDIVIDUAL SECTIONS === */
 .section {
+  min-width: 0;
   margin-bottom: 3vh;
   padding-bottom: 2vh;
   overflow-x: hidden;
@@ -126,8 +129,21 @@
 
 .cardScroll {
   display: flex;
-  gap: 20px;
+  flex-direction: row;
+
   overflow-x: auto;
+
+  gap: 20px;
+  padding-bottom: 1%;
+}
+.cardScroll::-webkit-scrollbar {
+  border-radius: 8px;
+  background-color: rgb(239, 235, 235);
+  width: 6px;
+}
+.cardScroll::-webkit-scrollbar-thumb {
+  background-color: #283f4f;
+  border-radius: 8px;
 }
 
 .card {
