@@ -34,7 +34,7 @@ export default function AdminDashboard() {
             width={200}
             height={65}
           />
-          <p className={styles.sidebarUserName}>Nombre de Usuario</p>
+          <p className={styles.sidebarUserName}>Elian Buzo</p>
         </div>
         <nav className={styles.sidebarNav}>
           <a href="#" className={styles.sidebarLink}>
