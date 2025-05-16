@@ -50,13 +50,12 @@ export default function AdminDashboard() {
             <Settings size={30} /> Ajustes
           </a>
         </nav>
-        <article className={styles.logout}>
+        <a href="/" className={styles.logout}>
           <LogOut size={30} /> Cerrar Sesión
-        </article>
+        </a>
       </aside>
 
       <main className={styles.mainContent}>
-        {/* Barra de busqueda */}
         <div className={styles.searchContainer}>
           <input
             type="text"
@@ -65,13 +64,11 @@ export default function AdminDashboard() {
           />
         </div>
 
-        {/* Contenedor del dasbhoard */}
         <div className={styles.sectionsWrapper}>
-          {/* Seccion de cursos */}
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>Cursos</h3>
             <div className={styles.cardScroll}>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((id) => (
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((id) => (
                 <div key={id} className={styles.card}>
                   <Image
                     src={curso}
@@ -122,7 +119,7 @@ export default function AdminDashboard() {
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>Instructores</h3>
             <div className={styles.cardScroll}>
-              {[1, 2, 3, 4].map((id) => (
+              {[1, 2, 3, 4, 5].map((id) => (
                 <div key={id} className={styles.card}>
                   <div className={styles.cardHeader}>
                     <Image
