@@ -75,6 +75,9 @@
   font-size: 1.3rem;
   text-decoration: none;
 }
+.logout:hover {
+  color: rgb(160, 89, 89);
+}
 
 /* === MAIN === */
 .mainContent {
@@ -83,7 +86,7 @@
   padding-left: 2.4%;
   padding-right: 2.4%;
 
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 /* === SEARCH === */
@@ -164,7 +167,6 @@
 .card:hover {
   background: rgb(103, 103, 103);
   color: white;
-  font-weight: 500;
 }
 
 .courseImage {
