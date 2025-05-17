@@ -1,4 +1,11 @@
-import { BookOpenText, BadgeCheck, Settings, Link, LogOut } from "lucide-react";
+import {
+  BookOpenText,
+  BadgeCheck,
+  Settings,
+  Link,
+  LogOut,
+  Heart,
+} from "lucide-react";
 import styles from "./page.module.css";
 import logo from "../../../public/images/logo.png";
 import user from "../../../public/images/user-example.png";
@@ -41,11 +48,9 @@ export default function AdminDashboard() {
             <BookOpenText size={30} /> Mis cursos
           </a>
           <a href="#" className={styles.sidebarLink}>
-            <BadgeCheck size={30} /> Verificación de Cursos
+            <Heart size={30} /> Favoritos
           </a>
-          <a href="#" className={styles.sidebarLink}>
-            <BadgeCheck size={30} /> Verificación de Instructores
-          </a>
+
           <a href="#" className={styles.sidebarLink}>
             <Settings size={30} /> Ajustes
           </a>
