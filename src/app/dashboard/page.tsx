@@ -9,9 +9,6 @@ import {
 import styles from "./page.module.css";
 import logo from "../../../public/images/logo.png";
 import user from "../../../public/images/user-example.png";
-import curso from "../../../public/images/curso.png";
-import aprobado from "../../../public/images/aprobado.png";
-import noAprobado from "../../../public/images/no-aprobado.png";
 import Image from "next/image";
 import React from "react";
 
@@ -87,7 +84,36 @@ export default function AdminDashboard() {
           </div>
         </div>
         <h3 className={styles.sectionTitle}>Seguir aprendiendo</h3>
-        <div className={styles.recomendationsDiv}></div>
+
+        <div className={styles.recomendationsDiv}>
+          {[1, 2, 3, 4, 5, 6].map((elemento, key) => (
+            <div key={key} className={styles.courseCard}>
+              <Image
+                src={"/images/cursojs.jpg"}
+                alt="course image"
+                width={200}
+                height={100}
+                className={styles.courseCardImage}
+              />
+              <p className={styles.courseTitle}>
+                Redacción Creativa para la Web
+              </p>
+              <div className={styles.courseTeacherDiv}>
+                <Image
+                  src={"/images/user-example.png"}
+                  alt="user example"
+                  width={200}
+                  height={65}
+                  className={styles.courseTeacherImage}
+                />
+                <div className={styles.courseTeacherInfo}>
+                  <p className={styles.courseTeacherName}>Sergio García</p>
+                  <p className={styles.courseTeacherLabel}>Instructor</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </main>
     </div>
   );
