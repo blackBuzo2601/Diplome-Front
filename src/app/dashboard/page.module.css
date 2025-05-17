@@ -112,7 +112,30 @@
   font-size: 1.3rem;
   font-family: "The Seasons", serif;
 }
+.categoryDiv {
+  width: 100%;
+  height: 22vh;
 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+.categoryCard {
+  font-size: 22px;
+  width: 180px;
+  height: 100px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  font-family: "Montserrat", sans-serif;
+  border-width: 1px;
+  border-style: solid;
+}
 /* === SECTIONS CONTAINER === */
 .sectionsWrapper {
   background-color: #aac8de;

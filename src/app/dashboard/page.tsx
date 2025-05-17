@@ -68,6 +68,24 @@ export default function AdminDashboard() {
             className={styles.searchInput}
           />
         </div>
+        <h3 className={styles.sectionTitle}>Categorías</h3>
+        <div className={styles.categoryDiv}>
+          <div className={styles.categoryCard}>
+            <p>UI/UIX</p>
+          </div>
+          <div className={styles.categoryCard}>
+            <p>UI/UIX</p>
+          </div>
+          <div className={styles.categoryCard}>
+            <p>UI/UIX</p>
+          </div>
+          <div className={styles.categoryCard}>
+            <p>UI/UIX</p>
+          </div>
+          <div className={styles.categoryCard}>
+            <p>UI/UIX</p>
+          </div>
+        </div>
 
         <div className={styles.sectionsWrapper}>
           <section className={styles.section}>
