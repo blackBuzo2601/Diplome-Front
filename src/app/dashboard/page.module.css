@@ -114,15 +114,25 @@
 }
 .categoryDiv {
   width: 100%;
-  height: 22vh;
-
+  height: 16vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  gap: 20px;
+  padding-left: 2.5%;
+}
+
+.recomendationsDiv {
+  width: 100%;
+  height: 32vh;
+  background-color: orange;
+  display: flex;
+  flex-direction: row;
   gap: 20px;
 }
 .categoryCard {
+  border-radius: 12px;
   font-size: 22px;
   width: 180px;
   height: 100px;
@@ -131,56 +141,24 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-radius: 15px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5),
+    -2px -2px 5px rgba(255, 255, 255, 0.8);
   font-family: "Montserrat", sans-serif;
-  border-width: 1px;
-  border-style: solid;
-}
-/* === SECTIONS CONTAINER === */
-.sectionsWrapper {
-  background-color: #aac8de;
-  padding: 1.75%;
-  border-radius: 25px;
 }
 
-/* === INDIVIDUAL SECTIONS === */
-.section {
-  min-width: 0;
-  margin-bottom: 3vh;
-  padding-bottom: 2vh;
-  overflow-x: hidden;
-  height: 50%;
+.categoryCard:hover {
+  background: rgb(103, 103, 103);
+  color: white;
 }
+/* === SECTIONS CONTAINER === */
+
+/* === INDIVIDUAL SECTIONS === */
 
 .sectionTitle {
   margin-left: 1.1%;
   margin-bottom: 1%;
   font-size: 1.94rem;
   font-weight: 300;
-}
-
-.cardScroll {
-  display: flex;
-  flex-direction: row;
-
-  overflow-x: auto;
-
-  gap: 20px;
-
-  padding-bottom: 1%;
-
-  padding-left: 1.5%;
-
-  height: 50%;
-}
-.cardScroll::-webkit-scrollbar {
-  border-radius: 8px;
-  background-color: rgb(239, 235, 235);
-  height: 12px;
-}
-.cardScroll::-webkit-scrollbar-thumb {
-  background-color: #283f4f;
-  border-radius: 8px;
 }
 
 .card {
@@ -193,40 +171,4 @@
 .card:hover {
   background: rgb(103, 103, 103);
   color: white;
-}
-
-.courseImage {
-  width: 180px;
-  border-radius: 30px;
-}
-
-.cardTitle {
-  margin: 10px 0 5px;
-}
-
-.cardHeader {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.cardUserImage {
-  width: 60px;
-  border-radius: 50%;
-}
-
-.cardUserText {
-  font-size: 12px;
-}
-
-.buttonGroup {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 10px;
-}
-
-.iconButton {
-  background: none;
-  border: none;
-  cursor: pointer;
 }

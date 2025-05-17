@@ -74,111 +74,20 @@ export default function AdminDashboard() {
             <p>UI/UIX</p>
           </div>
           <div className={styles.categoryCard}>
-            <p>UI/UIX</p>
+            <p>Idiomas</p>
           </div>
           <div className={styles.categoryCard}>
-            <p>UI/UIX</p>
+            <p>Programación C</p>
           </div>
           <div className={styles.categoryCard}>
-            <p>UI/UIX</p>
+            <p>Frontend</p>
           </div>
           <div className={styles.categoryCard}>
-            <p>UI/UIX</p>
+            <p>Backend</p>
           </div>
         </div>
-
-        <div className={styles.sectionsWrapper}>
-          <section className={styles.section}>
-            <h3 className={styles.sectionTitle}>Cursos</h3>
-            <div className={styles.cardScroll}>
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((id) => (
-                <div key={id} className={styles.card}>
-                  <Image
-                    src={curso}
-                    alt="course example"
-                    className={styles.courseImage}
-                    width={200}
-                    height={120}
-                  />
-                  <p className={styles.cardTitle}>
-                    Redacción Creativa para la Web
-                  </p>
-                  <div className={styles.cardHeader}>
-                    <Image
-                      src={user}
-                      alt="user example"
-                      className={styles.cardUserImage}
-                      width={150}
-                      height={50}
-                    />
-                    <span className={styles.cardUserText}>
-                      Sergio García - Instructor
-                    </span>
-                  </div>
-                  <div className={styles.buttonGroup}>
-                    <button className={styles.iconButton}>
-                      <Image
-                        src={aprobado}
-                        alt="Aprobado"
-                        width={24}
-                        height={24}
-                      />
-                    </button>
-                    <button className={styles.iconButton}>
-                      <Image
-                        src={noAprobado}
-                        alt="No Aprobado"
-                        width={24}
-                        height={24}
-                      />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Seccion de instructores */}
-          <section className={styles.section}>
-            <h3 className={styles.sectionTitle}>Instructores</h3>
-            <div className={styles.cardScroll}>
-              {[1, 2, 3, 4, 5].map((id) => (
-                <div key={id} className={styles.card}>
-                  <div className={styles.cardHeader}>
-                    <Image
-                      src={user}
-                      alt="user example"
-                      className={styles.cardUserImage}
-                      width={150}
-                      height={50}
-                    />
-                    <span className={styles.cardUserText}>
-                      Sergio García - Instructor
-                    </span>
-                  </div>
-                  <div className={styles.buttonGroup}>
-                    <button className={styles.iconButton}>
-                      <Image
-                        src={aprobado}
-                        alt="Aprobado"
-                        width={24}
-                        height={24}
-                      />
-                    </button>
-                    <button className={styles.iconButton}>
-                      <Image
-                        src={noAprobado}
-                        alt="No Aprobado"
-                        width={24}
-                        height={24}
-                      />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
+        <h3 className={styles.sectionTitle}>Seguir aprendiendo</h3>
+        <div className={styles.recomendationsDiv}></div>
       </main>
     </div>
   );
