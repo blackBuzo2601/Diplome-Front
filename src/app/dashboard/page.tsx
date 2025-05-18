@@ -1,3 +1,4 @@
+"use client";
 import {
   BookOpenText,
   BadgeCheck,
@@ -12,10 +13,23 @@ import user from "../../../public/images/user-example.png";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import CourseModal from "../../../components/CourseModal";
+import { useRouter } from "next/navigation";
 
 export default function AdminDashboard() {
+  const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
+  const router = useRouter();
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
+  const goToCoursePage = () => {
+    setModalOpen(false);
+    router.push("/dashboard/mycourses/coursepage");
+  };
   return (
     <div className={styles.dashboard}>
       {/* Barra/Menu lateral */}
@@ -98,7 +112,7 @@ export default function AdminDashboard() {
 
         <div className={styles.recomendationsDiv}>
           {[1, 2, 3, 4, 5, 6].map((elemento, key) => (
-            <div key={key} className={styles.courseCard}>
+            <div onClick={openModal} key={key} className={styles.courseCard}>
               <Image
                 src={"/images/cursojs.jpg"}
                 alt="course image"
@@ -129,7 +143,7 @@ export default function AdminDashboard() {
         <h3 className={styles.sectionTitle}>Recomendados</h3>
         <div className={styles.recomendationsDiv}>
           {[1, 2, 3, 4, 5, 6].map((elemento, key) => (
-            <div key={key} className={styles.courseCard}>
+            <div onClick={openModal} key={key} className={styles.courseCard}>
               <Image
                 src={"/images/cursojs.jpg"}
                 alt="course image"
@@ -157,6 +171,11 @@ export default function AdminDashboard() {
           ))}
         </div>
         <div className={styles.emptyDiv}></div>
+        <CourseModal
+          isOpen={modalOpen}
+          onClose={closeModal}
+          onConfirm={goToCoursePage}
+        ></CourseModal>
       </main>
     </div>
   );
