@@ -128,10 +128,7 @@ export default function MyCourses() {
           isOpen={modalOpen}
           onClose={closeModal}
           onConfirm={goToCoursePage}
-          title="¿Qué deseas hacer?"
-        >
-          <p>Puedes ir al curso o cerrar esta ventana.</p>
-        </CourseModal>
+        ></CourseModal>
       </main>
     </div>
   );
