@@ -1,3 +1,4 @@
+"use client";
 import {
   BookOpenText,
   BadgeCheck,
@@ -6,13 +7,27 @@ import {
   Heart,
   LucideHome,
 } from "lucide-react";
+import CourseModal from "../../../../components/CourseModal";
 import styles from "./page.module.css";
 import logo from "../../../../public/images/logo.png";
 import user from "../../../../public/images/user-example.png";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 export default function MyCourses() {
+  const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
+  const router = useRouter();
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
+  const goToCoursePage = () => {
+    setModalOpen(false);
+    router.push("/dashboard/mycourses/coursepage");
+  };
+
   return (
     <div className={styles.dashboard}>
       {/* Barra/Menu lateral */}
@@ -78,7 +93,7 @@ export default function MyCourses() {
         <div className={styles.father}>
           <div className={styles.recomendationsDiv}>
             {[1, 2, 3, 4, 5].map((elemento, key) => (
-              <div key={key} className={styles.courseCard}>
+              <div key={key} onClick={openModal} className={styles.courseCard}>
                 <Image
                   src={"/images/cursojs.jpg"}
                   alt="course image"
@@ -88,7 +103,7 @@ export default function MyCourses() {
                 />
                 <div className={styles.courseColumnInfo}>
                   <p className={styles.courseTitle}>
-                    Redacción Creativa para la Web
+                    Curso de Javascript Moderno desde cero 2025
                   </p>
                   <div className={styles.courseTeacherDiv}>
                     <Image
@@ -109,6 +124,14 @@ export default function MyCourses() {
           </div>
           <div className={styles.emptyDiv}></div>
         </div>
+        <CourseModal
+          isOpen={modalOpen}
+          onClose={closeModal}
+          onConfirm={goToCoursePage}
+          title="¿Qué deseas hacer?"
+        >
+          <p>Puedes ir al curso o cerrar esta ventana.</p>
+        </CourseModal>
       </main>
     </div>
   );
