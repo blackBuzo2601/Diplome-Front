@@ -2,18 +2,18 @@ import {
   BookOpenText,
   BadgeCheck,
   Settings,
-  Link,
   LogOut,
   Heart,
+  LucideHome,
 } from "lucide-react";
 import styles from "./page.module.css";
 import logo from "../../../public/images/logo.png";
 import user from "../../../public/images/user-example.png";
 import Image from "next/image";
 import React from "react";
-
-// Para que no les de pedillos visuales instalen esto:
-// npm install lucide-react
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 export default function AdminDashboard() {
   return (
@@ -41,20 +41,23 @@ export default function AdminDashboard() {
           <p className={styles.sidebarUserName}>Elian Buzo</p>
         </div>
         <nav className={styles.sidebarNav}>
-          <a href="#" className={styles.sidebarLink}>
+          <Link href="/dashboard/" className={styles.sidebarLink}>
+            <LucideHome size={30} /> Inicio
+          </Link>
+          <Link href="/dashboard/mycourses" className={styles.sidebarLink}>
             <BookOpenText size={30} /> Mis cursos
-          </a>
-          <a href="#" className={styles.sidebarLink}>
+          </Link>
+          <Link href="#" className={styles.sidebarLink}>
             <Heart size={30} /> Favoritos
-          </a>
+          </Link>
 
-          <a href="#" className={styles.sidebarLink}>
+          <Link href="#" className={styles.sidebarLink}>
             <Settings size={30} /> Ajustes
-          </a>
+          </Link>
         </nav>
-        <a href="/" className={styles.logout}>
+        <Link href="/" className={styles.logout}>
           <LogOut size={30} /> Cerrar Sesión
-        </a>
+        </Link>
       </aside>
 
       <main className={styles.mainContent}>
