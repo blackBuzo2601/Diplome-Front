@@ -244,6 +244,7 @@
 .courseTeacherImage {
   width: 3.2vw;
   height: 6vh;
+  border-radius: 50px;
 }
 .courseTeacherName {
   font-size: 1.4rem;
