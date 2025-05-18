@@ -59,11 +59,19 @@ export default function AdminDashboard() {
 
       <main className={styles.mainContent}>
         <div className={styles.searchContainer}>
-          <input
-            type="text"
-            placeholder="Buscar un curso"
-            className={styles.searchInput}
-          />
+          <div className={styles.inputRow}>
+            <Image
+              src={"/images/lupa.png"}
+              alt="user example"
+              width={40}
+              height={40}
+            />
+            <input
+              type="text"
+              placeholder="Buscar un curso"
+              className={styles.searchInput}
+            />
+          </div>
         </div>
         <h3 className={styles.sectionTitle}>Categorías</h3>
         <div className={styles.categoryDiv}>
@@ -114,6 +122,38 @@ export default function AdminDashboard() {
             </div>
           ))}
         </div>
+        <div className={styles.emptyDiv}></div>
+        <h3 className={styles.sectionTitle}>Recomendados</h3>
+        <div className={styles.recomendationsDiv}>
+          {[1, 2, 3, 4, 5, 6].map((elemento, key) => (
+            <div key={key} className={styles.courseCard}>
+              <Image
+                src={"/images/cursojs.jpg"}
+                alt="course image"
+                width={200}
+                height={100}
+                className={styles.courseCardImage}
+              />
+              <p className={styles.courseTitle}>
+                Redacción Creativa para la Web
+              </p>
+              <div className={styles.courseTeacherDiv}>
+                <Image
+                  src={"/images/user-example.png"}
+                  alt="user example"
+                  width={200}
+                  height={65}
+                  className={styles.courseTeacherImage}
+                />
+                <div className={styles.courseTeacherInfo}>
+                  <p className={styles.courseTeacherName}>Sergio García</p>
+                  <p className={styles.courseTeacherLabel}>Instructor</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className={styles.emptyDiv}></div>
       </main>
     </div>
   );
