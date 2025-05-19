@@ -80,7 +80,7 @@ export default function MyCourses() {
       </aside>
 
       <main className={styles.mainContent}>
-        <h3 className={styles.sectionHeaderName}>Mis cursos *Instructor* </h3>
+        <h3 className={styles.sectionHeaderName}>Mis cursos</h3>
         <div className={styles.searchContainer}>
           <p className={styles.backToCoursesLabel}>Volver a todos los cursos</p>
           <div className={styles.inputRow}>

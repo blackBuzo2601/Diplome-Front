@@ -40,6 +40,11 @@ export default function Home() {
             ¿No tienes cuenta? Regístrate aquí
           </Link>
         </div>
+        <div className={styles.labelDiv}>
+          <Link className={styles.registerLabelRecover} href="/recover">
+            ¿Olvidaste tu contraseña?
+          </Link>
+        </div>
       </div>
     </form>
   );
