@@ -36,9 +36,9 @@ export default function AdminDashboard() {
   };
 
   const router = useRouter();
-  let userRole = 1;
-  //cambiar userRole a 1 si es Instructor
-  //cambiar userRole a null si es Estudiante
+  let userRole = false;
+  //cambiar userRole a true si es Instructor
+  //cambiar userRole a false si es Estudiante
 
   //Codigo necesario para animacion de scroll en Div de todos los cursos
   //--------------------------------------------------------------------
