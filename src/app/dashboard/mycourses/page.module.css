@@ -165,17 +165,17 @@
 }
 .father {
   box-sizing: border-box;
-  flex-grow: 1;
-
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-bottom: 1.5vh;
   overflow-y: auto;
-  min-height: 100vh;
 }
 .recomendationsDiv {
   width: 90%;
+  height: 100%;
   background-color: #aac8de;
   display: flex;
   flex-direction: column;
@@ -185,6 +185,8 @@
   padding-bottom: 3vh;
   padding-left: 2vw;
   overflow-y: auto;
+  scrollbar-gutter: stable;
+
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   box-sizing: border-box;
