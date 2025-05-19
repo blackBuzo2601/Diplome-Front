@@ -172,6 +172,7 @@
   justify-content: center;
   margin-bottom: 1.5vh;
   overflow-y: auto;
+  min-height: 100vh;
 }
 .recomendationsDiv {
   width: 90%;

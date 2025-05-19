@@ -21,6 +21,13 @@ import teacherCourses from "../../../../mock/teacherCourses";
 export default function MyCourses() {
   const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
   const [course, setCourse] = useState<Course | null>(null); //curso vacio al iniico
+  const [search, setSearch] = useState("");
+  const [myCourses, setMyCourses] = useState(true);
+  const searchByWord = (searchText: string) => {
+    searchText.trim() !== "" ? setMyCourses(false) : setMyCourses(true);
+    setSearch(searchText);
+  };
+
   const router = useRouter();
   const getCourseInfo = (course: Course) => {
     setCourse(course);
@@ -82,7 +89,12 @@ export default function MyCourses() {
       <main className={styles.mainContent}>
         <h3 className={styles.sectionHeaderName}>Mis cursos</h3>
         <div className={styles.searchContainer}>
-          <p className={styles.backToCoursesLabel}>Volver a todos los cursos</p>
+          <p
+            onClick={() => setSearch("")}
+            className={styles.backToCoursesLabel}
+          >
+            Volver a todos los cursos
+          </p>
           <div className={styles.inputRow}>
             <Image
               src={"/images/lupa.png"}
@@ -91,33 +103,68 @@ export default function MyCourses() {
               height={40}
             />
             <input
+              value={search} //asignamos el estado en "" para que cuando haya cambios en el input, se modifique ese estado
+              onChange={(e) => {
+                const searchText = e.target.value;
+                searchByWord(searchText);
+              }}
               type="text"
               placeholder="Buscar en mis cursos"
               className={styles.searchInput}
             />
           </div>
         </div>
+
         <div className={styles.father}>
-          <div className={styles.recomendationsDiv}>
-            {teacherCourses.map((elemento, key) => (
-              <div
-                onClick={() => getCourseInfo(elemento)}
-                key={key}
-                className={styles.courseCard}
-              >
-                <Image
-                  src={elemento.imageRoute}
-                  alt="course image"
-                  width={200}
-                  height={100}
-                  className={styles.courseCardImage}
-                />
-                <p className={styles.courseTitle}>{elemento.courseTitle}</p>
-              </div>
-            ))}
-          </div>
+          {myCourses ? (
+            <div className={styles.recomendationsDiv}>
+              {teacherCourses.map((elemento, key) => (
+                <div
+                  onClick={() => getCourseInfo(elemento)}
+                  key={key}
+                  className={styles.courseCard}
+                >
+                  <Image
+                    src={elemento.imageRoute}
+                    alt="course image"
+                    width={200}
+                    height={100}
+                    className={styles.courseCardImage}
+                  />
+                  <p className={styles.courseTitle}>{elemento.courseTitle}</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className={styles.recomendationsDiv}>
+              {teacherCourses
+                .filter((elemento) =>
+                  elemento.courseTitle
+                    .toLowerCase()
+                    .includes(search.trim().toLowerCase())
+                )
+                .map((elemento, key) => (
+                  <div
+                    onClick={() => getCourseInfo(elemento)}
+                    key={key}
+                    className={styles.courseCard}
+                  >
+                    <Image
+                      src={elemento.imageRoute}
+                      alt="course image"
+                      width={200}
+                      height={100}
+                      className={styles.courseCardImage}
+                    />
+                    <p className={styles.courseTitle}>{elemento.courseTitle}</p>
+                  </div>
+                ))}
+            </div>
+          )}
+
           <div className={styles.emptyDiv}></div>
         </div>
+
         <CourseModal
           isTeacher={true}
           course={course}

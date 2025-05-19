@@ -27,6 +27,7 @@ import Course from "../../../interfaces/Course";
 export default function AdminDashboard() {
   const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
   const [course, setCourse] = useState<Course | null>(null); //curso vacio al iniico
+
   const router = useRouter();
   let userRole = 1;
   //cambiar userRole a 1 si es Instructor
