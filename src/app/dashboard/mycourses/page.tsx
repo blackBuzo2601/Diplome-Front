@@ -16,10 +16,17 @@ import React from "react";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Course from "../../../../interfaces/Course";
+import teacherCourses from "../../../../mock/teacherCourses";
 export default function MyCourses() {
   const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
+  const [course, setCourse] = useState<Course | null>(null); //curso vacio al iniico
   const router = useRouter();
-
+  const getCourseInfo = (course: Course) => {
+    setCourse(course);
+    openModal();
+    console.log("imprimiendo data:" + course);
+  };
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
@@ -73,7 +80,7 @@ export default function MyCourses() {
       </aside>
 
       <main className={styles.mainContent}>
-        <h3 className={styles.sectionHeaderName}>Cursos Obtenidos</h3>
+        <h3 className={styles.sectionHeaderName}>Mis cursos *Instructor* </h3>
         <div className={styles.searchContainer}>
           <p className={styles.backToCoursesLabel}>Volver a todos los cursos</p>
           <div className={styles.inputRow}>
@@ -92,39 +99,27 @@ export default function MyCourses() {
         </div>
         <div className={styles.father}>
           <div className={styles.recomendationsDiv}>
-            {[1, 2, 3, 4, 5].map((elemento, key) => (
-              <div key={key} onClick={openModal} className={styles.courseCard}>
+            {teacherCourses.map((elemento, key) => (
+              <div
+                onClick={() => getCourseInfo(elemento)}
+                key={key}
+                className={styles.courseCard}
+              >
                 <Image
-                  src={"/images/cursojs.jpg"}
+                  src={elemento.imageRoute}
                   alt="course image"
                   width={200}
                   height={100}
                   className={styles.courseCardImage}
                 />
-                <div className={styles.courseColumnInfo}>
-                  <p className={styles.courseTitle}>
-                    Curso de Javascript Moderno desde cero 2025
-                  </p>
-                  <div className={styles.courseTeacherDiv}>
-                    <Image
-                      src={"/images/user-example.png"}
-                      alt="user example"
-                      width={200}
-                      height={65}
-                      className={styles.courseTeacherImage}
-                    />
-                    <div className={styles.courseTeacherInfo}>
-                      <p className={styles.courseTeacherName}>Sergio García</p>
-                      <p className={styles.courseTeacherLabel}>Instructor</p>
-                    </div>
-                  </div>
-                </div>
+                <p className={styles.courseTitle}>{elemento.courseTitle}</p>
               </div>
             ))}
           </div>
           <div className={styles.emptyDiv}></div>
         </div>
         <CourseModal
+          course={course}
           isOpen={modalOpen}
           onClose={closeModal}
           onConfirm={goToCoursePage}

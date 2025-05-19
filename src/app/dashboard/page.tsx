@@ -32,9 +32,7 @@ export default function AdminDashboard() {
     openModal();
     console.log("imprimiendo data:" + course);
   };
-  const openModal = () => {
-    setModalOpen(true);
-  };
+  const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
   const goToCoursePage = () => {

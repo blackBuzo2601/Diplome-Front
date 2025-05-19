@@ -240,25 +240,3 @@
   margin-left: 2vw;
   font-size: 1.6rem;
 }
-.courseTeacherDiv {
-  margin-left: 2vw;
-
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.courseTeacherImage {
-  width: 3.2vw;
-  height: 6vh;
-  border-radius: 50px;
-}
-.courseTeacherName {
-  font-size: 1.5rem;
-}
-.courseTeacherLabel {
-  margin-left: 15px;
-  font-size: 1.1rem;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-}
