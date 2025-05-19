@@ -119,6 +119,7 @@ export default function MyCourses() {
           <div className={styles.emptyDiv}></div>
         </div>
         <CourseModal
+          isTeacher={true}
           course={course}
           isOpen={modalOpen}
           onClose={closeModal}

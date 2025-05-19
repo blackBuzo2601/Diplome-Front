@@ -23,6 +23,17 @@
   align-items: center;
   padding-top: 6vh;
 }
+.modalDivTeacher {
+  background-color: white;
+  border-radius: 10px;
+  width: 45%;
+  height: 60%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6vh;
+}
 .modalCourseImage {
   width: 50%;
   height: 23.3vh;

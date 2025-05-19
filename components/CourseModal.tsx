@@ -7,7 +7,7 @@ interface CourseModalProps {
   course: Course | null;
   onClose: () => void;
   onConfirm: () => void;
-
+  isTeacher?: boolean;
   children?: React.ReactNode;
 }
 
@@ -17,6 +17,7 @@ const CourseModal: React.FC<CourseModalProps> = ({
   onConfirm,
   course,
   children,
+  isTeacher,
 }) => {
   if (!isOpen || !course) return null; //para que por default no se muestre el modal, estilos etc
   //negamos tambien course (falsy), porque sino, Typescript no nos garantiza que course no sea null, sin
@@ -24,7 +25,7 @@ const CourseModal: React.FC<CourseModalProps> = ({
 
   return (
     <div className={styles.modalBackground}>
-      <div className={styles.modalDiv}>
+      <div className={isTeacher ? styles.modalDivTeacher : styles.modalDiv}>
         {children}
         <Image
           src={course.imageRoute}
@@ -39,28 +40,38 @@ const CourseModal: React.FC<CourseModalProps> = ({
             {course.courseDescription}
           </p>
         </div>
-        <div className={styles.courseTeacherDiv}>
-          <Image
-            src={course.courseTeacherImage}
-            alt="Image course"
-            className={styles.courseTeacherImage}
-            width={200}
-            height={70}
-          />
-          <div className={styles.courseTeacherInfo}>
-            <p className={styles.courseTeacherName}>
-              {course.courseTeacherName}
-            </p>
-            <p className={styles.courseTeacherLabel}>Instructor</p>
+        {isTeacher ?? ( //evaluamos que isTeacher sea nulo o undefined, de ser asi, mostrar informacion
+          //del teacher.
+          <div className={styles.courseTeacherDiv}>
+            <Image
+              src={course.courseTeacherImage}
+              alt="Image course"
+              className={styles.courseTeacherImage}
+              width={200}
+              height={70}
+            />
+            <div className={styles.courseTeacherInfo}>
+              <p className={styles.courseTeacherName}>
+                {course.courseTeacherName}
+              </p>
+              <p className={styles.courseTeacherLabel}>Instructor</p>
+            </div>
           </div>
-        </div>
+        )}
+
         <div className={styles.modalActions}>
           <button className={styles.closeModalButton} onClick={onClose}>
             Cerrar
           </button>
-          <button className={styles.goModalButton} onClick={onConfirm}>
-            Ir al Curso
-          </button>
+          {isTeacher ? (
+            <button className={styles.goModalButton} onClick={onConfirm}>
+              Editar Curso
+            </button>
+          ) : (
+            <button className={styles.goModalButton} onClick={onConfirm}>
+              Ir al Curso
+            </button>
+          )}
         </div>
       </div>
     </div>
