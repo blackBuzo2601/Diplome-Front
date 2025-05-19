@@ -6,6 +6,7 @@ import {
   LogOut,
   Heart,
   LucideHome,
+  CookingPot,
 } from "lucide-react";
 import styles from "./page.module.css";
 import logo from "../../../public/images/logo.png";
@@ -20,12 +21,21 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import CourseModal from "../../../components/CourseModal";
 import { useRouter } from "next/navigation";
+import Course from "../../../interfaces/Course";
 
 export default function AdminDashboard() {
   const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
+  const [course, setCourse] = useState<Course | null>(null); //curso vacio al iniico
   const router = useRouter();
 
-  const openModal = () => setModalOpen(true);
+  const getCourseInfo = (course: Course) => {
+    setCourse(course);
+    openModal();
+    console.log("imprimiendo data:" + course);
+  };
+  const openModal = () => {
+    setModalOpen(true);
+  };
   const closeModal = () => setModalOpen(false);
 
   const goToCoursePage = () => {
@@ -114,7 +124,11 @@ export default function AdminDashboard() {
 
         <div className={styles.recomendationsDiv}>
           {courses.map((elemento, key) => (
-            <div onClick={openModal} key={key} className={styles.courseCard}>
+            <div
+              onClick={() => getCourseInfo(elemento)}
+              key={key}
+              className={styles.courseCard}
+            >
               <Image
                 src={elemento.imageRoute}
                 alt="course image"
@@ -177,6 +191,7 @@ export default function AdminDashboard() {
           isOpen={modalOpen}
           onClose={closeModal}
           onConfirm={goToCoursePage}
+          course={course}
         ></CourseModal>
       </main>
     </div>

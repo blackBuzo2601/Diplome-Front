@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "./CourseModal.module.css";
 import Image from "next/image";
+import Course from "../interfaces/Course";
 interface CourseModalProps {
   isOpen: boolean;
+  course: Course | null;
   onClose: () => void;
   onConfirm: () => void;
-  title?: string;
+
   children?: React.ReactNode;
 }
 
@@ -13,35 +15,37 @@ const CourseModal: React.FC<CourseModalProps> = ({
   isOpen,
   onClose,
   onConfirm,
-  title,
+  course,
   children,
 }) => {
-  if (!isOpen) return null; //para que por default no se muestre el modal, estilos etc
+  if (!isOpen || !course) return null; //para que por default no se muestre el modal, estilos etc
+  //negamos tambien course (falsy), porque sino, Typescript no nos garantiza que course no sea null, sin
+  //esa linea de codigo, tendríamos un warning al usar la imageRoute
 
   return (
     <div className={styles.modalBackground}>
       <div className={styles.modalDiv}>
         {children}
         <Image
-          src={"/images/cursojs.jpg"}
+          src={course.imageRoute}
           alt="Image course"
           className={styles.modalCourseImage}
           width={200}
           height={100}
         />
-        <p className={styles.modalCourseName}>
-          Curso de Javascript Moderno desde cero
-        </p>
+        <p className={styles.modalCourseName}>{course.courseTitle}</p>
         <div className={styles.courseTeacherDiv}>
           <Image
-            src={"/images/user-example.png"}
+            src={course.courseTeacherImage}
             alt="Image course"
             className={styles.courseTeacherImage}
             width={200}
             height={70}
           />
           <div className={styles.courseTeacherInfo}>
-            <p className={styles.courseTeacherName}>Sergio García</p>
+            <p className={styles.courseTeacherName}>
+              {course.courseTeacherName}
+            </p>
             <p className={styles.courseTeacherLabel}>Instructor</p>
           </div>
         </div>
