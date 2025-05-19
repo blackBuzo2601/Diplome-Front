@@ -16,6 +16,7 @@ import React from "react";
 import Link from "next/link";
 import courses from "../../../mock/courses";
 import recommendedCourses from "../../../mock/recommended";
+import continueCourses from "../../../mock/continueCourses";
 
 import { useState } from "react";
 import CourseModal from "../../../components/CourseModal";
@@ -126,7 +127,7 @@ export default function AdminDashboard() {
         <h3 className={styles.sectionTitle}>Seguir aprendiendo</h3>
 
         <div className={styles.recomendationsDiv}>
-          {courses.map((elemento, key) => (
+          {continueCourses.map((elemento, key) => (
             <div
               onClick={() => getCourseInfo(elemento)}
               key={key}
@@ -162,6 +163,41 @@ export default function AdminDashboard() {
         <h3 className={styles.sectionTitle}>Recomendados</h3>
         <div className={styles.recomendationsDiv}>
           {recommendedCourses.map((elemento, key) => (
+            <div
+              onClick={() => getCourseInfo(elemento)}
+              key={key}
+              className={styles.courseCard}
+            >
+              <Image
+                src={elemento.imageRoute}
+                alt="course image"
+                width={200}
+                height={100}
+                className={styles.courseCardImage}
+              />
+              <p className={styles.courseTitle}>{elemento.courseTitle}</p>
+              <div className={styles.courseTeacherDiv}>
+                <Image
+                  src={elemento.courseTeacherImage}
+                  alt="teacher photo"
+                  width={100}
+                  height={100}
+                  className={styles.courseTeacherImage}
+                />
+                <div className={styles.courseTeacherInfo}>
+                  <p className={styles.courseTeacherName}>
+                    {elemento.courseTeacherName}
+                  </p>
+                  <p className={styles.courseTeacherLabel}>Instructor</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className={styles.emptyDiv}></div>
+        <h3 className={styles.sectionTitle}>Todos los cursos</h3>
+        <div className={styles.recomendationsDiv}>
+          {courses.map((elemento, key) => (
             <div
               onClick={() => getCourseInfo(elemento)}
               key={key}

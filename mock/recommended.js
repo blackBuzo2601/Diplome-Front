@@ -1,21 +1,28 @@
 const recommendedCourses = [
   {
-    imageRoute: "/images/go-course.jpg",
-    courseTitle: "Desarrollo Backend con Go",
-    courseTeacherName: "Sofía López",
+    imageRoute: "/images/git-course.jpg",
+    courseTitle: "Control de Versiones con Git",
+    courseTeacherName: "Laura Mendoza",
     courseDescription:
-      "Aprende a construir servicios backend robustos y eficientes con el lenguaje Go.",
-    courseTeacherImage: "/images/teacher5.jpg",
+      "Aprende Git desde cero: commits, ramas, merges, conflictos y buenas prácticas en equipos.",
+    courseTeacherImage: "/images/teacher1.jpg",
   },
   {
-    imageRoute: "/images/python-advanced.jpg",
-    courseTitle: "Python Avanzado",
+    imageRoute: "/images/linux-course.jpg",
+    courseTitle: "Linux desde Cero",
     courseTeacherName: "José Hernández",
     courseDescription:
-      "Profundiza en programación orientada a objetos, manejo de errores, y módulos avanzados en Python.",
+      "Aprende comandos esenciales, estructura de archivos, permisos y administración básica de sistemas Linux.",
     courseTeacherImage: "/images/teacher4.jpg",
   },
-
+  {
+    imageRoute: "/images/computer-networks.jpg",
+    courseTitle: "Redes de Computadoras",
+    courseTeacherName: "Marco Díaz",
+    courseDescription:
+      "Estudia los fundamentos de redes, modelos OSI, TCP/IP, direccionamiento IP y más.",
+    courseTeacherImage: "/images/teacher6.jpg",
+  },
   {
     imageRoute: "/images/flutter-course.jpg",
     courseTitle: "Aplicaciones Móviles con Flutter",
@@ -32,14 +39,7 @@ const recommendedCourses = [
       "Domina JavaScript moderno (ES6+) y aprende buenas prácticas para escribir código limpio y eficiente.",
     courseTeacherImage: "/images/teacher3.jpg",
   },
-  {
-    imageRoute: "/images/cpp-course.jpg",
-    courseTitle: "Programación en C++",
-    courseTeacherName: "Daniela Ruiz",
-    courseDescription:
-      "Aprende desde lo básico hasta conceptos avanzados como punteros, memoria dinámica y programación orientada a objetos en C++.",
-    courseTeacherImage: "/images/teacher7.jpg",
-  },
+
   {
     imageRoute: "/images/nextjs-course.jpg",
     courseTitle: "Desarrollo Web con Next.js",
@@ -48,13 +48,20 @@ const recommendedCourses = [
       "Aprende a crear aplicaciones modernas con React y Next.js, incluyendo enrutamiento, SSR y generación estática.",
     courseTeacherImage: "/images/teacher1.jpg",
   },
-
   {
-    imageRoute: "/images/java-course.jpg",
-    courseTitle: "Java para Desarrolladores",
+    imageRoute: "/images/hacking-course.jpg",
+    courseTitle: "Hacking Ético y Seguridad",
+    courseTeacherName: "Carlos Ramírez",
+    courseDescription:
+      "Explora técnicas de hacking ético, pruebas de penetración y ciberseguridad básica.",
+    courseTeacherImage: "/images/teacher2.jpg",
+  },
+  {
+    imageRoute: "/images/ccna-course.jpg",
+    courseTitle: "Cisco CCNA Fundamentals",
     courseTeacherName: "Marco Díaz",
     courseDescription:
-      "Domina los fundamentos de Java, programación orientada a objetos y estructuras de datos.",
+      "Prepárate para la certificación CCNA con temas de redes, switches, routers y protocolos.",
     courseTeacherImage: "/images/teacher6.jpg",
   },
 ];

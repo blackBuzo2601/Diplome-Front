@@ -1,43 +1,35 @@
 const teacherCourses = [
   {
-    imageRoute: "/images/go-course.jpg",
-    courseTitle: "Desarrollo Backend con Go",
-    courseTeacherName: "Sofía López",
+    imageRoute: "/images/nextjs-course.jpg",
+    courseTitle: "Desarrollo Web con Next.js",
+    courseTeacherName: "Laura Mendoza",
     courseDescription:
-      "Aprende a construir servicios backend robustos y eficientes con el lenguaje Go.",
-    courseTeacherImage: "/images/teacher5.jpg",
+      "Aprende a crear aplicaciones modernas con React y Next.js, incluyendo enrutamiento, SSR y generación estática.",
+    courseTeacherImage: "/images/teacher1.jpg",
   },
   {
-    imageRoute: "/images/frontend-react.jpg",
-    courseTitle: "Desarrollo Frontend con React",
-    courseTeacherName: "Carlos Ramírez",
+    imageRoute: "/images/frontend-dev.jpg",
+    courseTitle: "Desarrollo Frontend Profesional",
+    courseTeacherName: "Laura Mendoza",
     courseDescription:
-      "Construye interfaces modernas y reactivas usando React, JSX y componentes funcionales.",
-    courseTeacherImage: "/images/teacher2.jpg",
+      "Domina HTML, CSS moderno, JavaScript y frameworks como Tailwind y Bootstrap.",
+    courseTeacherImage: "/images/teacher1.jpg",
   },
   {
-    imageRoute: "/images/devops-intro.jpg",
-    courseTitle: "Introducción a DevOps",
-    courseTeacherName: "Fernando Salinas",
+    imageRoute: "/images/git-course.jpg",
+    courseTitle: "Control de Versiones con Git",
+    courseTeacherName: "Laura Mendoza",
     courseDescription:
-      "Integra desarrollo y operaciones para automatizar procesos y mejorar el ciclo de vida del software.",
-    courseTeacherImage: "/images/teacher8.jpg",
+      "Aprende Git desde cero: commits, ramas, merges, conflictos y buenas prácticas en equipos.",
+    courseTeacherImage: "/images/teacher1.jpg",
   },
   {
-    imageRoute: "/images/javascript-course.jpg",
-    courseTitle: "JavaScript Moderno",
-    courseTeacherName: "Ana Torres",
+    imageRoute: "/images/typescript-course.jpg",
+    courseTitle: "TypeScript desde Cero",
+    courseTeacherName: "Laura Mendoza",
     courseDescription:
-      "Domina JavaScript moderno (ES6+) y aprende buenas prácticas para escribir código limpio y eficiente.",
-    courseTeacherImage: "/images/teacher3.jpg",
-  },
-  {
-    imageRoute: "/images/web-accessibility.jpg",
-    courseTitle: "Accesibilidad Web y Buenas Prácticas",
-    courseTeacherName: "Marco Díaz",
-    courseDescription:
-      "Haz tus aplicaciones accesibles para todos siguiendo estándares de inclusión digital.",
-    courseTeacherImage: "/images/teacher6.jpg",
+      "Aprende TypeScript paso a paso, desde los tipos básicos hasta programación orientada a objetos y tipado avanzado.",
+    courseTeacherImage: "/images/teacher1.jpg",
   },
 ];
 

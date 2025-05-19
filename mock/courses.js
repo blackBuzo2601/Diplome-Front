@@ -55,6 +55,102 @@ const courses = [
       "Aprende desde lo básico hasta conceptos avanzados como punteros, memoria dinámica y programación orientada a objetos en C++.",
     courseTeacherImage: "/images/teacher7.jpg",
   },
+  {
+    imageRoute: "/images/computer-networks.jpg",
+    courseTitle: "Redes de Computadoras",
+    courseTeacherName: "Marco Díaz",
+    courseDescription:
+      "Estudia los fundamentos de redes, modelos OSI, TCP/IP, direccionamiento IP y más.",
+    courseTeacherImage: "/images/teacher6.jpg",
+  },
+  {
+    imageRoute: "/images/linux-course.jpg",
+    courseTitle: "Linux desde Cero",
+    courseTeacherName: "José Hernández",
+    courseDescription:
+      "Aprende comandos esenciales, estructura de archivos, permisos y administración básica de sistemas Linux.",
+    courseTeacherImage: "/images/teacher4.jpg",
+  },
+  {
+    imageRoute: "/images/os-course.jpg",
+    courseTitle: "Sistemas Operativos",
+    courseTeacherName: "Daniela Ruiz",
+    courseDescription:
+      "Comprende procesos, concurrencia, administración de memoria y sistemas de archivos.",
+    courseTeacherImage: "/images/teacher7.jpg",
+  },
+  {
+    imageRoute: "/images/hacking-course.jpg",
+    courseTitle: "Hacking Ético y Seguridad",
+    courseTeacherName: "Carlos Ramírez",
+    courseDescription:
+      "Explora técnicas de hacking ético, pruebas de penetración y ciberseguridad básica.",
+    courseTeacherImage: "/images/teacher2.jpg",
+  },
+  {
+    imageRoute: "/images/frontend-dev.jpg",
+    courseTitle: "Desarrollo Frontend Profesional",
+    courseTeacherName: "Laura Mendoza",
+    courseDescription:
+      "Domina HTML, CSS moderno, JavaScript y frameworks como Tailwind y Bootstrap.",
+    courseTeacherImage: "/images/teacher1.jpg",
+  },
+  {
+    imageRoute: "/images/vue-course.jpg",
+    courseTitle: "Aplicaciones Web con Vue.js",
+    courseTeacherName: "Ana Torres",
+    courseDescription:
+      "Aprende Vue.js desde cero, composición de componentes y gestión de estado con Vuex.",
+    courseTeacherImage: "/images/teacher3.jpg",
+  },
+  {
+    imageRoute: "/images/react-native.jpg",
+    courseTitle: "Apps Móviles con React Native",
+    courseTeacherName: "Sofía López",
+    courseDescription:
+      "Construye aplicaciones móviles multiplataforma con React Native y Expo.",
+    courseTeacherImage: "/images/teacher5.jpg",
+  },
+  {
+    imageRoute: "/images/ccna-course.jpg",
+    courseTitle: "Cisco CCNA Fundamentals",
+    courseTeacherName: "Marco Díaz",
+    courseDescription:
+      "Prepárate para la certificación CCNA con temas de redes, switches, routers y protocolos.",
+    courseTeacherImage: "/images/teacher6.jpg",
+  },
+  {
+    imageRoute: "/images/bash-course.jpg",
+    courseTitle: "Automatización con Bash y Shell Scripting",
+    courseTeacherName: "José Hernández",
+    courseDescription:
+      "Escribe scripts en Bash para automatizar tareas en sistemas Linux y Unix.",
+    courseTeacherImage: "/images/teacher4.jpg",
+  },
+  {
+    imageRoute: "/images/git-course.jpg",
+    courseTitle: "Control de Versiones con Git",
+    courseTeacherName: "Laura Mendoza",
+    courseDescription:
+      "Aprende Git desde cero: commits, ramas, merges, conflictos y buenas prácticas en equipos.",
+    courseTeacherImage: "/images/teacher1.jpg",
+  },
+  {
+    imageRoute: "/images/docker-course.jpg",
+    courseTitle: "Docker para Desarrolladores",
+    courseTeacherName: "Daniela Ruiz",
+    courseDescription:
+      "Crea contenedores, imágenes y entornos portables para tus aplicaciones con Docker.",
+    courseTeacherImage: "/images/teacher7.jpg",
+  },
+  {
+    imageRoute: "/images/typescript-course.jpg",
+    courseTitle: "TypeScript desde Cero",
+    courseTeacherName: "Laura Mendoza",
+    courseDescription:
+      "Aprende TypeScript paso a paso, desde los tipos básicos hasta programación orientada a objetos y tipado avanzado.",
+    courseTeacherImage: "/images/teacher1.jpg",
+  },
 ];
 
 export default courses;
