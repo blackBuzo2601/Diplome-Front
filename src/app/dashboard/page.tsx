@@ -27,6 +27,13 @@ import Course from "../../../interfaces/Course";
 export default function AdminDashboard() {
   const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
   const [course, setCourse] = useState<Course | null>(null); //curso vacio al iniico
+  const [search, setSearch] = useState("");
+  const [mainPage, setMainPage] = useState(true);
+  const searchByWord = (searchText: string) => {
+    searchText.trim() !== "" ? setMainPage(false) : setMainPage(true);
+    setSearch(searchText);
+    console.log(search);
+  };
 
   const router = useRouter();
   let userRole = 1;
@@ -127,136 +134,173 @@ export default function AdminDashboard() {
               height={40}
             />
             <input
+              onChange={(e) => {
+                const text = e.target.value;
+                searchByWord(text);
+              }}
               type="text"
               placeholder="Buscar un curso"
               className={styles.searchInput}
             />
           </div>
         </div>
-        <h3 className={styles.sectionTitle}>Categorías</h3>
-        <div className={styles.categoryDiv}>
-          <div className={styles.categoryCard}>
-            <p>UI/UIX</p>
-          </div>
-          <div className={styles.categoryCard}>
-            <p>Idiomas</p>
-          </div>
-          <div className={styles.categoryCard}>
-            <p>Programación C</p>
-          </div>
-          <div className={styles.categoryCard}>
-            <p>Frontend</p>
-          </div>
-          <div className={styles.categoryCard}>
-            <p>Backend</p>
-          </div>
-        </div>
-        <h3 className={styles.sectionTitle}>Seguir aprendiendo</h3>
+        {mainPage ? (
+          <div>
+            <h3 className={styles.sectionTitle}>Categorías</h3>
+            <div className={styles.categoryDiv}>
+              <div className={styles.categoryCard}>
+                <p>UI/UIX</p>
+              </div>
+              <div className={styles.categoryCard}>
+                <p>Idiomas</p>
+              </div>
+              <div className={styles.categoryCard}>
+                <p>Programación C</p>
+              </div>
+              <div className={styles.categoryCard}>
+                <p>Frontend</p>
+              </div>
+              <div className={styles.categoryCard}>
+                <p>Backend</p>
+              </div>
+            </div>
+            <h3 className={styles.sectionTitle}>Seguir aprendiendo</h3>
 
-        <div className={styles.recomendationsDiv}>
-          {continueCourses.map((elemento, key) => (
-            <div
-              onClick={() => getCourseInfo(elemento)}
-              key={key}
-              className={styles.courseCard}
-            >
-              <Image
-                src={elemento.imageRoute}
-                alt="course image"
-                width={200}
-                height={100}
-                className={styles.courseCardImage}
-              />
-              <p className={styles.courseTitle}>{elemento.courseTitle}</p>
-              <div className={styles.courseTeacherDiv}>
-                <Image
-                  src={elemento.courseTeacherImage}
-                  alt="teacher photo"
-                  width={100}
-                  height={100}
-                  className={styles.courseTeacherImage}
-                />
-                <div className={styles.courseTeacherInfo}>
-                  <p className={styles.courseTeacherName}>
-                    {elemento.courseTeacherName}
-                  </p>
-                  <p className={styles.courseTeacherLabel}>Instructor</p>
+            <div className={styles.recomendationsDiv}>
+              {continueCourses.map((elemento, key) => (
+                <div
+                  onClick={() => getCourseInfo(elemento)}
+                  key={key}
+                  className={styles.courseCard}
+                >
+                  <Image
+                    src={elemento.imageRoute}
+                    alt="course image"
+                    width={200}
+                    height={100}
+                    className={styles.courseCardImage}
+                  />
+                  <p className={styles.courseTitle}>{elemento.courseTitle}</p>
+                  <div className={styles.courseTeacherDiv}>
+                    <Image
+                      src={elemento.courseTeacherImage}
+                      alt="teacher photo"
+                      width={100}
+                      height={100}
+                      className={styles.courseTeacherImage}
+                    />
+                    <div className={styles.courseTeacherInfo}>
+                      <p className={styles.courseTeacherName}>
+                        {elemento.courseTeacherName}
+                      </p>
+                      <p className={styles.courseTeacherLabel}>Instructor</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className={styles.emptyDiv}></div>
-        <h3 className={styles.sectionTitle}>Recomendados</h3>
-        <div className={styles.recomendationsDiv}>
-          {recommendedCourses.map((elemento, key) => (
-            <div
-              onClick={() => getCourseInfo(elemento)}
-              key={key}
-              className={styles.courseCard}
-            >
-              <Image
-                src={elemento.imageRoute}
-                alt="course image"
-                width={200}
-                height={100}
-                className={styles.courseCardImage}
-              />
-              <p className={styles.courseTitle}>{elemento.courseTitle}</p>
-              <div className={styles.courseTeacherDiv}>
-                <Image
-                  src={elemento.courseTeacherImage}
-                  alt="teacher photo"
-                  width={100}
-                  height={100}
-                  className={styles.courseTeacherImage}
-                />
-                <div className={styles.courseTeacherInfo}>
-                  <p className={styles.courseTeacherName}>
-                    {elemento.courseTeacherName}
-                  </p>
-                  <p className={styles.courseTeacherLabel}>Instructor</p>
+            <div className={styles.emptyDiv}></div>
+            <h3 className={styles.sectionTitle}>Recomendados</h3>
+            <div className={styles.recomendationsDiv}>
+              {recommendedCourses.map((elemento, key) => (
+                <div
+                  onClick={() => getCourseInfo(elemento)}
+                  key={key}
+                  className={styles.courseCard}
+                >
+                  <Image
+                    src={elemento.imageRoute}
+                    alt="course image"
+                    width={200}
+                    height={100}
+                    className={styles.courseCardImage}
+                  />
+                  <p className={styles.courseTitle}>{elemento.courseTitle}</p>
+                  <div className={styles.courseTeacherDiv}>
+                    <Image
+                      src={elemento.courseTeacherImage}
+                      alt="teacher photo"
+                      width={100}
+                      height={100}
+                      className={styles.courseTeacherImage}
+                    />
+                    <div className={styles.courseTeacherInfo}>
+                      <p className={styles.courseTeacherName}>
+                        {elemento.courseTeacherName}
+                      </p>
+                      <p className={styles.courseTeacherLabel}>Instructor</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className={styles.emptyDiv}></div>
-        <h3 className={styles.sectionTitle}>Todos los cursos</h3>
-        <div className={styles.recomendationsDiv} ref={scrollRef}>
-          {courses.map((elemento, key) => (
-            <div
-              onClick={() => getCourseInfo(elemento)}
-              key={key}
-              className={styles.courseCard}
-            >
-              <Image
-                src={elemento.imageRoute}
-                alt="course image"
-                width={200}
-                height={100}
-                className={styles.courseCardImage}
-              />
-              <p className={styles.courseTitle}>{elemento.courseTitle}</p>
-              <div className={styles.courseTeacherDiv}>
-                <Image
-                  src={elemento.courseTeacherImage}
-                  alt="teacher photo"
-                  width={100}
-                  height={100}
-                  className={styles.courseTeacherImage}
-                />
-                <div className={styles.courseTeacherInfo}>
-                  <p className={styles.courseTeacherName}>
-                    {elemento.courseTeacherName}
-                  </p>
-                  <p className={styles.courseTeacherLabel}>Instructor</p>
+            <div className={styles.emptyDiv}></div>
+            <h3 className={styles.sectionTitle}>Todos los cursos</h3>
+            <div className={styles.recomendationsDiv} ref={scrollRef}>
+              {courses.map((elemento, key) => (
+                <div
+                  onClick={() => getCourseInfo(elemento)}
+                  key={key}
+                  className={styles.courseCard}
+                >
+                  <Image
+                    src={elemento.imageRoute}
+                    alt="course image"
+                    width={200}
+                    height={100}
+                    className={styles.courseCardImage}
+                  />
+                  <p className={styles.courseTitle}>{elemento.courseTitle}</p>
+                  <div className={styles.courseTeacherDiv}>
+                    <Image
+                      src={elemento.courseTeacherImage}
+                      alt="teacher photo"
+                      width={100}
+                      height={100}
+                      className={styles.courseTeacherImage}
+                    />
+                    <div className={styles.courseTeacherInfo}>
+                      <p className={styles.courseTeacherName}>
+                        {elemento.courseTeacherName}
+                      </p>
+                      <p className={styles.courseTeacherLabel}>Instructor</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className={styles.emptyDiv}></div>
+            <div className={styles.emptyDiv}></div>
+          </div>
+        ) : (
+          <div>
+            <h3 className={styles.sectionTitle}>Coincidencias de búsqueda</h3>
+            <div className={styles.recomendationsDiv}>
+              {courses
+                .filter((elemento) =>
+                  elemento.courseTitle
+                    .toLowerCase()
+                    .includes(search.trim().toLowerCase())
+                )
+                .map((elemento, key) => (
+                  <div
+                    onClick={() => getCourseInfo(elemento)}
+                    key={key}
+                    className={styles.courseCard}
+                  >
+                    <Image
+                      src={elemento.imageRoute}
+                      alt="course image"
+                      width={200}
+                      height={100}
+                      className={styles.courseCardImage}
+                    />
+                    <p className={styles.courseTitle}>{elemento.courseTitle}</p>
+                  </div>
+                ))}
+            </div>
+          </div>
+        )}
+
         <CourseModal
           isOpen={modalOpen}
           onClose={closeModal}
