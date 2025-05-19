@@ -295,9 +295,25 @@ export default function AdminDashboard() {
                       className={styles.courseCardImage}
                     />
                     <p className={styles.courseTitle}>{elemento.courseTitle}</p>
+                    <div className={styles.courseTeacherDiv}>
+                      <Image
+                        src={elemento.courseTeacherImage}
+                        alt="teacher photo"
+                        width={100}
+                        height={100}
+                        className={styles.courseTeacherImage}
+                      />
+                      <div className={styles.courseTeacherInfo}>
+                        <p className={styles.courseTeacherName}>
+                          {elemento.courseTeacherName}
+                        </p>
+                        <p className={styles.courseTeacherLabel}>Instructor</p>
+                      </div>
+                    </div>
                   </div>
                 ))}
             </div>
+            <div className={styles.emptyDiv}></div>
           </div>
         )}
 
