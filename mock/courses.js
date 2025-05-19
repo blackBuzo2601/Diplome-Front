@@ -1,4 +1,4 @@
-const recommendedCourses = [
+const courses = [
   {
     imageRoute: "/images/nextjs-course.jpg",
     courseTitle: "Desarrollo Web con Next.js",
@@ -57,4 +57,4 @@ const recommendedCourses = [
   },
 ];
 
-export default recommendedCourses;
+export default courses;

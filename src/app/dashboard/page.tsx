@@ -17,8 +17,7 @@ import Link from "next/link";
 import courses from "../../../mock/courses";
 import recommendedCourses from "../../../mock/recommended";
 
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import CourseModal from "../../../components/CourseModal";
 import { useRouter } from "next/navigation";
 import Course from "../../../interfaces/Course";
@@ -159,7 +158,11 @@ export default function AdminDashboard() {
         <h3 className={styles.sectionTitle}>Recomendados</h3>
         <div className={styles.recomendationsDiv}>
           {recommendedCourses.map((elemento, key) => (
-            <div onClick={openModal} key={key} className={styles.courseCard}>
+            <div
+              onClick={() => getCourseInfo(elemento)}
+              key={key}
+              className={styles.courseCard}
+            >
               <Image
                 src={elemento.imageRoute}
                 alt="course image"
