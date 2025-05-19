@@ -26,6 +26,9 @@ export default function AdminDashboard() {
   const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
   const [course, setCourse] = useState<Course | null>(null); //curso vacio al iniico
   const router = useRouter();
+  let userRole = 1;
+  //cambiar a 1 si es Instructor
+  //cambiar a null si es Estudiante
 
   const getCourseInfo = (course: Course) => {
     setCourse(course);
@@ -67,9 +70,12 @@ export default function AdminDashboard() {
           <Link href="/dashboard/" className={styles.sidebarLink}>
             <LucideHome size={30} /> Inicio
           </Link>
-          <Link href="/dashboard/mycourses" className={styles.sidebarLink}>
-            <BookOpenText size={30} /> Mis cursos
-          </Link>
+          {userRole ? (
+            <Link href="/dashboard/mycourses" className={styles.sidebarLink}>
+              <BookOpenText size={30} /> Mis cursos
+            </Link>
+          ) : null}
+
           <Link href="#" className={styles.sidebarLink}>
             <Heart size={30} /> Favoritos
           </Link>
