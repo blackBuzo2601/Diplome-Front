@@ -17,6 +17,7 @@ import Link from "next/link";
 import courses from "../../../mock/courses";
 import recommendedCourses from "../../../mock/recommended";
 import continueCourses from "../../../mock/continueCourses";
+import { useEffect, useRef } from "react";
 
 import { useState } from "react";
 import CourseModal from "../../../components/CourseModal";
@@ -28,9 +29,34 @@ export default function AdminDashboard() {
   const [course, setCourse] = useState<Course | null>(null); //curso vacio al iniico
   const router = useRouter();
   let userRole = 1;
-  //cambiar a 1 si es Instructor
-  //cambiar a null si es Estudiante
+  //cambiar userRole a 1 si es Instructor
+  //cambiar userRole a null si es Estudiante
 
+  //Codigo necesario para animacion de scroll en Div de todos los cursos
+  //--------------------------------------------------------------------
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    const scrollStep = 1;
+    const intervalTime = 32;
+
+    const interval = setInterval(() => {
+      if (
+        scrollContainer.scrollLeft + scrollContainer.clientWidth >=
+        scrollContainer.scrollWidth
+      ) {
+        scrollContainer.scrollLeft = 0;
+      } else {
+        scrollContainer.scrollLeft += scrollStep;
+      }
+    }, intervalTime);
+
+    return () => clearInterval(interval);
+  }, []);
+  //--------------------------------------------------------------------
+  //Concluye codigo necesario para animacion
   const getCourseInfo = (course: Course) => {
     setCourse(course);
     openModal();
@@ -196,7 +222,7 @@ export default function AdminDashboard() {
         </div>
         <div className={styles.emptyDiv}></div>
         <h3 className={styles.sectionTitle}>Todos los cursos</h3>
-        <div className={styles.recomendationsDiv}>
+        <div className={styles.recomendationsDiv} ref={scrollRef}>
           {courses.map((elemento, key) => (
             <div
               onClick={() => getCourseInfo(elemento)}
