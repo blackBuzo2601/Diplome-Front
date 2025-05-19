@@ -242,15 +242,16 @@
   align-items: center;
 }
 .courseTeacherImage {
-  width: 3.2vw;
+  width: 2.9vw;
   height: 6vh;
   border-radius: 50px;
 }
 .courseTeacherName {
+  margin-left: 0.5vw;
   font-size: 1.4rem;
 }
 .courseTeacherLabel {
-  margin-left: 15px;
+  margin-left: 1.5vw;
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
