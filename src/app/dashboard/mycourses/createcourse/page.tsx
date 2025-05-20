@@ -17,6 +17,21 @@ export default function UploadCourses() {
   const goToMyCoursesPage = () => {
     router.push("/dashboard/mycourses");
   };
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const validTypes = ["image/jpeg", "image/png"];
+
+    if (!validTypes.includes(file.type)) {
+      alert("Solo se permiten archivos PNG o JPG.");
+      event.target.value = "";
+      return;
+    }
+
+    console.log("Archivo válido:", file);
+  };
+
   return (
     <div className={styles.mainDiv}>
       <div className={styles.form}>
@@ -30,7 +45,6 @@ export default function UploadCourses() {
                 type="text"
                 placeholder="Título"
                 className={styles.credentialsInput}
-                readOnly
               />
             </div>
             <div className={styles.inputGroup}>
@@ -39,26 +53,30 @@ export default function UploadCourses() {
                 type="text"
                 placeholder="Descripción"
                 className={styles.credentialsInput}
-                readOnly
               />
             </div>
           </div>
 
           <div className={styles.imagen_portada_section}>
-            <div className={styles.inputGroup2}>
-              <label className={styles.subtitle}>Imagen de portada:</label>
-              <div className={styles.uploadGroup}>
-                <button type="button" className={styles.uploadButton}>
-                  Adjuntar Imagen
-                </button>
-                <Image
-                  src={"/images/computer-networks.jpg"}
-                  alt="course image"
-                  width={200}
-                  height={100}
-                  className={styles.imagen_preview}
-                />
-              </div>
+            <label className={styles.subtitle}>Imagen de portada:</label>
+            <div className={styles.uploadGroup}>
+              <label htmlFor="coverImage" className={styles.formButton}>
+                Adjuntar Imagen
+              </label>
+              <input
+                id="coverImage"
+                type="file"
+                accept="image/png, image/jpeg"
+                onChange={handleFileChange}
+                style={{ display: "none" }}
+              />
+              <Image
+                src={"/images/computer-networks.jpg"}
+                alt="course image"
+                width={200}
+                height={100}
+                className={styles.imagen_preview}
+              />
             </div>
           </div>
 
@@ -76,11 +94,13 @@ export default function UploadCourses() {
           </div>
 
           <div className={styles.form_actions}>
-            <button type="submit" className={styles.formButton}>
+            <button type="submit" className={styles.uploadCourseButton}>
               Subir curso
             </button>
           </div>
         </form>
+      </div>
+      <div className={styles.newRow}>
         <button
           onClick={goToMyCoursesPage}
           type="button"
