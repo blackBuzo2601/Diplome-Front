@@ -1,27 +1,12 @@
 const recommendedCourses = [
   {
-    imageRoute: "/images/git-course.jpg",
-    courseTitle: "Control de Versiones con Git",
+    imageRoute: "/images/nextjs-course.jpg",
+    courseTitle: "Desarrollo Web con Next.js",
     courseTeacherName: "Laura Mendoza",
     courseDescription:
-      "Aprende Git desde cero: commits, ramas, merges, conflictos y buenas prácticas en equipos.",
+      "Aprende a crear aplicaciones modernas con React y Next.js, incluyendo enrutamiento, SSR y generación estática.",
     courseTeacherImage: "/images/teacher1.jpg",
-  },
-  {
-    imageRoute: "/images/linux-course.jpg",
-    courseTitle: "Linux desde Cero",
-    courseTeacherName: "José Hernández",
-    courseDescription:
-      "Aprende comandos esenciales, estructura de archivos, permisos y administración básica de sistemas Linux.",
-    courseTeacherImage: "/images/teacher4.jpg",
-  },
-  {
-    imageRoute: "/images/computer-networks.jpg",
-    courseTitle: "Redes de Computadoras",
-    courseTeacherName: "Marco Díaz",
-    courseDescription:
-      "Estudia los fundamentos de redes, modelos OSI, TCP/IP, direccionamiento IP y más.",
-    courseTeacherImage: "/images/teacher6.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/flutter-course.jpg",
@@ -30,6 +15,7 @@ const recommendedCourses = [
     courseDescription:
       "Crea apps móviles nativas para Android e iOS desde una sola base de código con Flutter y Dart.",
     courseTeacherImage: "/images/teacher2.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/javascript-course.jpg",
@@ -38,31 +24,52 @@ const recommendedCourses = [
     courseDescription:
       "Domina JavaScript moderno (ES6+) y aprende buenas prácticas para escribir código limpio y eficiente.",
     courseTeacherImage: "/images/teacher3.jpg",
+    courseCategory: "Frontend",
   },
-
   {
-    imageRoute: "/images/nextjs-course.jpg",
-    courseTitle: "Desarrollo Web con Next.js",
-    courseTeacherName: "Laura Mendoza",
+    imageRoute: "/images/python-advanced.jpg",
+    courseTitle: "Python Avanzado",
+    courseTeacherName: "José Hernández",
     courseDescription:
-      "Aprende a crear aplicaciones modernas con React y Next.js, incluyendo enrutamiento, SSR y generación estática.",
-    courseTeacherImage: "/images/teacher1.jpg",
+      "Profundiza en programación orientada a objetos, manejo de errores, y módulos avanzados en Python.",
+    courseTeacherImage: "/images/teacher4.jpg",
+    courseCategory: "Backend",
   },
   {
-    imageRoute: "/images/hacking-course.jpg",
-    courseTitle: "Hacking Ético y Seguridad",
-    courseTeacherName: "Carlos Ramírez",
+    imageRoute: "/images/go-course.jpg",
+    courseTitle: "Desarrollo Backend con Go",
+    courseTeacherName: "Sofía López",
     courseDescription:
-      "Explora técnicas de hacking ético, pruebas de penetración y ciberseguridad básica.",
-    courseTeacherImage: "/images/teacher2.jpg",
+      "Aprende a construir servicios backend robustos y eficientes con el lenguaje Go.",
+    courseTeacherImage: "/images/teacher5.jpg",
+    courseCategory: "Backend",
   },
   {
-    imageRoute: "/images/ccna-course.jpg",
-    courseTitle: "Cisco CCNA Fundamentals",
+    imageRoute: "/images/java-course.jpg",
+    courseTitle: "Java para Desarrolladores",
     courseTeacherName: "Marco Díaz",
     courseDescription:
-      "Prepárate para la certificación CCNA con temas de redes, switches, routers y protocolos.",
+      "Domina los fundamentos de Java, programación orientada a objetos y estructuras de datos.",
     courseTeacherImage: "/images/teacher6.jpg",
+    courseCategory: "Backend",
+  },
+  {
+    imageRoute: "/images/cpp-course.jpg",
+    courseTitle: "Programación en C++",
+    courseTeacherName: "Daniela Ruiz",
+    courseDescription:
+      "Aprende desde lo básico hasta conceptos avanzados como punteros, memoria dinámica y programación orientada a objetos en C++.",
+    courseTeacherImage: "/images/teacher7.jpg",
+    courseCategory: "Backend",
+  },
+  {
+    imageRoute: "/images/computer-networks.jpg",
+    courseTitle: "Redes de Computadoras",
+    courseTeacherName: "Marco Díaz",
+    courseDescription:
+      "Estudia los fundamentos de redes, modelos OSI, TCP/IP, direccionamiento IP y más.",
+    courseTeacherImage: "/images/teacher6.jpg",
+    courseCategory: "Redes",
   },
 ];
 

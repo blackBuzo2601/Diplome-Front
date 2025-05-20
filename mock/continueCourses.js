@@ -6,6 +6,7 @@ const continueCourses = [
     courseDescription:
       "Domina JavaScript moderno (ES6+) y aprende buenas prácticas para escribir código limpio y eficiente.",
     courseTeacherImage: "/images/teacher3.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/nextjs-course.jpg",
@@ -14,6 +15,7 @@ const continueCourses = [
     courseDescription:
       "Aprende a crear aplicaciones modernas con React y Next.js, incluyendo enrutamiento, SSR y generación estática.",
     courseTeacherImage: "/images/teacher1.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/java-course.jpg",
@@ -22,6 +24,7 @@ const continueCourses = [
     courseDescription:
       "Domina los fundamentos de Java, programación orientada a objetos y estructuras de datos.",
     courseTeacherImage: "/images/teacher6.jpg",
+    courseCategory: "Backend",
   },
   {
     imageRoute: "/images/flutter-course.jpg",
@@ -30,8 +33,8 @@ const continueCourses = [
     courseDescription:
       "Crea apps móviles nativas para Android e iOS desde una sola base de código con Flutter y Dart.",
     courseTeacherImage: "/images/teacher2.jpg",
+    courseCategory: "Frontend",
   },
-
   {
     imageRoute: "/images/python-advanced.jpg",
     courseTitle: "Python Avanzado",
@@ -39,6 +42,7 @@ const continueCourses = [
     courseDescription:
       "Profundiza en programación orientada a objetos, manejo de errores, y módulos avanzados en Python.",
     courseTeacherImage: "/images/teacher4.jpg",
+    courseCategory: "Backend",
   },
 ];
 

@@ -6,6 +6,7 @@ const courses = [
     courseDescription:
       "Aprende a crear aplicaciones modernas con React y Next.js, incluyendo enrutamiento, SSR y generación estática.",
     courseTeacherImage: "/images/teacher1.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/flutter-course.jpg",
@@ -14,6 +15,7 @@ const courses = [
     courseDescription:
       "Crea apps móviles nativas para Android e iOS desde una sola base de código con Flutter y Dart.",
     courseTeacherImage: "/images/teacher2.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/javascript-course.jpg",
@@ -22,6 +24,7 @@ const courses = [
     courseDescription:
       "Domina JavaScript moderno (ES6+) y aprende buenas prácticas para escribir código limpio y eficiente.",
     courseTeacherImage: "/images/teacher3.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/python-advanced.jpg",
@@ -30,6 +33,7 @@ const courses = [
     courseDescription:
       "Profundiza en programación orientada a objetos, manejo de errores, y módulos avanzados en Python.",
     courseTeacherImage: "/images/teacher4.jpg",
+    courseCategory: "Backend",
   },
   {
     imageRoute: "/images/go-course.jpg",
@@ -38,6 +42,7 @@ const courses = [
     courseDescription:
       "Aprende a construir servicios backend robustos y eficientes con el lenguaje Go.",
     courseTeacherImage: "/images/teacher5.jpg",
+    courseCategory: "Backend",
   },
   {
     imageRoute: "/images/java-course.jpg",
@@ -46,6 +51,7 @@ const courses = [
     courseDescription:
       "Domina los fundamentos de Java, programación orientada a objetos y estructuras de datos.",
     courseTeacherImage: "/images/teacher6.jpg",
+    courseCategory: "Backend",
   },
   {
     imageRoute: "/images/cpp-course.jpg",
@@ -54,6 +60,7 @@ const courses = [
     courseDescription:
       "Aprende desde lo básico hasta conceptos avanzados como punteros, memoria dinámica y programación orientada a objetos en C++.",
     courseTeacherImage: "/images/teacher7.jpg",
+    courseCategory: "Backend",
   },
   {
     imageRoute: "/images/computer-networks.jpg",
@@ -62,6 +69,7 @@ const courses = [
     courseDescription:
       "Estudia los fundamentos de redes, modelos OSI, TCP/IP, direccionamiento IP y más.",
     courseTeacherImage: "/images/teacher6.jpg",
+    courseCategory: "Redes",
   },
   {
     imageRoute: "/images/linux-course.jpg",
@@ -70,6 +78,7 @@ const courses = [
     courseDescription:
       "Aprende comandos esenciales, estructura de archivos, permisos y administración básica de sistemas Linux.",
     courseTeacherImage: "/images/teacher4.jpg",
+    courseCategory: "Sistemas Operativos",
   },
   {
     imageRoute: "/images/os-course.jpg",
@@ -78,6 +87,7 @@ const courses = [
     courseDescription:
       "Comprende procesos, concurrencia, administración de memoria y sistemas de archivos.",
     courseTeacherImage: "/images/teacher7.jpg",
+    courseCategory: "Sistemas Operativos",
   },
   {
     imageRoute: "/images/hacking-course.jpg",
@@ -86,6 +96,7 @@ const courses = [
     courseDescription:
       "Explora técnicas de hacking ético, pruebas de penetración y ciberseguridad básica.",
     courseTeacherImage: "/images/teacher2.jpg",
+    courseCategory: "Ciberseguridad",
   },
   {
     imageRoute: "/images/frontend-dev.jpg",
@@ -94,6 +105,7 @@ const courses = [
     courseDescription:
       "Domina HTML, CSS moderno, JavaScript y frameworks como Tailwind y Bootstrap.",
     courseTeacherImage: "/images/teacher1.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/vue-course.jpg",
@@ -102,6 +114,7 @@ const courses = [
     courseDescription:
       "Aprende Vue.js desde cero, composición de componentes y gestión de estado con Vuex.",
     courseTeacherImage: "/images/teacher3.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/react-native.jpg",
@@ -110,6 +123,7 @@ const courses = [
     courseDescription:
       "Construye aplicaciones móviles multiplataforma con React Native y Expo.",
     courseTeacherImage: "/images/teacher5.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/ccna-course.jpg",
@@ -118,6 +132,7 @@ const courses = [
     courseDescription:
       "Prepárate para la certificación CCNA con temas de redes, switches, routers y protocolos.",
     courseTeacherImage: "/images/teacher6.jpg",
+    courseCategory: "Redes",
   },
   {
     imageRoute: "/images/bash-course.jpg",
@@ -126,6 +141,7 @@ const courses = [
     courseDescription:
       "Escribe scripts en Bash para automatizar tareas en sistemas Linux y Unix.",
     courseTeacherImage: "/images/teacher4.jpg",
+    courseCategory: "Sistemas Operativos",
   },
   {
     imageRoute: "/images/git-course.jpg",
@@ -134,6 +150,7 @@ const courses = [
     courseDescription:
       "Aprende Git desde cero: commits, ramas, merges, conflictos y buenas prácticas en equipos.",
     courseTeacherImage: "/images/teacher1.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/docker-course.jpg",
@@ -142,6 +159,7 @@ const courses = [
     courseDescription:
       "Crea contenedores, imágenes y entornos portables para tus aplicaciones con Docker.",
     courseTeacherImage: "/images/teacher7.jpg",
+    courseCategory: "Backend",
   },
   {
     imageRoute: "/images/typescript-course.jpg",
@@ -150,8 +168,8 @@ const courses = [
     courseDescription:
       "Aprende TypeScript paso a paso, desde los tipos básicos hasta programación orientada a objetos y tipado avanzado.",
     courseTeacherImage: "/images/teacher1.jpg",
+    courseCategory: "Frontend",
   },
-
   {
     imageRoute: "/images/javascript-pro.jpg",
     courseTitle: "JavaScript de Cero a Master 2025",
@@ -159,6 +177,7 @@ const courses = [
     courseDescription:
       "Conviértete en un experto en JavaScript moderno con este curso intensivo desde lo básico hasta técnicas avanzadas.",
     courseTeacherImage: "/images/teacher3.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/python-beginners.jpg",
@@ -167,6 +186,7 @@ const courses = [
     courseDescription:
       "Aprende desde cero a programar en Python, ideal para quienes inician en el mundo de la programación.",
     courseTeacherImage: "/images/teacher4.jpg",
+    courseCategory: "Backend",
   },
   {
     imageRoute: "/images/cybersecurity-advanced.jpg",
@@ -175,6 +195,7 @@ const courses = [
     courseDescription:
       "Explora técnicas avanzadas de defensa, análisis forense y respuesta ante incidentes de seguridad.",
     courseTeacherImage: "/images/teacher2.jpg",
+    courseCategory: "Ciberseguridad",
   },
   {
     imageRoute: "/images/networking-cloud.jpg",
@@ -183,6 +204,7 @@ const courses = [
     courseDescription:
       "Aprende los fundamentos de redes y cómo se integran con entornos de computación en la nube.",
     courseTeacherImage: "/images/teacher6.jpg",
+    courseCategory: "Redes",
   },
   {
     imageRoute: "/images/vue-advanced.jpg",
@@ -191,6 +213,7 @@ const courses = [
     courseDescription:
       "Profundiza en Vue.js con composición avanzada de componentes, gestión de rutas y estado.",
     courseTeacherImage: "/images/teacher3.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/react-architecture.jpg",
@@ -199,6 +222,7 @@ const courses = [
     courseDescription:
       "Aprende a estructurar proyectos React escalables con buenas prácticas, testing y manejo de dependencias.",
     courseTeacherImage: "/images/teacher1.jpg",
+    courseCategory: "Frontend",
   },
   {
     imageRoute: "/images/linux-advanced.jpg",
@@ -207,6 +231,7 @@ const courses = [
     courseDescription:
       "Domina administración de servicios, seguridad, y automatización en entornos Linux avanzados.",
     courseTeacherImage: "/images/teacher4.jpg",
+    courseCategory: "Sistemas Operativos",
   },
   {
     imageRoute: "/images/kubernetes-course.jpg",
@@ -215,6 +240,7 @@ const courses = [
     courseDescription:
       "Aprende a desplegar, escalar y administrar contenedores con Kubernetes desde cero.",
     courseTeacherImage: "/images/teacher7.jpg",
+    courseCategory: "Backend",
   },
 ];
 
