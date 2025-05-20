@@ -269,3 +269,23 @@
   margin-left: 2vw;
   font-size: 1.6rem;
 }
+.noCoincidencesDiv {
+  background-color: transparent;
+  width: 50%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 20px;
+}
+.noCoincidencesText {
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.noCoincidencesImage {
+  width: 30%;
+  height: 60%;
+}

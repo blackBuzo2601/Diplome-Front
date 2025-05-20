@@ -149,28 +149,49 @@ export default function MyCourses() {
             </div>
           ) : (
             <div className={styles.recomendationsDiv}>
-              {teacherCourses
-                .filter((elemento) =>
-                  elemento.courseTitle
-                    .toLowerCase()
-                    .includes(search.trim().toLowerCase())
-                )
-                .map((elemento, key) => (
-                  <div
-                    onClick={() => getCourseInfo(elemento)}
-                    key={key}
-                    className={styles.courseCard}
-                  >
-                    <Image
-                      src={elemento.imageRoute}
-                      alt="course image"
-                      width={200}
-                      height={100}
-                      className={styles.courseCardImage}
-                    />
-                    <p className={styles.courseTitle}>{elemento.courseTitle}</p>
-                  </div>
-                ))}
+              {teacherCourses.filter((elemento) =>
+                elemento.courseTitle
+                  .toLowerCase()
+                  .includes(search.trim().toLowerCase())
+              ).length === 0 ? (
+                <div className={styles.noCoincidencesDiv}>
+                  <p className={styles.noCoincidencesText}>
+                    No hay coincidencias con su búsqueda
+                  </p>
+                  <Image
+                    src={"/images/warning.png"}
+                    alt="warning icon"
+                    width={200}
+                    height={200}
+                    className={styles.noCoincidencesImage}
+                  />
+                </div>
+              ) : (
+                teacherCourses
+                  .filter((elemento) =>
+                    elemento.courseTitle
+                      .toLowerCase()
+                      .includes(search.trim().toLowerCase())
+                  )
+                  .map((elemento, key) => (
+                    <div
+                      onClick={() => getCourseInfo(elemento)}
+                      key={key}
+                      className={styles.courseCard}
+                    >
+                      <Image
+                        src={elemento.imageRoute}
+                        alt="course image"
+                        width={200}
+                        height={100}
+                        className={styles.courseCardImage}
+                      />
+                      <p className={styles.courseTitle}>
+                        {elemento.courseTitle}
+                      </p>
+                    </div>
+                  ))
+              )}
             </div>
           )}
 
