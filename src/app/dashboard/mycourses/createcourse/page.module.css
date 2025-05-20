@@ -70,14 +70,15 @@
 
 .restInformationContainer {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 3vh;
 }
 
 /* Imagen de portada */
 .imagen_portada_section {
   width: 100%;
+  height: 50%;
 
   display: flex;
   flex-direction: row;
@@ -85,6 +86,8 @@
 }
 
 .uploadGroup {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -93,9 +96,9 @@
 }
 
 .imagen_preview {
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
+  width: 40%;
+  height: 70%;
+  border-radius: 30px;
 }
 
 /* Botón de imagen */
@@ -167,8 +170,8 @@
 .formButton {
   border-radius: 2vw;
 
-  width: 60%;
-  height: 7vh;
+  width: 30%;
+  height: 5vh;
   background: linear-gradient(to right, #5cd2ff, #004aad);
   color: white;
   text-align: center;
@@ -194,6 +197,10 @@
   outline: none;
   cursor: pointer;
 }
+.uploadCourseButton:hover {
+  background: #1e6fbd;
+}
+
 .formButtonBack {
   border-radius: 2vw;
   width: 20%;
@@ -233,11 +240,11 @@
   width: 100%;
   height: 100%;
 
-  background-color: transparent; /* Opcional: quita color naranja */
+  background-color: transparent;
 }
 
 .newRow {
   width: 100%;
-  height: 50%;
+  height: 8vh;
   display: flex;
 }

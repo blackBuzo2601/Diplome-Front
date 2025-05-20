@@ -1,10 +1,12 @@
 "use client";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 export default function UploadCourses() {
+  const [coverImage, setCoverImage] = useState("/images/noimage.jpg");
+
   const lecciones = [
     "Lección 1",
     "Lección 2",
@@ -17,19 +19,23 @@ export default function UploadCourses() {
   const goToMyCoursesPage = () => {
     router.push("/dashboard/mycourses");
   };
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    const validTypes = ["image/jpeg", "image/png"];
-
+    const validTypes = ["image/jpeg"];
     if (!validTypes.includes(file.type)) {
-      alert("Solo se permiten archivos PNG o JPG.");
+      alert("Solo se permiten archivos JPG.");
       event.target.value = "";
       return;
     }
 
-    console.log("Archivo válido:", file);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setCoverImage(reader.result as string);
+    };
+    reader.readAsDataURL(file);
   };
 
   return (
@@ -66,12 +72,13 @@ export default function UploadCourses() {
               <input
                 id="coverImage"
                 type="file"
-                accept="image/png, image/jpeg"
+                accept="image/jpeg"
                 onChange={handleFileChange}
                 style={{ display: "none" }}
               />
+
               <Image
-                src={"/images/computer-networks.jpg"}
+                src={coverImage}
                 alt="course image"
                 width={200}
                 height={100}
