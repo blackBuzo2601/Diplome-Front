@@ -23,8 +23,15 @@ export default function MyCourses() {
   const [course, setCourse] = useState<Course | null>(null); //curso vacio al iniico
   const [search, setSearch] = useState("");
   const [myCourses, setMyCourses] = useState(true);
+  const [label, setLabel] = useState(false);
   const searchByWord = (searchText: string) => {
-    searchText.trim() !== "" ? setMyCourses(false) : setMyCourses(true);
+    if (searchText.trim() !== "") {
+      setMyCourses(false);
+      setLabel(true);
+    } else {
+      setMyCourses(true);
+      setLabel(false);
+    }
     setSearch(searchText);
   };
 
@@ -100,12 +107,18 @@ export default function MyCourses() {
           </button>
 
           <div className={styles.newRow}>
-            <p
-              onClick={() => setSearch("")}
-              className={styles.backToCoursesLabel}
-            >
-              Volver a todos los cursos
-            </p>
+            {label ? (
+              <p
+                onClick={() => {
+                  setSearch("");
+                  setLabel(false);
+                }}
+                className={styles.backToCoursesLabel}
+              >
+                Volver a todos los cursos
+              </p>
+            ) : null}
+
             <div className={styles.inputRow}>
               <Image
                 src={"/images/lupa.png"}
