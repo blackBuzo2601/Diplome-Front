@@ -151,6 +151,71 @@ const courses = [
       "Aprende TypeScript paso a paso, desde los tipos básicos hasta programación orientada a objetos y tipado avanzado.",
     courseTeacherImage: "/images/teacher1.jpg",
   },
+
+  {
+    imageRoute: "/images/javascript-pro.jpg",
+    courseTitle: "JavaScript de Cero a Master 2025",
+    courseTeacherName: "Ana Torres",
+    courseDescription:
+      "Conviértete en un experto en JavaScript moderno con este curso intensivo desde lo básico hasta técnicas avanzadas.",
+    courseTeacherImage: "/images/teacher3.jpg",
+  },
+  {
+    imageRoute: "/images/python-beginners.jpg",
+    courseTitle: "Python para Principiantes",
+    courseTeacherName: "José Hernández",
+    courseDescription:
+      "Aprende desde cero a programar en Python, ideal para quienes inician en el mundo de la programación.",
+    courseTeacherImage: "/images/teacher4.jpg",
+  },
+  {
+    imageRoute: "/images/cybersecurity-advanced.jpg",
+    courseTitle: "Ciberseguridad Avanzada",
+    courseTeacherName: "Carlos Ramírez",
+    courseDescription:
+      "Explora técnicas avanzadas de defensa, análisis forense y respuesta ante incidentes de seguridad.",
+    courseTeacherImage: "/images/teacher2.jpg",
+  },
+  {
+    imageRoute: "/images/networking-cloud.jpg",
+    courseTitle: "Redes y Cloud Computing",
+    courseTeacherName: "Marco Díaz",
+    courseDescription:
+      "Aprende los fundamentos de redes y cómo se integran con entornos de computación en la nube.",
+    courseTeacherImage: "/images/teacher6.jpg",
+  },
+  {
+    imageRoute: "/images/vue-advanced.jpg",
+    courseTitle: "Vue.js Avanzado con Pinia y Vue Router",
+    courseTeacherName: "Ana Torres",
+    courseDescription:
+      "Profundiza en Vue.js con composición avanzada de componentes, gestión de rutas y estado.",
+    courseTeacherImage: "/images/teacher3.jpg",
+  },
+  {
+    imageRoute: "/images/react-architecture.jpg",
+    courseTitle: "Arquitectura de Proyectos React",
+    courseTeacherName: "Laura Mendoza",
+    courseDescription:
+      "Aprende a estructurar proyectos React escalables con buenas prácticas, testing y manejo de dependencias.",
+    courseTeacherImage: "/images/teacher1.jpg",
+  },
+  {
+    imageRoute: "/images/linux-advanced.jpg",
+    courseTitle: "Linux Avanzado para SysAdmins",
+    courseTeacherName: "José Hernández",
+    courseDescription:
+      "Domina administración de servicios, seguridad, y automatización en entornos Linux avanzados.",
+    courseTeacherImage: "/images/teacher4.jpg",
+  },
+  {
+    imageRoute: "/images/kubernetes-course.jpg",
+    courseTitle: "Kubernetes para DevOps",
+    courseTeacherName: "Daniela Ruiz",
+    courseDescription:
+      "Aprende a desplegar, escalar y administrar contenedores con Kubernetes desde cero.",
+    courseTeacherImage: "/images/teacher7.jpg",
+  },
 ];
 
 export default courses;

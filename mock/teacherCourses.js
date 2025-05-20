@@ -31,6 +31,14 @@ const teacherCourses = [
       "Aprende TypeScript paso a paso, desde los tipos básicos hasta programación orientada a objetos y tipado avanzado.",
     courseTeacherImage: "/images/teacher1.jpg",
   },
+  {
+    imageRoute: "/images/react-architecture.jpg",
+    courseTitle: "Arquitectura de Proyectos React",
+    courseTeacherName: "Laura Mendoza",
+    courseDescription:
+      "Aprende a estructurar proyectos React escalables con buenas prácticas, testing y manejo de dependencias.",
+    courseTeacherImage: "/images/teacher1.jpg",
+  },
 ];
 
 export default teacherCourses;

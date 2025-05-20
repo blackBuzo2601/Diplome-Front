@@ -94,6 +94,16 @@
   background-color: #f5f5f5;
 }
 
+.mainContent::-webkit-scrollbar {
+  border-radius: 8px;
+  background-color: rgb(152, 147, 147);
+  height: 15px;
+}
+.mainContent::-webkit-scrollbar-thumb {
+  background-color: #283f4f;
+  border-radius: 8px;
+}
+
 /* === SEARCH === */
 .searchContainer {
   margin-top: 1.8vh;

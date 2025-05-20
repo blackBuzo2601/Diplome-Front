@@ -36,7 +36,7 @@ export default function AdminDashboard() {
   };
 
   const router = useRouter();
-  let userRole = false;
+  let userRole = true;
   //cambiar userRole a true si es Instructor
   //cambiar userRole a false si es Estudiante
 
