@@ -42,6 +42,10 @@ export default function MyCourses() {
     router.push("/dashboard/mycourses/coursepage");
   };
 
+  const goToCreateCoursePage = () => {
+    router.push("/dashboard/mycourses/createcourse");
+  };
+
   return (
     <div className={styles.dashboard}>
       {/* Barra/Menu lateral */}
@@ -89,29 +93,38 @@ export default function MyCourses() {
       <main className={styles.mainContent}>
         <h3 className={styles.sectionHeaderName}>Mis cursos</h3>
         <div className={styles.searchContainer}>
-          <p
-            onClick={() => setSearch("")}
-            className={styles.backToCoursesLabel}
+          <button
+            onClick={goToCreateCoursePage}
+            className={styles.goModalButton}
           >
-            Volver a todos los cursos
-          </p>
-          <div className={styles.inputRow}>
-            <Image
-              src={"/images/lupa.png"}
-              alt="user example"
-              width={40}
-              height={40}
-            />
-            <input
-              value={search} //asignamos el estado en "" para que cuando haya cambios en el input, se modifique ese estado
-              onChange={(e) => {
-                const searchText = e.target.value;
-                searchByWord(searchText);
-              }}
-              type="text"
-              placeholder="Buscar en mis cursos"
-              className={styles.searchInput}
-            />
+            Crear nuevo curso
+          </button>
+
+          <div className={styles.newRow}>
+            <p
+              onClick={() => setSearch("")}
+              className={styles.backToCoursesLabel}
+            >
+              Volver a todos los cursos
+            </p>
+            <div className={styles.inputRow}>
+              <Image
+                src={"/images/lupa.png"}
+                alt="user example"
+                width={40}
+                height={40}
+              />
+              <input
+                value={search} //asignamos el estado en "" para que cuando haya cambios en el input, se modifique ese estado
+                onChange={(e) => {
+                  const searchText = e.target.value;
+                  searchByWord(searchText);
+                }}
+                type="text"
+                placeholder="Buscar en mis cursos"
+                className={styles.searchInput}
+              />
+            </div>
           </div>
         </div>
 
@@ -164,7 +177,6 @@ export default function MyCourses() {
 
           <div className={styles.emptyDiv}></div>
         </div>
-
         <CourseModal
           isTeacher={true}
           course={course}
