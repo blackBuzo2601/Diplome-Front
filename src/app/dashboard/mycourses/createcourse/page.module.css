@@ -1,0 +1,191 @@
+/* Fondo principal */
+.mainDiv {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+/* Contenedor del formulario */
+.form {
+  width: 60vw;
+  height: 100vh;
+  background-color: #f8f8f8;
+  padding: 3vh 4vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Título principal */
+.mainTitle {
+  font-family: "The Seasons", serif;
+  font-size: 2.5vw;
+  font-weight: bold;
+  color: #001623;
+  margin-top: 1vh;
+  margin-bottom: 4vh;
+}
+
+/* Etiquetas */
+.subtitle {
+  font-size: 1.4vw;
+  font-family: "The Seasons", serif;
+  color: #001623;
+  min-width: 100px;
+}
+
+/* Contenedor de los inputs */
+.credentialsDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2vh;
+}
+
+/* Input del formulario */
+.credentialsInput {
+  border-radius: 2vw;
+  width: 100%;
+  height: 7vh;
+  background-color: #a3d4f3;
+  padding-left: 2vw;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2vw;
+  border: none;
+  outline: none;
+  color: white;
+  margin-bottom: 1vh;
+}
+.credentialsInput::placeholder {
+  color: white;
+}
+.credentialsInput:hover {
+  background-color: #1e6fbd;
+}
+
+.restInformationContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+}
+
+/* Imagen de portada */
+.imagen_portada_section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2vh;
+}
+
+.uploadGroup {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+.imagen_preview {
+  width: 140px;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Botón de imagen */
+.uploadButton {
+  border-radius: 2vw;
+  padding: 1vh 2vw;
+  background: linear-gradient(to right, #5cd2ff, #004aad);
+  color: white;
+  font-family: "The Seasons", serif;
+  font-size: 1.2vw;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.uploadButton:hover {
+  background: #1e6fbd;
+}
+
+/* Lecciones */
+.lecciones_section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2vh;
+}
+
+.lecciones_container {
+  width: 100%;
+  height: 18vh;
+  padding-left: 10vh;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: #f0f0f0;
+  padding: 1vh;
+  border-radius: 12px;
+}
+
+.leccion_item {
+  background-color: #a3d4f3;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2vw;
+  border-radius: 999px;
+  padding: 1vh 2vw;
+  margin-bottom: 1vh;
+}
+
+/* Botones */
+.form_actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2vh;
+}
+
+.formButton {
+  border-radius: 2vw;
+  margin-top: -4vh;
+  width: 48%;
+  height: 7vh;
+  background: linear-gradient(to right, #5cd2ff, #004aad);
+  color: white;
+  text-align: center;
+  font-family: "The Seasons", serif;
+  font-size: 1.5vw;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: 30vh;
+}
+.formButtonBack {
+  border-radius: 2vw;
+  width: 28%;
+  height: 8vh;
+  background: linear-gradient(to right, #5cd2ff, #004aad);
+  color: white;
+  text-align: center;
+  font-family: "The Seasons", serif;
+  font-size: 1.5vw;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 6vh;
+  margin-left: -160vh;
+}
+.formButton:hover {
+  background: #1e6fbd;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  margin-bottom: 2vh;
+}
