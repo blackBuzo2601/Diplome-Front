@@ -8,11 +8,10 @@ export default function UploadCourses() {
   const [coverImage, setCoverImage] = useState("/images/noimage.jpg");
 
   const lecciones = [
-    "Lección 1",
-    "Lección 2",
-    "Lección 3",
-    "Lección 4",
-    "Lección 5",
+    "Introducción a JS",
+    "Objetos literales",
+    "Funciones",
+    "Funciones de flecha",
   ];
   const router = useRouter();
 
@@ -92,11 +91,15 @@ export default function UploadCourses() {
               <label className={styles.subtitle}>Lecciones:</label>
             </div>
             <div className={styles.lecciones_container}>
-              {lecciones.map((leccion, index) => (
-                <div key={index} className={styles.leccion_item}>
-                  {leccion}
-                </div>
-              ))}
+              <div className={styles.lecciones_container}>
+                {lecciones.length === 0
+                  ? null
+                  : lecciones.map((leccion, index) => (
+                      <div key={index} className={styles.leccion_item}>
+                        Leccion {index + 1}: {leccion}
+                      </div>
+                    ))}
+              </div>
             </div>
           </div>
 
