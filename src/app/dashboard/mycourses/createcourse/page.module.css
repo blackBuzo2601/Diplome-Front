@@ -2,7 +2,7 @@
 .mainDiv {
   width: 100vw;
   height: 100vh;
-  background-color: #f8f8f8;
+  background-color: #f5f5f5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@
 .form {
   width: 60vw;
   height: 100vh;
-  background-color: #f8f8f8;
+  background-color: #f5f5f5;
   padding: 3vh 4vw;
   display: flex;
   flex-direction: column;
@@ -77,6 +77,7 @@
 /* Imagen de portada */
 .imagen_portada_section {
   width: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -90,8 +91,8 @@
 }
 
 .imagen_preview {
-  width: 140px;
-  height: auto;
+  width: 14vw;
+  height: 16vh;
   border-radius: 12px;
 }
 
@@ -126,9 +127,20 @@
   padding-left: 10vh;
   max-height: 150px;
   overflow-y: auto;
-  background-color: #f0f0f0;
+  scrollbar-gutter: stable;
+  background-color: #c6c6c6;
   padding: 1vh;
   border-radius: 12px;
+}
+
+.lecciones_container::-webkit-scrollbar {
+  border-radius: 5px;
+  background-color: rgb(239, 235, 235);
+  width: 8px;
+}
+.lecciones_container::-webkit-scrollbar-thumb {
+  background-color: #283f4f;
+  border-radius: 5px;
 }
 
 .leccion_item {
@@ -139,6 +151,9 @@
   border-radius: 999px;
   padding: 1vh 2vw;
   margin-bottom: 1vh;
+}
+.leccion_item:hover {
+  background: #1e6fbd;
 }
 
 /* Botones */
@@ -167,7 +182,7 @@
 .formButtonBack {
   border-radius: 2vw;
   width: 28%;
-  height: 8vh;
+  height: 12vh;
   background: linear-gradient(to right, #5cd2ff, #004aad);
   color: white;
   text-align: center;
@@ -176,15 +191,27 @@
   border: none;
   outline: none;
   cursor: pointer;
-  margin-top: 6vh;
+
   margin-left: -160vh;
 }
+.formButtonBack:hover {
+  background: #1e6fbd;
+}
+
 .formButton:hover {
   background: #1e6fbd;
 }
 
 .inputGroup {
   display: flex;
+  align-items: center;
+  gap: 2vw;
+  margin-bottom: 2vh;
+}
+
+.inputGroup2 {
+  display: flex;
+  height: 100%;
   align-items: center;
   gap: 2vw;
   margin-bottom: 2vh;

@@ -1,6 +1,8 @@
+"use client";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import React from "react";
+import Image from "next/image";
 
 export default function UploadCourses() {
   const lecciones = [
@@ -10,8 +12,11 @@ export default function UploadCourses() {
     "Lección 4",
     "Lección 5",
   ];
-  //const router = useRouter();
+  const router = useRouter();
 
+  const goToMyCoursesPage = () => {
+    router.push("/dashboard/mycourses");
+  };
   return (
     <div className={styles.mainDiv}>
       <div className={styles.form}>
@@ -40,15 +45,17 @@ export default function UploadCourses() {
           </div>
 
           <div className={styles.imagen_portada_section}>
-            <div className={styles.inputGroup}>
+            <div className={styles.inputGroup2}>
               <label className={styles.subtitle}>Imagen de portada:</label>
               <div className={styles.uploadGroup}>
                 <button type="button" className={styles.uploadButton}>
                   Adjuntar Imagen
                 </button>
-                <img
-                  src="/images/5cb8f085-9f80-43b0-81bf-2cd9dd6bda6f.png"
-                  alt="Vista previa"
+                <Image
+                  src={"/images/computer-networks.jpg"}
+                  alt="course image"
+                  width={200}
+                  height={100}
                   className={styles.imagen_preview}
                 />
               </div>
@@ -74,7 +81,11 @@ export default function UploadCourses() {
             </button>
           </div>
         </form>
-        <button type="button" className={styles.formButtonBack}>
+        <button
+          onClick={goToMyCoursesPage}
+          type="button"
+          className={styles.formButtonBack}
+        >
           Regresar
         </button>
       </div>
