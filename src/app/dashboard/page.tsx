@@ -273,45 +273,68 @@ export default function AdminDashboard() {
           </div>
         ) : (
           <div>
-            <h3 className={styles.sectionTitle}>Coincidencias de búsqueda</h3>
+            <h3 className={styles.sectionTitle}>Resultados de búsqueda</h3>
             <div className={styles.recomendationsDiv}>
-              {courses
-                .filter((elemento) =>
-                  elemento.courseTitle
-                    .toLowerCase()
-                    .includes(search.trim().toLowerCase())
-                )
-                .map((elemento, key) => (
-                  <div
-                    onClick={() => getCourseInfo(elemento)}
-                    key={key}
-                    className={styles.courseCard}
-                  >
-                    <Image
-                      src={elemento.imageRoute}
-                      alt="course image"
-                      width={200}
-                      height={100}
-                      className={styles.courseCardImage}
-                    />
-                    <p className={styles.courseTitle}>{elemento.courseTitle}</p>
-                    <div className={styles.courseTeacherDiv}>
+              {courses.filter((elemento) =>
+                elemento.courseTitle
+                  .toLowerCase()
+                  .includes(search.trim().toLowerCase())
+              ).length === 0 ? (
+                <div className={styles.noCoincidencesDiv}>
+                  <p className={styles.noCoincidencesText}>
+                    No hay coincidencias con su búsqueda
+                  </p>
+                  <Image
+                    src={"/images/warning.png"}
+                    alt="warning icon"
+                    width={200}
+                    height={200}
+                    className={styles.noCoincidencesImage}
+                  />
+                </div>
+              ) : (
+                courses
+                  .filter((elemento) =>
+                    elemento.courseTitle
+                      .toLowerCase()
+                      .includes(search.trim().toLowerCase())
+                  )
+                  .map((elemento, key) => (
+                    <div
+                      onClick={() => getCourseInfo(elemento)}
+                      key={key}
+                      className={styles.courseCard}
+                    >
                       <Image
-                        src={elemento.courseTeacherImage}
-                        alt="teacher photo"
-                        width={100}
+                        src={elemento.imageRoute}
+                        alt="course image"
+                        width={200}
                         height={100}
-                        className={styles.courseTeacherImage}
+                        className={styles.courseCardImage}
                       />
-                      <div className={styles.courseTeacherInfo}>
-                        <p className={styles.courseTeacherName}>
-                          {elemento.courseTeacherName}
-                        </p>
-                        <p className={styles.courseTeacherLabel}>Instructor</p>
+                      <p className={styles.courseTitle}>
+                        {elemento.courseTitle}
+                      </p>
+                      <div className={styles.courseTeacherDiv}>
+                        <Image
+                          src={elemento.courseTeacherImage}
+                          alt="teacher photo"
+                          width={100}
+                          height={100}
+                          className={styles.courseTeacherImage}
+                        />
+                        <div className={styles.courseTeacherInfo}>
+                          <p className={styles.courseTeacherName}>
+                            {elemento.courseTeacherName}
+                          </p>
+                          <p className={styles.courseTeacherLabel}>
+                            Instructor
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+              )}
             </div>
             <div className={styles.emptyDiv}></div>
           </div>

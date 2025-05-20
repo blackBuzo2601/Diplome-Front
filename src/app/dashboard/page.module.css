@@ -259,3 +259,26 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
 }
+
+.noCoincidencesDiv {
+  margin-top: 3vh;
+  background-color: transparent;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+.noCoincidencesText {
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.noCoincidencesImage {
+  width: 15%;
+  height: 60%;
+}
