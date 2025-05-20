@@ -75,7 +75,7 @@ export default function AdminDashboard() {
 
   const goToCoursePage = () => {
     setModalOpen(false);
-    router.push("/dashboard/mycourses/coursepage");
+    router.push("/dashboard/coursepage");
   };
   return (
     <div className={styles.dashboard}>

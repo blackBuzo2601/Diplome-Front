@@ -37,13 +37,12 @@ export default function MyCourses() {
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
-  const goToCoursePage = () => {
-    setModalOpen(false);
-    router.push("/dashboard/mycourses/coursepage");
-  };
-
   const goToCreateCoursePage = () => {
     router.push("/dashboard/mycourses/createcourse");
+  };
+  const goToEditCoursePage = () => {
+    setModalOpen(false);
+    router.push("/dashboard/mycourses/editcourse");
   };
 
   return (
@@ -182,7 +181,7 @@ export default function MyCourses() {
           course={course}
           isOpen={modalOpen}
           onClose={closeModal}
-          onConfirm={goToCoursePage}
+          onConfirm={goToEditCoursePage}
         ></CourseModal>
       </main>
     </div>
