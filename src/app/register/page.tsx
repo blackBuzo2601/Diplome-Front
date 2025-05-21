@@ -61,14 +61,13 @@ export default function Register() {
           />
         </div>
         <div className={styles.ageDiv}>
-          <p className={styles.ageLabel}>Selecciona tu edad</p>
-          <select className={styles.selectAge} name="agenumber" required>
-            {Array.from({ length: 100 }, (_, i) => (
-              <option key={i + 1} value={i + 1}>
-                {i + 1}
-              </option>
-            ))}
-          </select>
+          <p className={styles.ageLabel}> Fecha de nacimiento:</p>
+          <input
+            type="date"
+            name="birthdate"
+            required
+            className={styles.inputDate}
+          />
         </div>
         <div className={styles.restInformationContainer}>
           <div className={styles.credentialsDiv}>

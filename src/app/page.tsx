@@ -23,8 +23,6 @@ export default function Home() {
 	}
   };
 
-
-
   return (
 		<form className={styles.mainDiv} onSubmit={handleSubmit}>
 		<div className={styles.form}>
@@ -52,9 +50,14 @@ export default function Home() {
 			Entrar
 			</button>
 			<div className={styles.labelDiv}>
-			<Link className={styles.registerLabel} href="/register">
-				¿No tienes cuenta? Regístrate aquí
-			</Link>
+				<Link className={styles.registerLabel} href="/register">
+					¿No tienes cuenta? Regístrate aquí
+				</Link>
+			</div>
+			<div className={styles.labelDiv}>
+				<Link className={styles.registerLabelRecover} href="/recover">
+					¿Olvidaste tu contraseña?
+				</Link>
 			</div>
 		</div>
 		</form>

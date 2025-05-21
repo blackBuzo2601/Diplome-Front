@@ -1,0 +1,68 @@
+.modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modalDiv {
+  background-color: white;
+  border-radius: 10px;
+  width: 45%;
+  height: 70%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6vh;
+}
+
+.modalCourseImage {
+  width: 35%;
+  height: 50%;
+  border-radius: 20px;
+  margin-bottom: 3vh;
+}
+
+.modalCourseName {
+  margin-top: 2vh;
+  margin-left: 8%;
+  margin-right: 8%;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.modalActions {
+  width: 100%;
+  height: 10%;
+
+  display: flex;
+  justify-content: center;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  margin-top: 3vh;
+}
+
+.goModalButton {
+  cursor: pointer;
+  border: none;
+  width: 40%;
+  height: 100%;
+  font-family: "The Seasons", sans-serif;
+
+  border-radius: 30px;
+  background: linear-gradient(to right, #4ac4ff, #003ca6);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 1.3rem;
+}
+.goModalButton:hover {
+  background: #aac8de;
+}

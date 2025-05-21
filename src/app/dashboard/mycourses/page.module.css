@@ -1,0 +1,293 @@
+.dashboard {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  font-family: "The Seasons", sans-serif;
+}
+
+/* === ASIDE === */
+.sidebar {
+  width: 21.2%;
+  height: 100%;
+  border-right: 1px solid #ccc;
+  box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  flex-shrink: 0;
+}
+.logoContainer {
+  padding-top: 4.5vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.sidebarLogo {
+  width: 58%;
+  height: 50%;
+}
+
+.sidebarUser {
+  margin-top: 6%;
+  text-align: center;
+  margin-bottom: 8%;
+}
+.sidebarUserName {
+  font-family: "The Seasons", serif;
+  font-size: 1.49rem;
+}
+
+.userImage {
+  width: 27%;
+  height: 33%;
+  border-radius: 50%;
+}
+
+.sidebarNav {
+  padding-left: 7.5%;
+  padding-right: 7.5%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 24%;
+}
+
+.sidebarLink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3.5%;
+  color: black;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+.sidebarLink:hover {
+  color: #1e6fbd;
+}
+
+.logout {
+  color: red;
+  margin-top: 32vh;
+  display: flex;
+  align-items: center;
+  gap: 3.5%;
+  padding-left: 7.5%;
+  padding-right: 7.5%;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+.logout:hover {
+  color: #1e6fbd;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding-left: 2.4%;
+  padding-right: 2.4%;
+
+  overflow-y: scroll;
+  background-color: #f5f5f5;
+}
+
+/* === SEARCH === */
+.searchContainer {
+  margin-top: 2vh;
+  width: 100%;
+  height: 8.5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2vh;
+}
+.newRow {
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.searchInput {
+  margin-left: 0.5vw;
+  border: none;
+  width: 100%;
+  outline: none;
+  height: 100%;
+  font-size: 1.3rem;
+  font-family: "The Seasons", serif;
+  background: transparent;
+}
+
+.backToCoursesLabel {
+  margin: 0;
+  padding: 0;
+
+  font-size: 1.2rem;
+  color: #1e6fbd;
+  font-family: "Montserrat", sans-serif;
+}
+.backToCoursesLabel:hover {
+  color: #a3d4f3;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+
+.inputRow {
+  margin-left: 1.5%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 60%;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  outline: none;
+  height: 100%;
+  font-size: 1.3rem;
+  font-family: "The Seasons", serif;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.inputRow img {
+  margin-left: 3%;
+  width: 2.3vw;
+  height: 4vh;
+}
+
+.sectionTitle {
+  margin-left: 1.1%;
+  margin-bottom: 1%;
+  font-size: 1.94rem;
+  font-weight: 300;
+}
+
+.sectionHeaderName {
+  margin-top: 3.5vh;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-left: 2vw;
+}
+.father {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 1.5vh;
+  overflow-y: auto;
+}
+
+.goModalButton {
+  margin-left: 2vw;
+  cursor: pointer;
+  border: none;
+  width: 20vw;
+  height: 80%;
+  font-family: "The Seasons", sans-serif;
+
+  border-radius: 30px;
+  background: linear-gradient(to right, #4ac4ff, #003ca6);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 1.3rem;
+}
+.goModalButton:hover {
+  background: #aac8de;
+}
+
+.recomendationsDiv {
+  width: 90%;
+  height: 100%;
+  background-color: #aac8de;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  padding-left: 2vw;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  box-sizing: border-box;
+}
+
+.recomendationsDiv::-webkit-scrollbar {
+  border-radius: 5px;
+  background-color: rgb(239, 235, 235);
+  width: 12px;
+}
+.recomendationsDiv::-webkit-scrollbar-thumb {
+  background-color: #283f4f;
+  border-radius: 5px;
+}
+
+.emptyDiv {
+  width: 20px;
+  height: 100%;
+
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background-color: #aac8de;
+}
+
+.courseCard {
+  background-color: #fff;
+  border-radius: 50px;
+  height: 25vh;
+  width: 60vw;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 1.5%;
+}
+.courseCard:hover {
+  background: rgb(103, 103, 103);
+  color: white;
+  cursor: pointer;
+}
+
+.courseCardImage {
+  width: 30%;
+  height: 80%;
+  border-radius: 30px;
+}
+.courseColumnInfo {
+  height: 80%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.courseTitle {
+  margin-left: 2vw;
+  font-size: 1.6rem;
+}
+.noCoincidencesDiv {
+  background-color: transparent;
+  width: 50%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 20px;
+}
+.noCoincidencesText {
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.noCoincidencesImage {
+  width: 30%;
+  height: 60%;
+}
