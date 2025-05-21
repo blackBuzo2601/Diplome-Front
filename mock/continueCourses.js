@@ -1,39 +1,35 @@
 const continueCourses = [
   {
-    imageRoute: "/images/javascript-course.jpg",
-    courseTitle: "JavaScript Moderno",
-    courseTeacherName: "Ana Torres",
+    imageRoute: "/images/linux-advanced.jpg",
+    courseTitle: "Linux Avanzado para SysAdmins",
+    courseTeacherName: "José Hernández",
     courseDescription:
-      "Domina JavaScript moderno ES6 y aprende buenas prácticas para escribir código limpio y eficiente.",
-    courseTeacherImage: "/images/teacher3.jpg",
-    courseCategory: "Frontend",
+      "Domina administración de servicios, seguridad, y automatización en entornos Linux avanzados.",
+    courseTeacherImage: "/images/teacher4.jpg",
+    courseCategory: "Sistemas Operativos",
+    lessons: [
+      {
+        lessonTitle: "Administración avanzada de servicios",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "Seguridad en Linux", lessonVideoSource: "" },
+      { lessonTitle: "Automatización con scripts", lessonVideoSource: "" },
+    ],
   },
   {
-    imageRoute: "/images/nextjs-course.jpg",
-    courseTitle: "Desarrollo Web con Next.js",
-    courseTeacherName: "Laura Mendoza",
+    imageRoute: "/images/react-native.jpg",
+    courseTitle: "Apps Móviles con React Native",
+    courseTeacherName: "Sofía López",
     courseDescription:
-      "Aprende a crear aplicaciones modernas con React y Next.js, incluyendo enrutamiento, SSR y generación estática.",
-    courseTeacherImage: "/images/teacher1.jpg",
+      "Construye aplicaciones móviles multiplataforma con React Native y Expo.",
+    courseTeacherImage: "/images/teacher5.jpg",
     courseCategory: "Frontend",
-  },
-  {
-    imageRoute: "/images/java-course.jpg",
-    courseTitle: "Java para Desarrolladores",
-    courseTeacherName: "Marco Díaz",
-    courseDescription:
-      "Domina los fundamentos de Java, programación orientada a objetos y estructuras de datos.",
-    courseTeacherImage: "/images/teacher6.jpg",
-    courseCategory: "Backend",
-  },
-  {
-    imageRoute: "/images/flutter-course.jpg",
-    courseTitle: "Aplicaciones Móviles con Flutter",
-    courseTeacherName: "Carlos Ramírez",
-    courseDescription:
-      "Crea apps móviles nativas para Android e iOS desde una sola base de código con Flutter y Dart.",
-    courseTeacherImage: "/images/teacher2.jpg",
-    courseCategory: "Frontend",
+    lessons: [
+      { lessonTitle: "Introducción a React Native", lessonVideoSource: "" },
+      { lessonTitle: "Navegación y rutas", lessonVideoSource: "" },
+      { lessonTitle: "Consumo de APIs en móviles", lessonVideoSource: "" },
+      { lessonTitle: "Despliegue en Expo", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/python-advanced.jpg",
@@ -43,6 +39,43 @@ const continueCourses = [
       "Profundiza en programación orientada a objetos, manejo de errores, y módulos avanzados en Python.",
     courseTeacherImage: "/images/teacher4.jpg",
     courseCategory: "Backend",
+    lessons: [
+      { lessonTitle: "POO en profundidad", lessonVideoSource: "" },
+      { lessonTitle: "Manejo avanzado de errores", lessonVideoSource: "" },
+      {
+        lessonTitle: "Módulos y paquetes personalizados",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "Decoradores y generadores", lessonVideoSource: "" },
+    ],
+  },
+  {
+    imageRoute: "/images/hacking-course.jpg",
+    courseTitle: "Hacking Ético y Seguridad",
+    courseTeacherName: "Carlos Ramírez",
+    courseDescription:
+      "Explora técnicas de hacking ético, pruebas de penetración y ciberseguridad básica.",
+    courseTeacherImage: "/images/teacher2.jpg",
+    courseCategory: "Ciberseguridad",
+    lessons: [
+      { lessonTitle: "Fundamentos del hacking ético", lessonVideoSource: "" },
+      { lessonTitle: "Reconocimiento y escaneo", lessonVideoSource: "" },
+      { lessonTitle: "Explotación de vulnerabilidades", lessonVideoSource: "" },
+    ],
+  },
+  {
+    imageRoute: "/images/vue-course.jpg",
+    courseTitle: "Aplicaciones Web con Vue.js",
+    courseTeacherName: "Ana Torres",
+    courseDescription:
+      "Aprende Vue.js desde cero, composición de componentes y gestión de estado con Vuex.",
+    courseTeacherImage: "/images/teacher3.jpg",
+    courseCategory: "Frontend",
+    lessons: [
+      { lessonTitle: "Fundamentos de Vue.js", lessonVideoSource: "" },
+      { lessonTitle: "Componentes y propiedades", lessonVideoSource: "" },
+      { lessonTitle: "Estado global con Vuex", lessonVideoSource: "" },
+    ],
   },
 ];
 

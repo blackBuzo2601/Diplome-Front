@@ -7,6 +7,14 @@ const courses = [
       "Aprende a crear aplicaciones modernas con React y Next.js, incluyendo enrutamiento, SSR y generación estática.",
     courseTeacherImage: "/images/teacher1.jpg",
     courseCategory: "Frontend",
+    lessons: [
+      { lessonTitle: "Introducción a Next.js", lessonVideoSource: "" },
+      {
+        lessonTitle: "Enrutamiento con Pages y App Router",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "Renderizado Estático y SSR", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/flutter-course.jpg",
@@ -16,7 +24,20 @@ const courses = [
       "Crea apps móviles nativas para Android e iOS desde una sola base de código con Flutter y Dart.",
     courseTeacherImage: "/images/teacher2.jpg",
     courseCategory: "Frontend",
+    lessons: [
+      { lessonTitle: "Primeros pasos con Flutter", lessonVideoSource: "" },
+      {
+        lessonTitle: "Diseño de Interfaces con Widgets",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "Navegación entre pantallas", lessonVideoSource: "" },
+      {
+        lessonTitle: "Persistencia de datos en Flutter",
+        lessonVideoSource: "",
+      },
+    ],
   },
+
   {
     imageRoute: "/images/javascript-course.jpg",
     courseTitle: "JavaScript Moderno",
@@ -25,7 +46,13 @@ const courses = [
       "Domina JavaScript moderno ES6 y aprende buenas prácticas para escribir código limpio y eficiente.",
     courseTeacherImage: "/images/teacher3.jpg",
     courseCategory: "Frontend",
+    lessons: [
+      { lessonTitle: "Sintaxis moderna de JavaScript", lessonVideoSource: "" },
+      { lessonTitle: "Funciones y Scope", lessonVideoSource: "" },
+      { lessonTitle: "Promises y Async/Await", lessonVideoSource: "" },
+    ],
   },
+
   {
     imageRoute: "/images/python-advanced.jpg",
     courseTitle: "Python Avanzado",
@@ -34,6 +61,15 @@ const courses = [
       "Profundiza en programación orientada a objetos, manejo de errores, y módulos avanzados en Python.",
     courseTeacherImage: "/images/teacher4.jpg",
     courseCategory: "Backend",
+    lessons: [
+      { lessonTitle: "POO en profundidad", lessonVideoSource: "" },
+      { lessonTitle: "Manejo avanzado de errores", lessonVideoSource: "" },
+      {
+        lessonTitle: "Módulos y paquetes personalizados",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "Decoradores y generadores", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/go-course.jpg",
@@ -43,6 +79,14 @@ const courses = [
       "Aprende a construir servicios backend robustos y eficientes con el lenguaje Go.",
     courseTeacherImage: "/images/teacher5.jpg",
     courseCategory: "Backend",
+    lessons: [
+      { lessonTitle: "Introducción a Go", lessonVideoSource: "" },
+      {
+        lessonTitle: "Manejo de concurrencia con goroutines",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "Creación de APIs REST con Go", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/java-course.jpg",
@@ -52,6 +96,15 @@ const courses = [
       "Domina los fundamentos de Java, programación orientada a objetos y estructuras de datos.",
     courseTeacherImage: "/images/teacher6.jpg",
     courseCategory: "Backend",
+    lessons: [
+      { lessonTitle: "Fundamentos del lenguaje Java", lessonVideoSource: "" },
+      { lessonTitle: "POO con Java", lessonVideoSource: "" },
+      {
+        lessonTitle: "Colecciones y estructuras de datos",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "Excepciones y manejo de errores", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/cpp-course.jpg",
@@ -61,6 +114,11 @@ const courses = [
       "Aprende desde lo básico hasta conceptos avanzados como punteros, memoria dinámica y programación orientada a objetos en C++.",
     courseTeacherImage: "/images/teacher7.jpg",
     courseCategory: "Backend",
+    lessons: [
+      { lessonTitle: "Sintaxis básica de C++", lessonVideoSource: "" },
+      { lessonTitle: "Punteros y memoria dinámica", lessonVideoSource: "" },
+      { lessonTitle: "POO en C++", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/computer-networks.jpg",
@@ -70,6 +128,15 @@ const courses = [
       "Estudia los fundamentos de redes, modelos OSI, TCP/IP, direccionamiento IP y más.",
     courseTeacherImage: "/images/teacher6.jpg",
     courseCategory: "Redes",
+    lessons: [
+      { lessonTitle: "Modelo OSI y TCP/IP", lessonVideoSource: "" },
+      { lessonTitle: "Direccionamiento IP", lessonVideoSource: "" },
+      { lessonTitle: "Protocolos de red comunes", lessonVideoSource: "" },
+      {
+        lessonTitle: "Topologías y dispositivos de red",
+        lessonVideoSource: "",
+      },
+    ],
   },
   {
     imageRoute: "/images/linux-course.jpg",
@@ -79,6 +146,14 @@ const courses = [
       "Aprende comandos esenciales, estructura de archivos, permisos y administración básica de sistemas Linux.",
     courseTeacherImage: "/images/teacher4.jpg",
     courseCategory: "Sistemas Operativos",
+    lessons: [
+      {
+        lessonTitle: "Introducción a Linux y su historia",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "Comandos básicos de la terminal", lessonVideoSource: "" },
+      { lessonTitle: "Permisos y usuarios en Linux", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/os-course.jpg",
@@ -88,6 +163,12 @@ const courses = [
       "Comprende procesos, concurrencia, administración de memoria y sistemas de archivos.",
     courseTeacherImage: "/images/teacher7.jpg",
     courseCategory: "Sistemas Operativos",
+    lessons: [
+      { lessonTitle: "Procesos y subprocesos", lessonVideoSource: "" },
+      { lessonTitle: "Gestión de memoria", lessonVideoSource: "" },
+      { lessonTitle: "Sistemas de archivos", lessonVideoSource: "" },
+      { lessonTitle: "Planificación de la CPU", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/hacking-course.jpg",
@@ -97,6 +178,11 @@ const courses = [
       "Explora técnicas de hacking ético, pruebas de penetración y ciberseguridad básica.",
     courseTeacherImage: "/images/teacher2.jpg",
     courseCategory: "Ciberseguridad",
+    lessons: [
+      { lessonTitle: "Fundamentos del hacking ético", lessonVideoSource: "" },
+      { lessonTitle: "Reconocimiento y escaneo", lessonVideoSource: "" },
+      { lessonTitle: "Explotación de vulnerabilidades", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/frontend-dev.jpg",
@@ -106,6 +192,12 @@ const courses = [
       "Domina HTML, CSS moderno, JavaScript y frameworks como Tailwind y Bootstrap.",
     courseTeacherImage: "/images/teacher1.jpg",
     courseCategory: "Frontend",
+    lessons: [
+      { lessonTitle: "HTML5 moderno", lessonVideoSource: "" },
+      { lessonTitle: "CSS con Tailwind y Bootstrap", lessonVideoSource: "" },
+      { lessonTitle: "JavaScript para el frontend", lessonVideoSource: "" },
+      { lessonTitle: "Diseño responsivo avanzado", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/vue-course.jpg",
@@ -115,6 +207,11 @@ const courses = [
       "Aprende Vue.js desde cero, composición de componentes y gestión de estado con Vuex.",
     courseTeacherImage: "/images/teacher3.jpg",
     courseCategory: "Frontend",
+    lessons: [
+      { lessonTitle: "Fundamentos de Vue.js", lessonVideoSource: "" },
+      { lessonTitle: "Componentes y propiedades", lessonVideoSource: "" },
+      { lessonTitle: "Estado global con Vuex", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/react-native.jpg",
@@ -124,6 +221,12 @@ const courses = [
       "Construye aplicaciones móviles multiplataforma con React Native y Expo.",
     courseTeacherImage: "/images/teacher5.jpg",
     courseCategory: "Frontend",
+    lessons: [
+      { lessonTitle: "Introducción a React Native", lessonVideoSource: "" },
+      { lessonTitle: "Navegación y rutas", lessonVideoSource: "" },
+      { lessonTitle: "Consumo de APIs en móviles", lessonVideoSource: "" },
+      { lessonTitle: "Despliegue en Expo", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/ccna-course.jpg",
@@ -133,6 +236,11 @@ const courses = [
       "Prepárate para la certificación CCNA con temas de redes, switches, routers y protocolos.",
     courseTeacherImage: "/images/teacher6.jpg",
     courseCategory: "Redes",
+    lessons: [
+      { lessonTitle: "Conceptos básicos de redes", lessonVideoSource: "" },
+      { lessonTitle: "Configuración de switches", lessonVideoSource: "" },
+      { lessonTitle: "Protocolos de enrutamiento", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/bash-course.jpg",
@@ -142,6 +250,12 @@ const courses = [
       "Escribe scripts en Bash para automatizar tareas en sistemas Linux y Unix.",
     courseTeacherImage: "/images/teacher4.jpg",
     courseCategory: "Sistemas Operativos",
+    lessons: [
+      { lessonTitle: "Sintaxis de Bash básica", lessonVideoSource: "" },
+      { lessonTitle: "Automatización de tareas", lessonVideoSource: "" },
+      { lessonTitle: "Condicionales y bucles", lessonVideoSource: "" },
+      { lessonTitle: "Manejo de archivos en scripts", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/git-course.jpg",
@@ -151,6 +265,11 @@ const courses = [
       "Aprende Git desde cero: commits, ramas, merges, conflictos y buenas prácticas en equipos.",
     courseTeacherImage: "/images/teacher1.jpg",
     courseCategory: "Frontend",
+    lessons: [
+      { lessonTitle: "Introducción a Git y GitHub", lessonVideoSource: "" },
+      { lessonTitle: "Commits y ramas básicas", lessonVideoSource: "" },
+      { lessonTitle: "Resolución de conflictos", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/docker-course.jpg",
@@ -160,6 +279,17 @@ const courses = [
       "Crea contenedores, imágenes y entornos portables para tus aplicaciones con Docker.",
     courseTeacherImage: "/images/teacher7.jpg",
     courseCategory: "Backend",
+    lessons: [
+      { lessonTitle: "Conceptos básicos de Docker", lessonVideoSource: "" },
+      {
+        lessonTitle: "Creación y gestión de contenedores",
+        lessonVideoSource: "",
+      },
+      {
+        lessonTitle: "Docker Compose para multi-contenedores",
+        lessonVideoSource: "",
+      },
+    ],
   },
   {
     imageRoute: "/images/typescript-course.jpg",
@@ -169,6 +299,17 @@ const courses = [
       "Aprende TypeScript paso a paso, desde los tipos básicos hasta programación orientada a objetos y tipado avanzado.",
     courseTeacherImage: "/images/teacher1.jpg",
     courseCategory: "Frontend",
+    lessons: [
+      { lessonTitle: "Tipos básicos y variables", lessonVideoSource: "" },
+      {
+        lessonTitle: "Interfaces y tipos personalizados",
+        lessonVideoSource: "",
+      },
+      {
+        lessonTitle: "Programación orientada a objetos en TypeScript",
+        lessonVideoSource: "",
+      },
+    ],
   },
   {
     imageRoute: "/images/javascript-pro.jpg",
@@ -178,6 +319,15 @@ const courses = [
       "Conviértete en un experto en JavaScript moderno con este curso intensivo desde lo básico hasta técnicas avanzadas.",
     courseTeacherImage: "/images/teacher3.jpg",
     courseCategory: "Frontend",
+    lessons: [
+      { lessonTitle: "Fundamentos de JavaScript", lessonVideoSource: "" },
+      { lessonTitle: "Funciones avanzadas y closures", lessonVideoSource: "" },
+      {
+        lessonTitle: "Programación asíncrona y promesas",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "ES6+ y mejores prácticas", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/python-beginners.jpg",
@@ -187,6 +337,11 @@ const courses = [
       "Aprende desde cero a programar en Python, ideal para quienes inician en el mundo de la programación.",
     courseTeacherImage: "/images/teacher4.jpg",
     courseCategory: "Backend",
+    lessons: [
+      { lessonTitle: "Instalación y primeros pasos", lessonVideoSource: "" },
+      { lessonTitle: "Tipos de datos y variables", lessonVideoSource: "" },
+      { lessonTitle: "Control de flujo y funciones", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/cybersecurity-advanced.jpg",
@@ -196,6 +351,14 @@ const courses = [
       "Explora técnicas avanzadas de defensa, análisis forense y respuesta ante incidentes de seguridad.",
     courseTeacherImage: "/images/teacher2.jpg",
     courseCategory: "Ciberseguridad",
+    lessons: [
+      { lessonTitle: "Análisis forense digital", lessonVideoSource: "" },
+      {
+        lessonTitle: "Defensa contra ataques avanzados",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "Respuesta a incidentes", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/networking-cloud.jpg",
@@ -205,6 +368,11 @@ const courses = [
       "Aprende los fundamentos de redes y cómo se integran con entornos de computación en la nube.",
     courseTeacherImage: "/images/teacher6.jpg",
     courseCategory: "Redes",
+    lessons: [
+      { lessonTitle: "Fundamentos de redes", lessonVideoSource: "" },
+      { lessonTitle: "Servicios en la nube", lessonVideoSource: "" },
+      { lessonTitle: "Integración de redes y cloud", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/vue-advanced.jpg",
@@ -214,6 +382,14 @@ const courses = [
       "Profundiza en Vue.js con composición avanzada de componentes, gestión de rutas y estado.",
     courseTeacherImage: "/images/teacher3.jpg",
     courseCategory: "Frontend",
+    lessons: [
+      {
+        lessonTitle: "Composición avanzada de componentes",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "Gestión de rutas con Vue Router", lessonVideoSource: "" },
+      { lessonTitle: "Estado global con Pinia", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/react-architecture.jpg",
@@ -223,6 +399,14 @@ const courses = [
       "Aprende a estructurar proyectos React escalables con buenas prácticas, testing y manejo de dependencias.",
     courseTeacherImage: "/images/teacher1.jpg",
     courseCategory: "Frontend",
+    lessons: [
+      {
+        lessonTitle: "Estructura y organización del proyecto",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "Testing en React", lessonVideoSource: "" },
+      { lessonTitle: "Manejo de dependencias y hooks", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/linux-advanced.jpg",
@@ -232,6 +416,14 @@ const courses = [
       "Domina administración de servicios, seguridad, y automatización en entornos Linux avanzados.",
     courseTeacherImage: "/images/teacher4.jpg",
     courseCategory: "Sistemas Operativos",
+    lessons: [
+      {
+        lessonTitle: "Administración avanzada de servicios",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "Seguridad en Linux", lessonVideoSource: "" },
+      { lessonTitle: "Automatización con scripts", lessonVideoSource: "" },
+    ],
   },
   {
     imageRoute: "/images/kubernetes-course.jpg",
@@ -241,6 +433,14 @@ const courses = [
       "Aprende a desplegar, escalar y administrar contenedores con Kubernetes desde cero.",
     courseTeacherImage: "/images/teacher7.jpg",
     courseCategory: "Backend",
+    lessons: [
+      { lessonTitle: "Introducción a Kubernetes", lessonVideoSource: "" },
+      {
+        lessonTitle: "Despliegue y escalamiento de aplicaciones",
+        lessonVideoSource: "",
+      },
+      { lessonTitle: "Administración de clústeres", lessonVideoSource: "" },
+    ],
   },
 ];
 
