@@ -27,11 +27,17 @@ import Course from "../../../interfaces/Course";
 export default function AdminDashboard() {
   const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
   const [course, setCourse] = useState<Course | null>(null); //curso vacio al iniico
-  const [search, setSearch] = useState("");
-  const [mainPage, setMainPage] = useState(true);
-  const [categorySearch, setCategorySearch] = useState(false);
-  const [showInput, setShowInput] = useState(true);
-  const [categoryArray, setCategoryArray] = useState<Course[]>([]);
+  const [search, setSearch] = useState(""); //corresponde al valor del input del cuadro de busqueda
+  const [mainPage, setMainPage] = useState(true); //es el estado para mostrar la pagina principal si no se ha buscado o
+  //utilizado uno de los filtros principales
+  const [categorySearch, setCategorySearch] = useState(false); //a su vez que ste es true, el estado de mainPage
+  //debe estar en falso, para asi mostrar un div con los resultados de los filtros
+  const [showInput, setShowInput] = useState(true); //con este estado ocultamos el input
+  //para que no se vea estorboso o haya problemas al usar los filtros de categoria
+  const [categoryArray, setCategoryArray] = useState<Course[]>([]); //gestiona
+  //el estado de las distintas categorias que podemos buscar
+
+  //la etiqueta con la que limpiamos la busqueda y regresamos a mainPage
   const [categorylabel, setCategoryLabel] = useState("");
 
   const searchByWord = (searchText: string) => {

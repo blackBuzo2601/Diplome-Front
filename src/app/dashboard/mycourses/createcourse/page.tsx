@@ -6,6 +6,11 @@ import Image from "next/image";
 
 export default function UploadCourses() {
   const [coverImage, setCoverImage] = useState("/images/noimage.jpg");
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    router.push("/dashboard/mycourses/createcourse/lessonspage");
+  };
 
   const lecciones = [
     "Introducción a JS",
@@ -86,7 +91,11 @@ export default function UploadCourses() {
           </div>
 
           <div className={styles.form_actions}>
-            <button type="submit" className={styles.uploadCourseButton}>
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className={styles.uploadCourseButton}
+            >
               Subir curso
             </button>
           </div>
