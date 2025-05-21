@@ -4,7 +4,7 @@ const continueCourses = [
     courseTitle: "JavaScript Moderno",
     courseTeacherName: "Ana Torres",
     courseDescription:
-      "Domina JavaScript moderno (ES6+) y aprende buenas prácticas para escribir código limpio y eficiente.",
+      "Domina JavaScript moderno ES6 y aprende buenas prácticas para escribir código limpio y eficiente.",
     courseTeacherImage: "/images/teacher3.jpg",
     courseCategory: "Frontend",
   },

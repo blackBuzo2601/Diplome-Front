@@ -23,9 +23,9 @@ export default function UploadCourses() {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    const validTypes = ["image/jpeg"];
+    const validTypes = ["image/jpeg", "image/png"]; // Ya acepta JPG y PNG
     if (!validTypes.includes(file.type)) {
-      alert("Solo se permiten archivos JPG.");
+      alert("Solo se permiten archivos JPG o PNG.");
       event.target.value = "";
       return;
     }
@@ -71,7 +71,7 @@ export default function UploadCourses() {
               <input
                 id="coverImage"
                 type="file"
-                accept="image/jpeg"
+                accept="image/jpeg, image/png"
                 onChange={handleFileChange}
                 style={{ display: "none" }}
               />
@@ -91,15 +91,13 @@ export default function UploadCourses() {
               <label className={styles.subtitle}>Lecciones:</label>
             </div>
             <div className={styles.lecciones_container}>
-              <div className={styles.lecciones_container}>
-                {lecciones.length === 0
-                  ? null
-                  : lecciones.map((leccion, index) => (
-                      <div key={index} className={styles.leccion_item}>
-                        Leccion {index + 1}: {leccion}
-                      </div>
-                    ))}
-              </div>
+              {lecciones.length === 0
+                ? null
+                : lecciones.map((leccion, index) => (
+                    <div key={index} className={styles.leccion_item}>
+                      Leccion {index + 1}: {leccion}
+                    </div>
+                  ))}
             </div>
           </div>
 
