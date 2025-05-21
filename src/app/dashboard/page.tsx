@@ -32,6 +32,7 @@ export default function AdminDashboard() {
   const [categorySearch, setCategorySearch] = useState(false);
   const [showInput, setShowInput] = useState(true);
   const [categoryArray, setCategoryArray] = useState<Course[]>([]);
+  const [categorylabel, setCategoryLabel] = useState("");
 
   const searchByWord = (searchText: string) => {
     searchText.trim() !== "" ? setMainPage(false) : setMainPage(true);
@@ -39,6 +40,7 @@ export default function AdminDashboard() {
   };
 
   const searchByCategory = (category: string) => {
+    setCategoryLabel(category);
     const resultados = courses.filter(
       (elemento) => elemento.courseCategory == category
     );
@@ -314,7 +316,7 @@ export default function AdminDashboard() {
           </div>
         ) : categorySearch == true && mainPage == false ? (
           <div>
-            <h3 className={styles.sectionTitle}>Resultados de búsqueda</h3>
+            <h3 className={styles.sectionTitle}>Cursos de {categorylabel}</h3>
             <div className={styles.recomendationsDiv}>
               {categoryArray.length === 0 ? (
                 <div className={styles.noCoincidencesDiv}>
