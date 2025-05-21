@@ -4,6 +4,7 @@ interface Course {
   courseTeacherName: string;
   courseDescription: string;
   courseTeacherImage: string;
+  courseCategory: string;
 }
 
 export default Course;
