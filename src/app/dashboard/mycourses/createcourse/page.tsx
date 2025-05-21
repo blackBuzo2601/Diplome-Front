@@ -54,10 +54,9 @@ export default function UploadCourses() {
             </div>
             <div className={styles.inputGroup}>
               <label className={styles.subtitle}>Descripción:</label>
-              <input
-                type="text"
+              <textarea
                 placeholder="Descripción"
-                className={styles.credentialsInput}
+                className={styles.textAreaDescription}
               />
             </div>
           </div>
@@ -83,21 +82,6 @@ export default function UploadCourses() {
                 height={100}
                 className={styles.imagen_preview}
               />
-            </div>
-          </div>
-
-          <div className={styles.lecciones_section}>
-            <div className={styles.inputGroup}>
-              <label className={styles.subtitle}>Lecciones:</label>
-            </div>
-            <div className={styles.lecciones_container}>
-              {lecciones.length === 0
-                ? null
-                : lecciones.map((leccion, index) => (
-                    <div key={index} className={styles.leccion_item}>
-                      Leccion {index + 1}: {leccion}
-                    </div>
-                  ))}
             </div>
           </div>
 
