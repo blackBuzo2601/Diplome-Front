@@ -7,20 +7,41 @@ import ChangePasswordModal from "../../../../components/ChangePasswordModal";
 export default function ChangePasswordPage() {
   const [password, setPassword] = useState(""); //estados para manejar contraseña y confirmar
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [modal, setModal] = useState(false);
+  const [modalPassword, setModalPassword] = useState(false);
+  const [title, setTitle] = useState("");
+  const [counter, setCounter] = useState(3);
+  const [isCounterVisible, setIsCounterVisible] = useState(false);
+  const [isPasswordChanged, setIsPasswordChanged] = useState(false);
 
   //esto lo voy a pasar al Modal
   const goToLoginPage = () => {
-    setModal(false);
-    router.push("/recover/changepassword");
+    setModalPassword(false);
+
+    router.push("/");
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== repeatPassword) {
-      alert("no");
+      setTitle("Las contraseñas no coinciden");
+      setModalPassword(true);
+      console.log("seteado");
+      console.log(modalPassword);
     } else {
-      router.push("/");
+      setIsPasswordChanged(true);
+      setModalPassword(true);
+      setTitle("¡Contraseña cambiada con éxito!");
+      setIsCounterVisible(true);
+      let i = 2;
+      const interval = setInterval(() => {
+        setCounter(i);
+        if (i === 0) {
+          clearInterval(interval);
+          setCounter(0);
+          router.push("/");
+        }
+        i--;
+      }, 1000);
     }
   };
 
@@ -29,7 +50,7 @@ export default function ChangePasswordPage() {
     <div className={styles.mainDiv}>
       <form onSubmit={onSubmit} className={styles.form}>
         <p className={styles.mainTitle}>Cambiar contraseña</p>
-        <p className={styles.subtitle}>Recupera tu contraseña fácilmente</p>
+        <p className={styles.subtitle}>Introduce tu nueva contraseña</p>
 
         <input
           type="password"
@@ -53,6 +74,15 @@ export default function ChangePasswordPage() {
           Confirmar cambio
         </button>
       </form>
+      <ChangePasswordModal
+        passwordChanged={isPasswordChanged}
+        showCounter={isCounterVisible}
+        title={title}
+        isOpen={modalPassword}
+        onClose={() => setModalPassword(false)}
+        onConfirm={goToLoginPage}
+        counter={counter}
+      />
     </div>
   );
 }
