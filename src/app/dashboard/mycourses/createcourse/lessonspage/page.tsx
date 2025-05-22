@@ -75,14 +75,29 @@ export default function LessonsPage() {
       <div className={styles.father}>
         <div className={styles.lessonsContainer}>
           {lessonSearch ? (
-            lessonsArray.map((leccion) => (
-              <div className={styles.singleLesson}>
-                <p className={styles.singleLessonTitle}>
-                  {leccion.lessonTitle}
+            lessonsArray.length === 0 ? (
+              <div className={styles.noLessonsDiv}>
+                <p className={styles.noLessonsText}>
+                  No se encontraron coincidencias
                 </p>
+                <Image
+                  src={"/images/warning.png"}
+                  alt="warning icon"
+                  width={200}
+                  height={200}
+                  className={styles.noLessonsImage}
+                />
               </div>
-            ))
-          ) : singlecourse.lessons.length == 0 ? (
+            ) : (
+              lessonsArray.map((leccion, index) => (
+                <div key={index} className={styles.singleLesson}>
+                  <p className={styles.singleLessonTitle}>
+                    {leccion.lessonTitle}
+                  </p>
+                </div>
+              ))
+            )
+          ) : singlecourse.lessons.length === 0 ? (
             <div className={styles.noLessonsDiv}>
               <p className={styles.noLessonsText}>
                 Tu curso no tiene ninguna lección. Comienza creando una lección
@@ -97,8 +112,8 @@ export default function LessonsPage() {
               />
             </div>
           ) : (
-            singlecourse.lessons.map((leccion: Lesson, index) => (
-              <div className={styles.singleLesson}>
+            singlecourse.lessons.map((leccion: Lesson, index: number) => (
+              <div key={index} className={styles.singleLesson}>
                 <p className={styles.singleLessonTitle}>
                   Lección {index + 1}: {leccion.lessonTitle}
                 </p>
