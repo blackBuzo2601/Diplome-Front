@@ -17,12 +17,16 @@ import Link from "next/link";
 import courses from "../../../mock/courses";
 import recommendedCourses from "../../../mock/recommended";
 import continueCourses from "../../../mock/continueCourses";
-import { useEffect, useRef } from "react";
 
 import { useState } from "react";
 import CourseModal from "../../../components/CourseModal";
 import { useRouter } from "next/navigation";
 import Course from "../../../interfaces/Course";
+
+import { useEffect, useRef } from "react";
+import { useAuth } from "../../hooks/useAuth.js";
+
+import { ClipLoader } from "react-spinners";
 
 export default function AdminDashboard() {
   const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
@@ -39,6 +43,8 @@ export default function AdminDashboard() {
 
   //la etiqueta con la que limpiamos la busqueda y regresamos a mainPage
   const [categorylabel, setCategoryLabel] = useState("");
+
+  const { logout, currentUser } = useAuth();
 
   const searchByWord = (searchText: string) => {
     searchText.trim() !== "" ? setMainPage(false) : setMainPage(true);
@@ -98,7 +104,8 @@ export default function AdminDashboard() {
     setModalOpen(false);
     router.push("/dashboard/coursepage");
   };
-  return (
+
+  return currentUser?.first_name ? (
     <div className={styles.dashboard}>
       {/* Barra/Menu lateral */}
 
@@ -120,7 +127,7 @@ export default function AdminDashboard() {
             width={200}
             height={65}
           />
-          <p className={styles.sidebarUserName}>Elian Buzo</p>
+			<p className={styles.sidebarUserName}>{`${currentUser.first_name} ${currentUser.last_name}`}</p>
         </div>
         <nav className={styles.sidebarNav}>
           <Link href="/dashboard/" className={styles.sidebarLink}>
@@ -140,7 +147,7 @@ export default function AdminDashboard() {
             <Settings size={30} /> Ajustes
           </Link>
         </nav>
-        <Link href="/" className={styles.logout}>
+        <Link href="/" onClick={() => logout() } className={styles.logout}>
           <LogOut size={30} /> Cerrar Sesión
         </Link>
       </aside>
@@ -450,5 +457,10 @@ export default function AdminDashboard() {
         ></CourseModal>
       </main>
     </div>
-  );
+  ) 
+  :
+  <div>
+	<ClipLoader color="#4f46e5" />
+  </div> 
+  ;
 }
