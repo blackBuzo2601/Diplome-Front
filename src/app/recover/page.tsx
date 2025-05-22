@@ -7,6 +7,7 @@ import Link from "next/link";
 export default function Recover() {
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
+  const [emailExists, setEmailExists] = useState(true); //para el backend, si el usuario no existe, mostrar un modal diferente
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
@@ -42,6 +43,7 @@ export default function Recover() {
         </div>
       </div>
       <RecoverModal
+        emailExists={emailExists}
         isOpen={modalOpen}
         onClose={closeModal}
         onConfirm={goToChangePasswordPage}

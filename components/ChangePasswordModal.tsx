@@ -59,11 +59,7 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({
             </p>
           )}
         </div>
-        {passwordChanged ? (
-          <button onClick={onConfirm} className={styles.goModalButton}>
-            Iniciar sesión
-          </button>
-        ) : (
+        {passwordChanged ? null : (
           <button onClick={onClose} className={styles.goModalButton}>
             Volver a intentar
           </button>
