@@ -47,9 +47,11 @@ export default function MyCourses() {
   const goToCreateCoursePage = () => {
     router.push("/dashboard/mycourses/createcourse");
   };
-  const goToEditCoursePage = () => {
+  const goToEditCoursePage = (params: any) => {
+    console.log("imprimiendo params:");
+    console.log(params);
     setModalOpen(false);
-    router.push("/dashboard/mycourses/editcourse");
+    router.push("/dashboard/mycourses/createcourse/lessonspage");
   };
 
   return (
@@ -215,7 +217,7 @@ export default function MyCourses() {
           course={course}
           isOpen={modalOpen}
           onClose={closeModal}
-          onConfirm={goToEditCoursePage}
+          onConfirm={() => goToEditCoursePage(course)} //ir a editar curso, ocupamos mandar los parametros
         ></CourseModal>
       </main>
     </div>

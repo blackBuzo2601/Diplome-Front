@@ -22,7 +22,7 @@ export default function LessonsPage() {
   const [isVisibleSearchContainer, setIsVisibleSearchContainer] =
     useState(false);
 
-  let existingCourse = false; //usaremos esta variable para cambiar el flujo de los estados, si es un curso
+  let existingCourse: boolean; //usaremos esta variable para cambiar el flujo de los estados, si es un curso
   //que estamos recien creando, o si estamos abriendo uno para editarlo
 
   useEffect(() => {
