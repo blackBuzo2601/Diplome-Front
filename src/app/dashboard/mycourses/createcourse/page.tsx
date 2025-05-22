@@ -6,15 +6,20 @@ import Image from "next/image";
 
 export default function UploadCourses() {
   const [coverImage, setCoverImage] = useState("/images/noimage.jpg");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (title && description !== "") {
+      router.push("/dashboard/mycourses/createcourse/lessonspage");
+    }
+  };
 
   const router = useRouter();
 
   const goToMyCoursesPage = () => {
     router.push("/dashboard/mycourses");
-  };
-
-  const goToLessonsPage = () => {
-    router.push("/dashboard/mycourses/createcourse/lessonspage");
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +45,7 @@ export default function UploadCourses() {
       <div className={styles.form}>
         <h2 className={styles.mainTitle}>Crear nuevo curso</h2>
 
-        <form className={styles.restInformationContainer}>
+        <form onSubmit={onSubmit} className={styles.restInformationContainer}>
           <div className={styles.credentialsDiv}>
             <div className={styles.inputGroup}>
               <label className={styles.subtitle}>Título:</label>
@@ -49,6 +54,7 @@ export default function UploadCourses() {
                 type="text"
                 placeholder="Título"
                 className={styles.credentialsInput}
+                onChange={(e) => setTitle(e.target.value)}
               />
             </div>
             <div className={styles.inputGroup}>
@@ -57,6 +63,7 @@ export default function UploadCourses() {
                 required
                 placeholder="Descripción"
                 className={styles.textAreaDescription}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </div>
           </div>
@@ -86,11 +93,7 @@ export default function UploadCourses() {
           </div>
 
           <div className={styles.form_actions}>
-            <button
-              onClick={goToLessonsPage}
-              type="submit"
-              className={styles.uploadCourseButton}
-            >
+            <button type="submit" className={styles.uploadCourseButton}>
               Subir curso
             </button>
           </div>
