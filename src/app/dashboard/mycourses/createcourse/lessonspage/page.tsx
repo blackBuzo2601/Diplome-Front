@@ -4,15 +4,26 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import singlecourse from "../../../../../../mock/singlecourse";
 import Course from "../../../../../../interfaces/Course";
 import { Lesson } from "../../../../../../interfaces/Course";
+type NewCourseProps = {
+  searchParams: { title: string; description: string; coverImage: string };
+};
 export default function LessonsPage() {
+  const searchParams = useSearchParams();
+  const title = searchParams.get("title") || "";
+  const description = searchParams.get("description") || "";
+  const coverImage = searchParams.get("coverImage") || "";
   const [search, setSearch] = useState("");
   const [lessonSearch, setLessonSearch] = useState(false);
   const [lessonsArray, setLessonsArray] = useState<Lesson[]>([]);
   const [isVisibleSearchContainer, setIsVisibleSearchContainer] =
     useState(false);
+
+  let existingCourse = false; //usaremos esta variable para cambiar el flujo de los estados, si es un curso
+  //que estamos recien creando, o si estamos abriendo uno para editarlo
 
   useEffect(() => {
     if (singlecourse.lessons.length > 0) {
@@ -77,9 +88,8 @@ export default function LessonsPage() {
           </div>
         ) : null}
       </div>
-      <p className={styles.mainTitle}>
-        Lecciones de tu curso: {singlecourse.courseTitle}
-      </p>
+      <p className={styles.mainTitle}>Lecciones de tu curso: {title}</p>
+
       <div className={styles.addLessonDiv}>
         <button className={styles.addLessonButton}>Agregar lección</button>
       </div>

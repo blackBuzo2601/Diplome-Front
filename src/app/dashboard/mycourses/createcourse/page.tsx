@@ -12,7 +12,14 @@ export default function UploadCourses() {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (title && description !== "") {
-      router.push("/dashboard/mycourses/createcourse/lessonspage");
+      const query = new URLSearchParams({
+        title,
+        description,
+      }); //mandaremos los parametros en un query string para leeerlos en la siguiente ruta
+
+      router.push(
+        `/dashboard/mycourses/createcourse/lessonspage?${query.toString()}`
+      );
     }
   };
 
