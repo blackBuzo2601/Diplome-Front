@@ -92,6 +92,7 @@ export default function AdminDashboard() {
   }, []);
   //--------------------------------------------------------------------
   //Concluye codigo necesario para animacion
+  
   const getCourseInfo = (course: Course) => {
     setCourse(course);
     openModal();
@@ -133,7 +134,7 @@ export default function AdminDashboard() {
           <Link href="/dashboard/" className={styles.sidebarLink}>
             <LucideHome size={30} /> Inicio
           </Link>
-          {userRole ? (
+          {currentUser.role === "0x02" ? (
             <Link href="/dashboard/mycourses" className={styles.sidebarLink}>
               <BookOpenText size={30} /> Mis cursos
             </Link>
