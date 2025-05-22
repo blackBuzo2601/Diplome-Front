@@ -6,22 +6,15 @@ import Image from "next/image";
 
 export default function UploadCourses() {
   const [coverImage, setCoverImage] = useState("/images/noimage.jpg");
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
 
-    router.push("/dashboard/mycourses/createcourse/lessonspage");
-  };
-
-  const lecciones = [
-    "Introducción a JS",
-    "Objetos literales",
-    "Funciones",
-    "Funciones de flecha",
-  ];
   const router = useRouter();
 
   const goToMyCoursesPage = () => {
     router.push("/dashboard/mycourses");
+  };
+
+  const goToLessonsPage = () => {
+    router.push("/dashboard/mycourses/createcourse/lessonspage");
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,13 +38,14 @@ export default function UploadCourses() {
   return (
     <div className={styles.mainDiv}>
       <div className={styles.form}>
-        <h2 className={styles.mainTitle}>Crear Nuevo Curso</h2>
+        <h2 className={styles.mainTitle}>Crear nuevo curso</h2>
 
         <form className={styles.restInformationContainer}>
           <div className={styles.credentialsDiv}>
             <div className={styles.inputGroup}>
               <label className={styles.subtitle}>Título:</label>
               <input
+                required
                 type="text"
                 placeholder="Título"
                 className={styles.credentialsInput}
@@ -60,6 +54,7 @@ export default function UploadCourses() {
             <div className={styles.inputGroup}>
               <label className={styles.subtitle}>Descripción:</label>
               <textarea
+                required
                 placeholder="Descripción"
                 className={styles.textAreaDescription}
               />
@@ -92,7 +87,7 @@ export default function UploadCourses() {
 
           <div className={styles.form_actions}>
             <button
-              onClick={handleSubmit}
+              onClick={goToLessonsPage}
               type="submit"
               className={styles.uploadCourseButton}
             >

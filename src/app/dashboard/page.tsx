@@ -225,8 +225,8 @@ export default function AdminDashboard() {
                   <Image
                     src={elemento.imageRoute}
                     alt="course image"
-                    width={200}
-                    height={100}
+                    width={400}
+                    height={200}
                     className={styles.courseCardImage}
                   />
                   <p className={styles.courseTitle}>{elemento.courseTitle}</p>

@@ -1,5 +1,7 @@
 import styles from "./page.module.css";
+import React, { useState } from "react";
+import Image from "next/image";
 
-export default function EditCourse() {
-  return <div className={styles.main}>Esta es la lessonspage</div>;
+export default function LessonsPage() {
+  return <div className={styles.mainDiv}></div>;
 }

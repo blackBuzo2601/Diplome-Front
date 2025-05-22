@@ -1,3 +1,26 @@
-.main {
-  background-color: yellow;
+.mainDiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.addLessonDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: purple;
+}
+
+.addLessonButton {
+  border-radius: 20px;
+  padding: 2vh 2vw;
+  background: linear-gradient(to right, #5cd2ff, #004aad);
+  color: white;
+  font-family: "The Seasons", serif;
+  font-size: 1.2vw;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }

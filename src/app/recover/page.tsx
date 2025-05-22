@@ -10,9 +10,9 @@ export default function Recover() {
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
-  const goToLoginPage = () => {
+  const goToChangePasswordPage = () => {
     setModalOpen(false);
-    router.push("/");
+    router.push("/recover/changepassword");
   };
 
   //colocamos como any para que no chille por mientras
@@ -44,7 +44,7 @@ export default function Recover() {
       <RecoverModal
         isOpen={modalOpen}
         onClose={closeModal}
-        onConfirm={goToLoginPage}
+        onConfirm={goToChangePasswordPage}
       />
     </form>
   );
