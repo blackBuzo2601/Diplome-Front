@@ -28,20 +28,17 @@ export default function LessonsPage() {
       <div className={styles.addLessonDiv}>
         <button className={styles.addLessonButton}>Agregar lección</button>
       </div>
+      {/*este father basicamente es un row para que no se rompa el diseño del scrollbar, ya que como tiene
+      border radius, el scrollbar pareciera que está afuera. entonces este div vacio arregla eso */}
       <div className={styles.father}>
         <div className={styles.lessonsContainer}>
-          <p>hola</p>
-          <p>hola</p>
-          <p>hola</p>
-          <p>hola</p>
-          <p>hola</p>
-          <p>hola</p>
-          <p>hola</p>
-          <p>hola</p>
-          <p>hola</p>
-          <p>hola</p>
-          <p>hola</p>
-          <p>hola</p>
+          <div className={styles.singleLesson}>
+            <p className={styles.singleLessonTitle}>
+              Introducción al lenguaje de javascript Introducción al lenguaje de
+              javascript Introducción al lenguaje de javascript Introducción al
+              lenguaje de javascript Introducción al lenguaje de javascript
+            </p>
+          </div>
         </div>
         <div className={styles.emptyDiv}></div>
       </div>

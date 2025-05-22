@@ -35,7 +35,7 @@
   font-family: "The Seasons", serif;
   font-size: 2.5vw;
   color: #001623;
-  margin-top: 2s.5vh;
+  margin-top: 2.5vh;
   text-align: center;
 }
 
@@ -105,9 +105,8 @@
   flex-direction: column;
   align-items: center;
   gap: 30px;
-
-  padding-bottom: 3vh;
-  padding-left: 2vw;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
   overflow-y: auto;
   scrollbar-gutter: stable;
   border-top-left-radius: 30px;
@@ -123,4 +122,31 @@
 .lessonsContainer::-webkit-scrollbar-thumb {
   background-color: #283f4f;
   border-radius: 5px;
+}
+
+.singleLesson {
+  display: flex;
+  align-items: center;
+  padding-left: 2vw;
+  width: 80%;
+  height: 8vh;
+  border-radius: 30px;
+  background-color: white;
+}
+
+.singleLessonTitle {
+  font-family: "The Seasons", serif;
+  font-size: 1.8rem;
+  color: #001623;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.singleLesson:hover {
+  background-color: #1e6fbd;
+}
+.singleLessonTitle:hover {
+  color: white;
 }
