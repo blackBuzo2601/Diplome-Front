@@ -1,4 +1,4 @@
-interface Course {
+export interface Course {
   imageRoute: string;
   courseTitle: string;
   courseTeacherName: string;
@@ -8,7 +8,7 @@ interface Course {
   lessons: Lesson[];
 }
 
-interface Lesson {
+export interface Lesson {
   lessonTitle: string;
   lessonVideoSource: string;
 }

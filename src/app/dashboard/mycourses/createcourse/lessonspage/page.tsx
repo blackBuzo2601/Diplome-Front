@@ -5,11 +5,11 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import singlecourse from "../../../../../../mock/singlecourse";
 import Course from "../../../../../../interfaces/Course";
-
+import { Lesson } from "../../../../../../interfaces/Course";
 export default function LessonsPage() {
   const [search, setSearch] = useState("");
   const [lessonSearch, setLessonSearch] = useState(false);
-  const [lessonsArray, setLessonsArray] = useState([]);
+  const [lessonsArray, setLessonsArray] = useState<Lesson[]>([]);
 
   const router = useRouter();
 
@@ -20,6 +20,19 @@ export default function LessonsPage() {
   const searchByWord = (text: string) => {
     if (text !== "") {
       setLessonSearch(true);
+      const arrayWithLessonNumber = singlecourse.lessons.map(
+        (elemento, index) => ({
+          ...elemento,
+          lessonTitle: `Lección: ${index + 1}: ${elemento.lessonTitle}`,
+        })
+      );
+
+      const results = arrayWithLessonNumber.filter((elemento) =>
+        elemento.lessonTitle.toLowerCase().includes(text.toLowerCase())
+      );
+      setLessonsArray(results);
+    } else {
+      setLessonSearch(false);
     }
   };
 
@@ -55,13 +68,21 @@ export default function LessonsPage() {
       border radius, el scrollbar pareciera que está afuera. entonces este div vacio arregla eso */}
       <div className={styles.father}>
         <div className={styles.lessonsContainer}>
-          {singlecourse.lessons.map((leccion, index) => (
-            <div className={styles.singleLesson}>
-              <p className={styles.singleLessonTitle}>
-                Lección {index + 1}: {leccion.lessonTitle}
-              </p>
-            </div>
-          ))}
+          {lessonSearch
+            ? lessonsArray.map((leccion, index) => (
+                <div className={styles.singleLesson}>
+                  <p className={styles.singleLessonTitle}>
+                    {leccion.lessonTitle}
+                  </p>
+                </div>
+              ))
+            : singlecourse.lessons.map((leccion, index) => (
+                <div className={styles.singleLesson}>
+                  <p className={styles.singleLessonTitle}>
+                    Lección {index + 1}: {leccion.lessonTitle}
+                  </p>
+                </div>
+              ))}
         </div>
         <div className={styles.emptyDiv}></div>
       </div>
