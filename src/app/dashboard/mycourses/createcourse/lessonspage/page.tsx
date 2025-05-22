@@ -18,15 +18,21 @@ export default function LessonsPage() {
   };
 
   const searchByWord = (text: string) => {
-    if (text !== "") {
+    if (text.trim() !== "") {
       setLessonSearch(true);
-      const arrayWithLessonNumber = singlecourse.lessons.map(
-        (elemento, index) => ({
-          ...elemento,
-          lessonTitle: `Lección: ${index + 1}: ${elemento.lessonTitle}`,
-        })
-      );
 
+      //tuve que poner esta pinche linea porque si no no me dejaba hacer el map porque no estaba seguro
+      //de si elemento es un objeto. Como lecciones inicialmente va a estar vacio, tiene que haber
+      //este caso de uso
+      const lessons: Lesson[] = singlecourse.lessons ?? []; //si no tiene nada, lo dejamos como un arreglo vacio
+
+      //asigno un número de lección en orden a cada lección
+      const arrayWithLessonNumber = lessons.map((elemento, index) => ({
+        ...elemento,
+        lessonTitle: `Lección ${index + 1}: ${elemento.lessonTitle}`,
+      }));
+      //finalmente hago la busqueda por palabra, manteniendo el numero de leccion original
+      //y seteando el resultado al estado de lessonsArray
       const results = arrayWithLessonNumber.filter((elemento) =>
         elemento.lessonTitle.toLowerCase().includes(text.toLowerCase())
       );
@@ -69,14 +75,14 @@ export default function LessonsPage() {
       <div className={styles.father}>
         <div className={styles.lessonsContainer}>
           {lessonSearch
-            ? lessonsArray.map((leccion, index) => (
+            ? lessonsArray.map((leccion) => (
                 <div className={styles.singleLesson}>
                   <p className={styles.singleLessonTitle}>
                     {leccion.lessonTitle}
                   </p>
                 </div>
               ))
-            : singlecourse.lessons.map((leccion, index) => (
+            : singlecourse.lessons.map((leccion: Lesson, index) => (
                 <div className={styles.singleLesson}>
                   <p className={styles.singleLessonTitle}>
                     Lección {index + 1}: {leccion.lessonTitle}
