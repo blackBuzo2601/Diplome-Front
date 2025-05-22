@@ -1,6 +1,7 @@
 "use client";
 import styles from "./page.module.css";
 import React, { useState } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import singlecourse from "../../../../../../mock/singlecourse";
@@ -10,6 +11,16 @@ export default function LessonsPage() {
   const [search, setSearch] = useState("");
   const [lessonSearch, setLessonSearch] = useState(false);
   const [lessonsArray, setLessonsArray] = useState<Lesson[]>([]);
+  const [isVisibleSearchContainer, setIsVisibleSearchContainer] =
+    useState(false);
+
+  useEffect(() => {
+    if (singlecourse.lessons.length > 0) {
+      setIsVisibleSearchContainer(true);
+    } else {
+      setIsVisibleSearchContainer(false);
+    }
+  }, []);
 
   const router = useRouter();
 
@@ -45,24 +56,26 @@ export default function LessonsPage() {
   return (
     <div className={styles.mainDiv}>
       <div className={styles.searchContainer}>
-        <div className={styles.inputRow}>
-          <Image
-            src={"/images/lupa.png"}
-            alt="user example"
-            width={40}
-            height={40}
-          />
-          <input
-            onChange={(e) => {
-              const text = e.target.value;
-              setSearch(text);
-              searchByWord(text);
-            }}
-            type="text"
-            placeholder="Buscar una lección"
-            className={styles.searchInput}
-          />
-        </div>
+        {isVisibleSearchContainer ? (
+          <div className={styles.inputRow}>
+            <Image
+              src={"/images/lupa.png"}
+              alt="user example"
+              width={40}
+              height={40}
+            />
+            <input
+              onChange={(e) => {
+                const text = e.target.value;
+                setSearch(text);
+                searchByWord(text);
+              }}
+              type="text"
+              placeholder="Buscar una lección"
+              className={styles.searchInput}
+            />
+          </div>
+        ) : null}
       </div>
       <p className={styles.mainTitle}>
         Lecciones de tu curso: {singlecourse.courseTitle}
