@@ -28,7 +28,6 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const response = await axios.post('http://localhost:5005/diplome/auth/login', { email, password },  { withCredentials: true });
-	  console.log(response.data);
       const { user } = response.data;
 
       setCurrentUser(user);
@@ -59,9 +58,7 @@ export const AuthProvider = ({ children }) => {
   const getUserData = async () => {
     try {
 		const response = await axios.get('http://localhost:5005/diplome/user', { withCredentials: true });
-		console.log(response.data);
 		const { user } = response.data;
-		('/dashboard');
 		setCurrentUser(user);
 
     } catch (error) {
