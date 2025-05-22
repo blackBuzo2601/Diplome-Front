@@ -74,21 +74,37 @@ export default function LessonsPage() {
       border radius, el scrollbar pareciera que está afuera. entonces este div vacio arregla eso */}
       <div className={styles.father}>
         <div className={styles.lessonsContainer}>
-          {lessonSearch
-            ? lessonsArray.map((leccion) => (
-                <div className={styles.singleLesson}>
-                  <p className={styles.singleLessonTitle}>
-                    {leccion.lessonTitle}
-                  </p>
-                </div>
-              ))
-            : singlecourse.lessons.map((leccion: Lesson, index) => (
-                <div className={styles.singleLesson}>
-                  <p className={styles.singleLessonTitle}>
-                    Lección {index + 1}: {leccion.lessonTitle}
-                  </p>
-                </div>
-              ))}
+          {lessonSearch ? (
+            lessonsArray.map((leccion) => (
+              <div className={styles.singleLesson}>
+                <p className={styles.singleLessonTitle}>
+                  {leccion.lessonTitle}
+                </p>
+              </div>
+            ))
+          ) : singlecourse.lessons.length == 0 ? (
+            <div className={styles.noLessonsDiv}>
+              <p className={styles.noLessonsText}>
+                Tu curso no tiene ninguna lección. Comienza creando una lección
+                ahora
+              </p>
+              <Image
+                src={"/images/warning.png"}
+                alt="warning icon"
+                width={200}
+                height={200}
+                className={styles.noLessonsImage}
+              />
+            </div>
+          ) : (
+            singlecourse.lessons.map((leccion: Lesson, index) => (
+              <div className={styles.singleLesson}>
+                <p className={styles.singleLessonTitle}>
+                  Lección {index + 1}: {leccion.lessonTitle}
+                </p>
+              </div>
+            ))
+          )}
         </div>
         <div className={styles.emptyDiv}></div>
       </div>

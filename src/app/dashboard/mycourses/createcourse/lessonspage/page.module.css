@@ -174,3 +174,25 @@
 .singleLessonTitle:hover {
   color: white;
 }
+
+.noLessonsDiv {
+  background-color: transparent;
+
+  width: 50%;
+  height: 60%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 20px;
+}
+.noLessonsText {
+  text-align: center;
+  align-items: center;
+  font-weight: 300;
+  font-size: 1.8rem;
+}
+
+.noLessonsImage {
+  width: 30%;
+  height: 60%;
+}
