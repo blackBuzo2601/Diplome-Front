@@ -16,8 +16,7 @@ export default function Recover() {
     router.push("/recover/changepassword");
   };
 
-  //colocamos como any para que no chille por mientras
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     openModal();
   };

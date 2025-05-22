@@ -10,8 +10,7 @@ export default function Register() {
   const [repeatPassword, setRepeatPassword] = useState("");
   const router = useRouter();
 
-  //por mientras pongo este event como any, para que no chille
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (password !== repeatPassword) {
