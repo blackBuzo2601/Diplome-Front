@@ -13,22 +13,44 @@
   display: flex;
   flex-direction: row;
   padding-left: 8vw;
-  margin-top: 1vh;
 }
 
 .addLessonButton {
   border-radius: 20px;
   padding: 1.5vh 1.5vw;
+  width: 15vw;
+
   background: linear-gradient(to right, #5cd2ff, #004aad);
   color: white;
   font-family: "The Seasons", serif;
-  font-size: 1.4vw;
+  font-size: 1.6vw;
   border: none;
   outline: none;
   cursor: pointer;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 .addLessonButton:hover {
   background: #1e6fbd;
+}
+
+.goBackButton {
+  border-radius: 20px;
+  padding: 1.5vh 1.5vw;
+  width: 15vw;
+
+  background: linear-gradient(to right, #f0f0f0, #888888);
+  color: white;
+  font-family: "The Seasons", serif;
+  font-size: 1.6vw;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.goBackButton:hover {
+  background: #aac8de;
+  color: #f0f0f0;
 }
 
 .mainTitle {
@@ -43,7 +65,7 @@
   padding-left: 12vw;
   margin-top: 1.8vh;
   width: 100%;
-  height: 8vh;
+  height: 6vh;
   display: flex;
   flex-direction: row;
 }
@@ -82,7 +104,7 @@
   padding-top: 2vh;
   box-sizing: border-box;
   width: 100%;
-  height: 68vh;
+  height: 66vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -99,14 +121,14 @@
 }
 .lessonsContainer {
   width: 80%;
-  height: 100%;
+  height: 98%;
   background-color: #aac8de;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
   overflow-y: auto;
   scrollbar-gutter: stable;
   border-top-left-radius: 30px;
@@ -125,6 +147,8 @@
 }
 
 .singleLesson {
+  cursor: pointer;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   padding-left: 2vw;
@@ -135,7 +159,7 @@
 }
 
 .singleLessonTitle {
-  font-family: "The Seasons", serif;
+  font-family: "Montserrat", serif;
   font-size: 1.8rem;
   color: #001623;
   white-space: nowrap;
