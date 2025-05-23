@@ -33,6 +33,7 @@ const CourseModal: React.FC<CourseModalProps> = ({
           className={styles.modalCourseImage}
           width={200}
           height={100}
+          unoptimized
         />
         <p className={styles.modalCourseName}>{course.courseTitle}</p>
         <div className={styles.modalCourseDescDiv}>

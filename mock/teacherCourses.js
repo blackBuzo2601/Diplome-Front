@@ -1,6 +1,7 @@
 const teacherCourses = [
   {
-    imageRoute: "/images/nextjs-course.jpg",
+    imageRoute:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDBH2XQgc-eI2ad6ghc5-13ZaQlSPpiLuLLQ&s",
     courseTitle: "Desarrollo Web con Next.js",
     courseTeacherName: "Laura Mendoza",
     courseDescription:
@@ -17,7 +18,8 @@ const teacherCourses = [
     ],
   },
   {
-    imageRoute: "/images/frontend-dev.jpg",
+    imageRoute:
+      "https://codigofacilito.com/system/courses/thumbnails/000/000/186/original/thumb-web.png?1644082720",
     courseTitle: "Desarrollo Frontend Profesional",
     courseTeacherName: "Laura Mendoza",
     courseDescription:
@@ -32,7 +34,8 @@ const teacherCourses = [
     ],
   },
   {
-    imageRoute: "/images/git-course.jpg",
+    imageRoute:
+      "https://ciberninjas.com/wp-content/uploads/2019/12/git-github.webp",
     courseTitle: "Control de Versiones con Git",
     courseTeacherName: "Laura Mendoza",
     courseDescription:
@@ -46,7 +49,7 @@ const teacherCourses = [
     ],
   },
   {
-    imageRoute: "/images/typescript-course.jpg",
+    imageRoute: "https://i.ytimg.com/vi/e45Yhgh4INc/maxresdefault.jpg",
     courseTitle: "TypeScript desde Cero",
     courseTeacherName: "Laura Mendoza",
     courseDescription:
@@ -66,7 +69,8 @@ const teacherCourses = [
     ],
   },
   {
-    imageRoute: "/images/react-architecture.jpg",
+    imageRoute:
+      "https://i.ytimg.com/vi/wFnQiZmca5A/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCpQPVtXrXGu8N__LrhW0G5vvybWQ",
     courseTitle: "Arquitectura de Proyectos React",
     courseTeacherName: "Laura Mendoza",
     courseDescription:

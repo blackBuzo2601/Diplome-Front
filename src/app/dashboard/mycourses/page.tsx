@@ -183,6 +183,7 @@ export default function MyCourses() {
                     alt="course image"
                     width={200}
                     height={100}
+                    unoptimized
                     className={styles.courseCardImage}
                   />
                   <p className={styles.courseTitle}>{elemento.courseTitle}</p>
