@@ -206,6 +206,7 @@ export default function MyCourses() {
                     alt="warning icon"
                     width={200}
                     height={200}
+                    unoptimized
                     className={styles.noCoincidencesImage}
                   />
                 </div>
@@ -227,6 +228,7 @@ export default function MyCourses() {
                         alt="course image"
                         width={200}
                         height={100}
+                        unoptimized
                         className={styles.courseCardImage}
                       />
                       <p className={styles.courseTitle}>
