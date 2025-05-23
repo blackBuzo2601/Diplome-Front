@@ -3,7 +3,6 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from '../hooks/useAuth.js'
-import { AuthProvider } from "@/context/AuthContext";
 import { useState } from "react";
 
 export default function Home() {

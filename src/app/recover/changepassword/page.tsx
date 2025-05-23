@@ -2,8 +2,12 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { useSearchParams } from 'next/navigation';
 import { useRouter } from "next/navigation";
 import ChangePasswordModal from "../../../../components/ChangePasswordModal";
+
+
+
 export default function ChangePasswordPage() {
   const [password, setPassword] = useState(""); //estados para manejar contraseña y confirmar
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -16,7 +20,6 @@ export default function ChangePasswordPage() {
   //esto lo voy a pasar al Modal
   const goToLoginPage = () => {
     setModalPassword(false);
-
     router.push("/");
   };
 

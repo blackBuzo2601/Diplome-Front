@@ -9,6 +9,7 @@ export default function Recover() {
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
   const [emailExists, setEmailExists] = useState(true); //para el backend, si el usuario no existe, mostrar un modal diferente
+const [email, setEmail] = useState('')
 
   const { resetPassword } = useAuth()
 
@@ -21,7 +22,8 @@ export default function Recover() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-	const isEmailSent = await resetPassword()
+	const isEmailSent = await resetPassword(email);
+	setEmailExists(isEmailSent);
     openModal();
   };
   return (
@@ -32,6 +34,8 @@ export default function Recover() {
         <p className={styles.subtitle}>Recupera tu contraseña fácilmente.</p>
         <input
           type="email"
+		  value={email}
+		  onChange={(e) => setEmail(e.target.value)}
           placeholder="Correo electrónico"
           required
           className={styles.formInput}

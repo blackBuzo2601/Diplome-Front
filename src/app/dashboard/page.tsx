@@ -63,9 +63,6 @@ export default function AdminDashboard() {
   };
 
   const router = useRouter();
-  let userRole = true;
-  //cambiar userRole a true si es Instructor
-  //cambiar userRole a false si es Estudiante
 
   //Codigo necesario para animacion de scroll en Div de todos los cursos
   //--------------------------------------------------------------------
@@ -93,6 +90,15 @@ export default function AdminDashboard() {
   //--------------------------------------------------------------------
   //Concluye codigo necesario para animacion
   
+    useEffect(() => {
+		const wait = () => {return new Promise(resolve => setTimeout(resolve, 3000))};
+		wait().then(() => {
+			if (!currentUser) {
+				router.replace('/')
+			}
+		})
+  }, []);
+
   const getCourseInfo = (course: Course) => {
     setCourse(course);
     openModal();

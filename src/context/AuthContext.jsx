@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
 		await getUserData(); // si la cookie existe y es válida, traerá los datos
 	  } catch (error) {
 		console.error('Error al inicializar la autenticación:', error);
-		logout();
+		// logout();
 	  }
 	  setIsLoading(false);
 	};
@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }) => {
 
     } catch (error) {
       console.error('Error al refrescar token:', error);
-      logout();
+    //   logout();
       return false;
     }
   };
@@ -74,9 +74,9 @@ export const AuthProvider = ({ children }) => {
     setCurrentUser(null);
   };
   
-  const resetPassword = async (email) => {
+  const forgotPassword = async (email) => {
     try {
-      const data = await axios.post('/api/auth/reset-password', { email });
+      const response = await axios.post('http://localhost:5005/diplome/auth/forgot-password', { email });
 	  const { status } = response.data;
       return status == "success"
     } catch (error) {
@@ -91,7 +91,7 @@ export const AuthProvider = ({ children }) => {
 	register,
     login,
     logout,
-    resetPassword
+    resetPassword: forgotPassword
   };
   
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
