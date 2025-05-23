@@ -60,9 +60,6 @@ export default function LessonsPage() {
   const goToCreateCoursePage = () => {
     router.push("/dashboard/mycourses/createcourse");
   };
-  const goToMyCoursesPage = () => {
-    router.push("/dashboard/mycourses");
-  };
 
   const searchByWord = (text: string) => {
     if (text.trim() !== "") {
@@ -174,7 +171,7 @@ export default function LessonsPage() {
         <div className={styles.emptyDiv}></div>
       </div>
       <div className={styles.addLessonDiv}>
-        <button onClick={goToMyCoursesPage} className={styles.goBackButton}>
+        <button onClick={goToCreateCoursePage} className={styles.goBackButton}>
           Regresar
         </button>
       </div>

@@ -34,9 +34,17 @@ export default function UploadCourses() {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (title && description !== "") {
-      alert("Curso creado con exito");
-      goToMyCoursesPage();
+    if (editing) {
+      //modo editar curso
+      if (title && description !== "") {
+        alert("Curso modificado exitosamente");
+      }
+    } else {
+      //modo crear curso
+      if (title && description !== "") {
+        alert("Curso creado con exito");
+        goToMyCoursesPage();
+      }
     }
   };
 
@@ -45,6 +53,10 @@ export default function UploadCourses() {
   //botón Regresar
   const goToMyCoursesPage = () => {
     router.push("/dashboard/mycourses");
+  };
+
+  const goToLessonsPage = () => {
+    router.push("/dashboard/mycourses/createcourse/lessonspage");
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,8 +138,12 @@ export default function UploadCourses() {
               <button type="submit" className={styles.uploadCourseButton}>
                 Confirmar cambios
               </button>
-              <button type="submit" className={styles.uploadCourseButton}>
-                Editar lecciones
+              <button
+                type="button"
+                onClick={goToLessonsPage}
+                className={styles.uploadCourseButton}
+              >
+                Agregar/Editar lecciones
               </button>
             </div>
           ) : (
