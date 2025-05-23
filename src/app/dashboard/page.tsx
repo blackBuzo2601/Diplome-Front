@@ -227,11 +227,13 @@ export default function AdminDashboard() {
                     alt="course image"
                     width={400}
                     height={200}
+                    unoptimized
                     className={styles.courseCardImage}
                   />
                   <p className={styles.courseTitle}>{elemento.courseTitle}</p>
                   <div className={styles.courseTeacherDiv}>
                     <Image
+                      unoptimized
                       src={elemento.courseTeacherImage}
                       alt="teacher photo"
                       width={100}
@@ -258,6 +260,7 @@ export default function AdminDashboard() {
                   className={styles.courseCard}
                 >
                   <Image
+                    unoptimized
                     src={elemento.imageRoute}
                     alt="course image"
                     width={200}
@@ -267,6 +270,7 @@ export default function AdminDashboard() {
                   <p className={styles.courseTitle}>{elemento.courseTitle}</p>
                   <div className={styles.courseTeacherDiv}>
                     <Image
+                      unoptimized
                       src={elemento.courseTeacherImage}
                       alt="teacher photo"
                       width={100}
@@ -293,6 +297,7 @@ export default function AdminDashboard() {
                   className={styles.courseCard}
                 >
                   <Image
+                    unoptimized
                     src={elemento.imageRoute}
                     alt="course image"
                     width={200}
@@ -302,6 +307,7 @@ export default function AdminDashboard() {
                   <p className={styles.courseTitle}>{elemento.courseTitle}</p>
                   <div className={styles.courseTeacherDiv}>
                     <Image
+                      unoptimized
                       src={elemento.courseTeacherImage}
                       alt="teacher photo"
                       width={100}
@@ -345,7 +351,8 @@ export default function AdminDashboard() {
                     className={styles.courseCard}
                   >
                     <Image
-                      src={elemento.imageRoute}
+                      unoptimized
+                      src={elemento.imageRoute!}
                       alt="course image"
                       width={200}
                       height={100}
@@ -354,7 +361,8 @@ export default function AdminDashboard() {
                     <p className={styles.courseTitle}>{elemento.courseTitle}</p>
                     <div className={styles.courseTeacherDiv}>
                       <Image
-                        src={elemento.courseTeacherImage}
+                        unoptimized
+                        src={elemento.courseTeacherImage!}
                         alt="teacher photo"
                         width={100}
                         height={100}
@@ -408,6 +416,7 @@ export default function AdminDashboard() {
                       className={styles.courseCard}
                     >
                       <Image
+                        unoptimized
                         src={elemento.imageRoute}
                         alt="course image"
                         width={200}
@@ -419,6 +428,7 @@ export default function AdminDashboard() {
                       </p>
                       <div className={styles.courseTeacherDiv}>
                         <Image
+                          unoptimized
                           src={elemento.courseTeacherImage}
                           alt="teacher photo"
                           width={100}

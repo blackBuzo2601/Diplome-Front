@@ -50,6 +50,7 @@ const CourseModal: React.FC<CourseModalProps> = ({
               className={styles.courseTeacherImage}
               width={200}
               height={70}
+              unoptimized
             />
             <div className={styles.courseTeacherInfo}>
               <p className={styles.courseTeacherName}>

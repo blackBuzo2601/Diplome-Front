@@ -206,7 +206,6 @@ export default function MyCourses() {
                     alt="warning icon"
                     width={200}
                     height={200}
-                    unoptimized
                     className={styles.noCoincidencesImage}
                   />
                 </div>

@@ -104,6 +104,7 @@ export default function UploadCourses() {
             <div className={styles.inputGroup}>
               <label className={styles.subtitle}>Título:</label>
               <input
+                maxLength={40}
                 required
                 type="text"
                 placeholder="Título"
@@ -143,6 +144,7 @@ export default function UploadCourses() {
                 width={200}
                 height={100}
                 className={styles.imagen_preview}
+                unoptimized
               />
             </div>
           </div>
