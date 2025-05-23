@@ -47,11 +47,20 @@ export default function MyCourses() {
   const goToCreateCoursePage = () => {
     router.push("/dashboard/mycourses/createcourse");
   };
-  const goToEditCoursePage = (params: any) => {
-    console.log("imprimiendo params:");
-    console.log(params);
+  const goToEditCoursePage = (course: Course) => {
+    // Serializamos el objeto y lo codificamos
     setModalOpen(false);
-    router.push("/dashboard/mycourses/createcourse/lessonspage");
+    const mappedCourse = {
+      title: course.courseTitle,
+      description: course.courseDescription,
+      coverImage: course.imageRoute,
+      lessons: course.lessons ?? [], //pueden venir lecciones y puede venir un arreglo vacio
+    };
+    const serialized = encodeURIComponent(JSON.stringify(mappedCourse));
+
+    router.push(
+      `/dashboard/mycourses/createcourse/lessonspage?course=${serialized}`
+    );
   };
 
   return (
@@ -217,7 +226,7 @@ export default function MyCourses() {
           course={course}
           isOpen={modalOpen}
           onClose={closeModal}
-          onConfirm={() => goToEditCoursePage(course)} //ir a editar curso, ocupamos mandar los parametros
+          onConfirm={() => goToEditCoursePage(course!)} //yo se que aqui siempre va a llegaar un objeto course
         ></CourseModal>
       </main>
     </div>

@@ -6,32 +6,55 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import singlecourse from "../../../../../../mock/singlecourse";
-import Course from "../../../../../../interfaces/Course";
+
 import { Lesson } from "../../../../../../interfaces/Course";
-type NewCourseProps = {
-  searchParams: { title: string; description: string; coverImage: string };
-};
+
 export default function LessonsPage() {
   const searchParams = useSearchParams();
-  const title = searchParams.get("title") || "";
-  const description = searchParams.get("description") || "";
-  const coverImage = searchParams.get("coverImage") || "";
+  const [courseData, setCourseData] = useState<{
+    title: string;
+    description: string;
+    coverImage: string;
+    lessons?: any[]; //puede o no estar lessons, puesto que puede venir un curso recien
+    //creado o bien, uno que ya existía
+  } | null>(null);
+
   const [search, setSearch] = useState("");
-  const [lessonSearch, setLessonSearch] = useState(false);
-  const [lessonsArray, setLessonsArray] = useState<Lesson[]>([]);
-  const [isVisibleSearchContainer, setIsVisibleSearchContainer] =
+  const [lessonSearch, setLessonSearch] = useState(false); //condicional para filtrar por palabra
+  const [lessonsArray, setLessonsArray] = useState<Lesson[]>([]); //arreglo con las lecciones a mostrar tras filtrar
+  const [isVisibleSearchContainer, setIsVisibleSearchContainer] = //condicional para ocultar el buscador si no hay ninguna leccion creada
     useState(false);
 
-  let existingCourse: boolean; //usaremos esta variable para cambiar el flujo de los estados, si es un curso
-  //que estamos recien creando, o si estamos abriendo uno para editarlo
-
   useEffect(() => {
-    if (singlecourse.lessons.length > 0) {
-      setIsVisibleSearchContainer(true);
-    } else {
-      setIsVisibleSearchContainer(false);
+    const courseParam = searchParams.get("course");
+    const title = searchParams.get("title");
+    const description = searchParams.get("description");
+    const coverImage = searchParams.get("coverImage");
+
+    if (courseParam) {
+      try {
+        const decoded = decodeURIComponent(courseParam);
+        const parsedCourse = JSON.parse(decoded); //convertir a objeto el curso
+
+        setCourseData(parsedCourse);
+
+        //evaluar que exista al menos una leccion, sino, no tiene porque mostrarse el buscador
+        if (parsedCourse.lessons && parsedCourse.lessons.length > 0) {
+          setIsVisibleSearchContainer(true);
+        } else {
+          setIsVisibleSearchContainer(false);
+        }
+        return;
+      } catch (error) {
+        console.error("Error parsing course:", error);
+      }
     }
-  }, []);
+
+    if (title && description && coverImage) {
+      setCourseData({ title, description, coverImage });
+    }
+    setIsVisibleSearchContainer(false); //como no hay lecciones, igual ocultamos el buscador
+  }, [searchParams]);
 
   const router = useRouter();
 
@@ -46,7 +69,7 @@ export default function LessonsPage() {
       //tuve que poner esta pinche linea porque si no no me dejaba hacer el map porque no estaba seguro
       //de si elemento es un objeto. Como lecciones inicialmente va a estar vacio, tiene que haber
       //este caso de uso
-      const lessons: Lesson[] = singlecourse.lessons ?? []; //si no tiene nada, lo dejamos como un arreglo vacio
+      const lessons: Lesson[] = courseData?.lessons ?? []; //si no tiene nada, lo dejamos como un arreglo vacio
 
       //asigno un número de lección en orden a cada lección
       const arrayWithLessonNumber = lessons.map((elemento, index) => ({
@@ -88,7 +111,9 @@ export default function LessonsPage() {
           </div>
         ) : null}
       </div>
-      <p className={styles.mainTitle}>Lecciones de tu curso: {title}</p>
+      <p className={styles.mainTitle}>
+        Lecciones de tu curso: {courseData?.title}
+      </p>
 
       <div className={styles.addLessonDiv}>
         <button className={styles.addLessonButton}>Agregar lección</button>
@@ -120,7 +145,7 @@ export default function LessonsPage() {
                 </div>
               ))
             )
-          ) : singlecourse.lessons.length === 0 ? (
+          ) : courseData?.lessons?.length === 0 ? (
             <div className={styles.noLessonsDiv}>
               <p className={styles.noLessonsText}>
                 Tu curso no tiene ninguna lección. Comienza creando una lección
@@ -135,7 +160,7 @@ export default function LessonsPage() {
               />
             </div>
           ) : (
-            singlecourse.lessons.map((leccion: Lesson, index: number) => (
+            courseData?.lessons?.map((leccion: Lesson, index: number) => (
               <div key={index} className={styles.singleLesson}>
                 <p className={styles.singleLessonTitle}>
                   Lección {index + 1}: {leccion.lessonTitle}

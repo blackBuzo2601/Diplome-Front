@@ -8,6 +8,7 @@ export default function UploadCourses() {
   const [coverImage, setCoverImage] = useState("/images/noimage.jpg");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  let editEnabled: boolean;
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
