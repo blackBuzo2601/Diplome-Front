@@ -76,8 +76,9 @@ export const AuthProvider = ({ children }) => {
   
   const resetPassword = async (email) => {
     try {
-      await axios.post('/api/auth/reset-password', { email });
-      return true;
+      const data = await axios.post('/api/auth/reset-password', { email });
+	  const { status } = response.data;
+      return status == "success"
     } catch (error) {
       throw new Error(error.response?.data?.message || 'Error al solicitar restablecimiento de contraseña');
     }

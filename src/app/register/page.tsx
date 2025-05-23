@@ -16,7 +16,6 @@ export default function Register() {
   const router = useRouter();
   const { register } = useAuth();
 
-  //por mientras pongo este event como any, para que no chille
   const handleSubmit = async (e: any) => {
 	e.preventDefault();
 	try {

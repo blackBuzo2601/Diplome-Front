@@ -4,20 +4,24 @@ import styles from "../recover/page.module.css";
 import { useRouter } from "next/navigation";
 import RecoverModal from "../../../components/RecoverModal";
 import Link from "next/link";
+import { useAuth } from "@/hooks/useAuth";
 export default function Recover() {
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
+  const [emailExists, setEmailExists] = useState(true); //para el backend, si el usuario no existe, mostrar un modal diferente
+
+  const { resetPassword } = useAuth()
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
-  const goToLoginPage = () => {
+  const goToChangePasswordPage = () => {
     setModalOpen(false);
-    router.push("/");
+    router.push("/recover/changepassword");
   };
 
-  //colocamos como any para que no chille por mientras
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+	const isEmailSent = await resetPassword()
     openModal();
   };
   return (
@@ -42,9 +46,10 @@ export default function Recover() {
         </div>
       </div>
       <RecoverModal
+        emailExists={emailExists}
         isOpen={modalOpen}
         onClose={closeModal}
-        onConfirm={goToLoginPage}
+        onConfirm={goToChangePasswordPage}
       />
     </form>
   );
