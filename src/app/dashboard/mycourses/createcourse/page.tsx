@@ -47,6 +47,7 @@ export default function UploadCourses() {
         const newCourse: Course = {
           courseTitle: title,
           courseDescription: description,
+          imageRoute: coverImage,
         };
         goToMyCoursesPage(newCourse);
       }
@@ -113,6 +114,7 @@ export default function UploadCourses() {
             <div className={styles.inputGroup}>
               <label className={styles.subtitle}>Descripción:</label>
               <textarea
+                maxLength={190}
                 required
                 placeholder="Descripción"
                 className={styles.textAreaDescription}

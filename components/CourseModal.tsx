@@ -28,7 +28,7 @@ const CourseModal: React.FC<CourseModalProps> = ({
       <div className={isTeacher ? styles.modalDivTeacher : styles.modalDiv}>
         {children}
         <Image
-          src={course.imageRoute}
+          src={course.imageRoute!}
           alt="Image course"
           className={styles.modalCourseImage}
           width={200}
@@ -44,7 +44,7 @@ const CourseModal: React.FC<CourseModalProps> = ({
           //del teacher.
           <div className={styles.courseTeacherDiv}>
             <Image
-              src={course.courseTeacherImage}
+              src={course.courseTeacherImage!}
               alt="Image course"
               className={styles.courseTeacherImage}
               width={200}
