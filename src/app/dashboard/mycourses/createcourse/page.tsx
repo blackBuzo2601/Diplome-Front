@@ -8,7 +8,7 @@ export default function UploadCourses() {
   const [coverImage, setCoverImage] = useState("/images/noimage.jpg");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  let editEnabled: boolean;
+  const [editing, setEditing] = useState(true); //el estado se actualiza si se recibe o no un curso desde otra ruta
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -51,7 +51,11 @@ export default function UploadCourses() {
   return (
     <div className={styles.mainDiv}>
       <div className={styles.form}>
-        <h2 className={styles.mainTitle}>Crear nuevo curso</h2>
+        {editing ? (
+          <h2 className={styles.mainTitle}>Editar curso</h2>
+        ) : (
+          <h2 className={styles.mainTitle}>Crear nuevo curso</h2>
+        )}
 
         <form onSubmit={onSubmit} className={styles.restInformationContainer}>
           <div className={styles.credentialsDiv}>
@@ -100,11 +104,22 @@ export default function UploadCourses() {
             </div>
           </div>
 
-          <div className={styles.form_actions}>
-            <button type="submit" className={styles.uploadCourseButton}>
-              Subir curso
-            </button>
-          </div>
+          {editing ? (
+            <div className={styles.form_actions}>
+              <button type="submit" className={styles.uploadCourseButton}>
+                Confirmar cambios
+              </button>
+              <button type="submit" className={styles.uploadCourseButton}>
+                Editar lecciones
+              </button>
+            </div>
+          ) : (
+            <div className={styles.form_actions}>
+              <button type="submit" className={styles.uploadCourseButton}>
+                Subir curso
+              </button>
+            </div>
+          )}
         </form>
       </div>
       <div className={styles.newRow}>

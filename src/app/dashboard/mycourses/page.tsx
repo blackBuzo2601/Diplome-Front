@@ -24,6 +24,7 @@ export default function MyCourses() {
   const [search, setSearch] = useState("");
   const [myCourses, setMyCourses] = useState(true);
   const [label, setLabel] = useState(false);
+
   const searchByWord = (searchText: string) => {
     if (searchText.trim() !== "") {
       setMyCourses(false);
