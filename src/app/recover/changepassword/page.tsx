@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from "next/navigation";
 import ChangePasswordModal from "../../../../components/ChangePasswordModal";
-
+import { useAuth } from "@/hooks/useAuth";
 
 
 export default function ChangePasswordPage() {
@@ -17,13 +17,18 @@ export default function ChangePasswordPage() {
   const [isCounterVisible, setIsCounterVisible] = useState(false);
   const [isPasswordChanged, setIsPasswordChanged] = useState(false);
 
+  const searchParams = useSearchParams();
+  const token = searchParams.get('token');
+
+  const { resetPassword } = useAuth()
+
   //esto lo voy a pasar al Modal
   const goToLoginPage = () => {
     setModalPassword(false);
     router.push("/");
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== repeatPassword) {
       setTitle("Las contraseñas no coinciden");
@@ -31,20 +36,26 @@ export default function ChangePasswordPage() {
       console.log("seteado");
       console.log(modalPassword);
     } else {
-      setIsPasswordChanged(true);
-      setModalPassword(true);
-      setTitle("¡Contraseña cambiada con éxito!");
-      setIsCounterVisible(true);
-      let i = 2;
-      const interval = setInterval(() => {
-        setCounter(i);
-        if (i === 0) {
-          clearInterval(interval);
-          setCounter(0);
-          router.push("/");
-        }
-        i--;
-      }, 1000);
+		const isPasswordSent = await resetPassword(token, password);
+		if (isPasswordSent){
+			setIsPasswordChanged(true);
+			setModalPassword(true);
+			setTitle("¡Contraseña cambiada con éxito!");
+			setIsCounterVisible(true);
+			let i = 2;
+			const interval = setInterval(() => {
+			  setCounter(i);
+			  if (i === 0) {
+				clearInterval(interval);
+				setCounter(0);
+				router.push("/");
+			  }
+			  i--;
+			}, 1000);
+		} else {
+			setTitle("Error al cambiar contraseña");
+      		setModalPassword(true);
+		}
     }
   };
 

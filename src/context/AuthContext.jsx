@@ -83,6 +83,16 @@ export const AuthProvider = ({ children }) => {
       throw new Error(error.response?.data?.message || 'Error al solicitar restablecimiento de contraseña');
     }
   };
+
+  const resetPassword = async (token, password) => {
+	try {
+      const response = await axios.post(`http://localhost:5005/diplome/auth/reset-password/${token}`, { password });
+	  const { status } = response.data;
+      return status == "success"
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Error al solicitar restablecimiento de contraseña');
+    }
+  };
   
   const value = {
     currentUser,
@@ -91,7 +101,8 @@ export const AuthProvider = ({ children }) => {
 	register,
     login,
     logout,
-    resetPassword: forgotPassword
+    forgotPassword,
+	resetPassword
   };
   
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
