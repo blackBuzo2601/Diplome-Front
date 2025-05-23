@@ -6,7 +6,7 @@ interface CourseModalProps {
   isOpen: boolean;
   course: Course | null;
   onClose: () => void;
-  onConfirm: () => void;
+  onConfirm: () => any;
   isTeacher?: boolean;
   children?: React.ReactNode;
 }

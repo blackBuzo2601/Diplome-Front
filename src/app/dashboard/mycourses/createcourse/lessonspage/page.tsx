@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
-import singlecourse from "../../../../../../mock/singlecourse";
 
 import { Lesson } from "../../../../../../interfaces/Course";
 
@@ -39,7 +38,7 @@ export default function LessonsPage() {
         setCourseData(parsedCourse);
 
         //evaluar que exista al menos una leccion, sino, no tiene porque mostrarse el buscador
-        if (parsedCourse.lessons && parsedCourse.lessons.length > 0) {
+        if (parsedCourse.lessons.length > 0) {
           setIsVisibleSearchContainer(true);
         } else {
           setIsVisibleSearchContainer(false);
@@ -58,6 +57,9 @@ export default function LessonsPage() {
 
   const router = useRouter();
 
+  const goToCreateCoursePage = () => {
+    router.push("/dashboard/mycourses/createcourse");
+  };
   const goToMyCoursesPage = () => {
     router.push("/dashboard/mycourses");
   };

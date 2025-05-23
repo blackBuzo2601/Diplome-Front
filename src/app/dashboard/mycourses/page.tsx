@@ -44,7 +44,7 @@ export default function MyCourses() {
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
-  const goToCreateCoursePage = () => {
+  const goToCreateCoursePage = (course?: Course) => {
     router.push("/dashboard/mycourses/createcourse");
   };
   const goToEditCoursePage = (course: Course) => {
@@ -111,7 +111,7 @@ export default function MyCourses() {
         <h3 className={styles.sectionHeaderName}>Mis cursos</h3>
         <div className={styles.searchContainer}>
           <button
-            onClick={goToCreateCoursePage}
+            onClick={() => goToCreateCoursePage()}
             className={styles.goModalButton}
           >
             Crear nuevo curso
@@ -226,7 +226,7 @@ export default function MyCourses() {
           course={course}
           isOpen={modalOpen}
           onClose={closeModal}
-          onConfirm={() => goToEditCoursePage(course!)} //yo se que aqui siempre va a llegaar un objeto course
+          onConfirm={() => goToCreateCoursePage(course!)} //yo se que aqui siempre va a llegaar un objeto course
         ></CourseModal>
       </main>
     </div>
