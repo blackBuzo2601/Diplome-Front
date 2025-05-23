@@ -37,30 +37,30 @@ export default function MyCourses() {
   };
 
   const router = useRouter();
+
   const getCourseInfo = (course: Course) => {
     setCourse(course);
     openModal();
-    console.log("imprimiendo data:" + course);
   };
+
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
-  const goToCreateCoursePage = (course?: Course) => {
-    router.push("/dashboard/mycourses/createcourse");
-  };
-  const goToEditCoursePage = (course: Course) => {
-    // Serializamos el objeto y lo codificamos
-    setModalOpen(false);
-    const mappedCourse = {
-      title: course.courseTitle,
-      description: course.courseDescription,
-      coverImage: course.imageRoute,
-      lessons: course.lessons ?? [], //pueden venir lecciones y puede venir un arreglo vacio
+  //el valor de editing, nos ayuda como bandera para si mostrar las opciones de Creando Curso o Editando Curso
+  //en la ruta de CreateCourse.
+  const goToCreateCoursePage = (editing: boolean) => {
+    editing = editing;
+
+    const course1 = {
+      //le puse course1 porque ya existe la variable course (estado)
+      //el objeto con la informacion del curso que voy a mandar a la ruta createcourse
+      ...course,
     };
-    const serialized = encodeURIComponent(JSON.stringify(mappedCourse));
+    const course1String = encodeURIComponent(JSON.stringify(course1));
+    const editingString = editing.toString();
 
     router.push(
-      `/dashboard/mycourses/createcourse/lessonspage?course=${serialized}`
+      `/dashboard/mycourses/createcourse?course=${course1String}&&editing=${editingString}`
     );
   };
 
@@ -112,7 +112,7 @@ export default function MyCourses() {
         <h3 className={styles.sectionHeaderName}>Mis cursos</h3>
         <div className={styles.searchContainer}>
           <button
-            onClick={() => goToCreateCoursePage()}
+            onClick={() => goToCreateCoursePage(false)}
             className={styles.goModalButton}
           >
             Crear nuevo curso
@@ -227,7 +227,7 @@ export default function MyCourses() {
           course={course}
           isOpen={modalOpen}
           onClose={closeModal}
-          onConfirm={() => goToCreateCoursePage(course!)} //yo se que aqui siempre va a llegaar un objeto course
+          onConfirm={() => goToCreateCoursePage(true)}
         ></CourseModal>
       </main>
     </div>

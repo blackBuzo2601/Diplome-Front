@@ -1,31 +1,48 @@
 "use client";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import Course from "../../../../../interfaces/Course";
 
 export default function UploadCourses() {
+  const searchParams = useSearchParams();
+  const [course, setCourse] = useState<Course | null>(null);
+  const [editing, setEditing] = useState<boolean>(false);
+
+  useEffect(() => {
+    const courseParam = searchParams.get("course");
+    const editingParam = searchParams.get("editing");
+
+    if (courseParam) {
+      try {
+        const convertedCourse = JSON.parse(decodeURIComponent(courseParam));
+        setCourse(convertedCourse);
+      } catch (err) {
+        console.error("Error al parsear el objeto Course:", err);
+      }
+    }
+
+    setEditing(editingParam === "true"); //si llega exactamente true, significa que
+    //estamos editando un curso, sino, es estamos creando un curso nuevo
+  }, [searchParams]);
+
   const [coverImage, setCoverImage] = useState("/images/noimage.jpg");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [editing, setEditing] = useState(true); //el estado se actualiza si se recibe o no un curso desde otra ruta
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (title && description !== "") {
-      const query = new URLSearchParams({
-        title,
-        description,
-      }); //mandaremos los parametros en un query string para leeerlos en la siguiente ruta
-
-      router.push(
-        `/dashboard/mycourses/createcourse/lessonspage?${query.toString()}`
-      );
+      alert("Curso creado con exito");
+      goToMyCoursesPage();
     }
   };
 
   const router = useRouter();
 
+  //botón Regresar
   const goToMyCoursesPage = () => {
     router.push("/dashboard/mycourses");
   };
