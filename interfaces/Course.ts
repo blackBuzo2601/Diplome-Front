@@ -1,11 +1,11 @@
 export interface Course {
-  imageRoute: string;
+  imageRoute?: string;
   courseTitle: string;
-  courseTeacherName: string;
+  courseTeacherName?: string;
   courseDescription: string;
-  courseTeacherImage: string;
-  courseCategory: string;
-  lessons: Lesson[];
+  courseTeacherImage?: string;
+  courseCategory?: string;
+  lessons?: Lesson[];
 }
 
 export interface Lesson {

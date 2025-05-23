@@ -14,7 +14,7 @@ import user from "../../../../public/images/user-example.png";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Course from "../../../../interfaces/Course";
 import teacherCourses from "../../../../mock/teacherCourses";
@@ -24,6 +24,23 @@ export default function MyCourses() {
   const [search, setSearch] = useState("");
   const [myCourses, setMyCourses] = useState(true);
   const [label, setLabel] = useState(false);
+  const [courses, setCourses] = useState<Course[]>([]);
+
+  useEffect(() => {
+    const storedCourses = localStorage.getItem("courses");
+    let parsedCourses: Course[] = [];
+
+    if (storedCourses) {
+      try {
+        parsedCourses = JSON.parse(storedCourses);
+      } catch (error) {
+        console.error("Error parseando cursos desde localStorage", error);
+      }
+    }
+
+    //traer objetos de local Storage y luego los del arreglo local.
+    setCourses([...parsedCourses, ...teacherCourses]);
+  }, []);
 
   const searchByWord = (searchText: string) => {
     if (searchText.trim() !== "") {
@@ -155,14 +172,14 @@ export default function MyCourses() {
         <div className={styles.father}>
           {myCourses ? (
             <div className={styles.recomendationsDiv}>
-              {teacherCourses.map((elemento, key) => (
+              {courses.map((elemento, key) => (
                 <div
                   onClick={() => getCourseInfo(elemento)}
                   key={key}
                   className={styles.courseCard}
                 >
                   <Image
-                    src={elemento.imageRoute}
+                    src={elemento.imageRoute!}
                     alt="course image"
                     width={200}
                     height={100}
@@ -174,7 +191,7 @@ export default function MyCourses() {
             </div>
           ) : (
             <div className={styles.recomendationsDiv}>
-              {teacherCourses.filter((elemento) =>
+              {courses.filter((elemento) =>
                 elemento.courseTitle
                   .toLowerCase()
                   .includes(search.trim().toLowerCase())
@@ -192,7 +209,7 @@ export default function MyCourses() {
                   />
                 </div>
               ) : (
-                teacherCourses
+                courses
                   .filter((elemento) =>
                     elemento.courseTitle
                       .toLowerCase()
@@ -205,7 +222,7 @@ export default function MyCourses() {
                       className={styles.courseCard}
                     >
                       <Image
-                        src={elemento.imageRoute}
+                        src={elemento.imageRoute!}
                         alt="course image"
                         width={200}
                         height={100}

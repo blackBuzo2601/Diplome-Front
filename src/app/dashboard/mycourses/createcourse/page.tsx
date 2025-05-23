@@ -10,7 +10,11 @@ export default function UploadCourses() {
   const searchParams = useSearchParams();
   const [course, setCourse] = useState<Course | null>(null);
   const [editing, setEditing] = useState<boolean>(false);
-
+  const [coverImage, setCoverImage] = useState("/images/noimage.jpg");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const router = useRouter();
+  //useEffect--------------------------------------------------------
   useEffect(() => {
     const courseParam = searchParams.get("course");
     const editingParam = searchParams.get("editing");
@@ -27,10 +31,7 @@ export default function UploadCourses() {
     setEditing(editingParam === "true"); //si llega exactamente true, significa que
     //estamos editando un curso, sino, es estamos creando un curso nuevo
   }, [searchParams]);
-
-  const [coverImage, setCoverImage] = useState("/images/noimage.jpg");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  //useEffect--------------------------------------------------------
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,15 +44,26 @@ export default function UploadCourses() {
       //modo crear curso
       if (title && description !== "") {
         alert("Curso creado con exito");
-        goToMyCoursesPage();
+        const newCourse: Course = {
+          courseTitle: title,
+          courseDescription: description,
+        };
+        goToMyCoursesPage(newCourse);
       }
     }
   };
 
-  const router = useRouter();
-
   //botón Regresar
-  const goToMyCoursesPage = () => {
+  const goToMyCoursesPage = (newCourse?: Course) => {
+    if (newCourse) {
+      const storedCourses = localStorage.getItem("courses");
+      const parsedCourses: Course[] = storedCourses
+        ? JSON.parse(storedCourses)
+        : [];
+
+      parsedCourses.push(newCourse);
+      localStorage.setItem("courses", JSON.stringify(parsedCourses));
+    }
     router.push("/dashboard/mycourses");
   };
 
@@ -157,7 +169,7 @@ export default function UploadCourses() {
       </div>
       <div className={styles.newRow}>
         <button
-          onClick={goToMyCoursesPage}
+          onClick={() => goToMyCoursesPage()}
           type="button"
           className={styles.formButtonBack}
         >
