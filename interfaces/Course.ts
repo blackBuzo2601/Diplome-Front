@@ -6,6 +6,7 @@ export interface Course {
   courseTeacherImage?: string;
   courseCategory?: string;
   lessons?: Lesson[];
+  uuid: string;
 }
 
 export interface Lesson {

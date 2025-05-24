@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import Course from "../../../../../interfaces/Course";
+import { randomUUID } from "crypto";
 
 export default function UploadCourses() {
   const searchParams = useSearchParams();
@@ -15,6 +16,7 @@ export default function UploadCourses() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [inputTextURL, setInputTextURL] = useState("");
+  const [getUuid, setUuid] = useState("");
   const router = useRouter();
   //useEffect--------------------------------------------------------
   useEffect(() => {
@@ -32,6 +34,7 @@ export default function UploadCourses() {
         setDescription(convertedCourse.courseDescription);
         setInputTextURL(convertedCourse.imageRoute);
         setCoverImage(convertedCourse.imageRoute);
+        setUuid(convertedCourse.uuid);
       } catch (err) {
         console.error("Error al parsear el objeto Course:", err);
       }
@@ -49,6 +52,16 @@ export default function UploadCourses() {
       //modo editar curso
       if (title && description !== "") {
         alert("Curso modificado exitosamente");
+        //debo obtener el local storage y modificarlo
+
+        const modifiedCourse: Course = {
+          ...course,
+          courseTitle: title,
+          courseDescription: description,
+          imageRoute: coverImage,
+          uuid: getUuid,
+        };
+        goToMyCoursesPage(false, modifiedCourse);
       }
     } else {
       //modo crear curso
@@ -58,22 +71,46 @@ export default function UploadCourses() {
           courseTitle: title,
           courseDescription: description,
           imageRoute: coverImage,
+          uuid: crypto.randomUUID(),
         };
-        goToMyCoursesPage(newCourse);
+        goToMyCoursesPage(true, newCourse);
       }
     }
   };
 
-  const goToMyCoursesPage = (newCourse?: Course) => {
-    if (newCourse) {
-      const storedCourses = localStorage.getItem("courses");
-      const parsedCourses: Course[] = storedCourses
-        ? JSON.parse(storedCourses)
-        : [];
+  //Como los objetos no tienen un identificador único, no puedo borrar el objeto del
+  //por ejemplo haciendo un filter y filtrando los elementos que sean diferentes del que
+  //quiero eliminar, entonces para eso uso el parametro 'isNew'.
+  //Los pongo como opcionales porque esta misma función la uso para cuando el usuario
+  //toca el botón de "Regresar"
+  const goToMyCoursesPage = (isNew?: boolean, newCourse?: Course) => {
+    //cuando se esta creando un curso
+    if (isNew) {
+      if (newCourse) {
+        const storedCourses = localStorage.getItem("courses");
+        const parsedCourses: Course[] = storedCourses
+          ? JSON.parse(storedCourses)
+          : [];
 
-      parsedCourses.unshift(newCourse); //para que se posicione encima de la anterior
-      localStorage.setItem("courses", JSON.stringify(parsedCourses));
-    }
+        parsedCourses.unshift(newCourse); //para que se posicione encima de la anterior
+        localStorage.setItem("courses", JSON.stringify(parsedCourses));
+      }
+    } else {
+      //cuando se está modificando un curso
+      if (newCourse) {
+        const storedCourses = localStorage.getItem("courses");
+        const parsedCourses: Course[] = storedCourses
+          ? JSON.parse(storedCourses)
+          : [];
+        const modifiedArray = parsedCourses.filter(
+          (elemento) => elemento.uuid !== newCourse.uuid
+        );
+        modifiedArray.unshift(newCourse);
+
+        localStorage.setItem("courses", JSON.stringify(modifiedArray));
+      }
+    } //concluye condicional principal (si se crea o se edita un curso)
+
     router.push("/dashboard/mycourses");
   };
 

@@ -16,6 +16,7 @@ const teacherCourses = [
       },
       { lessonTitle: "Renderizado Estático y SSR", lessonVideoSource: "" },
     ],
+    uuid: "0",
   },
   {
     imageRoute:
@@ -32,6 +33,7 @@ const teacherCourses = [
       { lessonTitle: "JavaScript para el frontend", lessonVideoSource: "" },
       { lessonTitle: "Diseño responsivo avanzado", lessonVideoSource: "" },
     ],
+    uuid: "1",
   },
   {
     imageRoute:
@@ -47,6 +49,7 @@ const teacherCourses = [
       { lessonTitle: "Commits y ramas básicas", lessonVideoSource: "" },
       { lessonTitle: "Resolución de conflictos", lessonVideoSource: "" },
     ],
+    uuid: "2",
   },
   {
     imageRoute: "https://i.ytimg.com/vi/e45Yhgh4INc/maxresdefault.jpg",
@@ -67,6 +70,7 @@ const teacherCourses = [
         lessonVideoSource: "",
       },
     ],
+    uuid: "3",
   },
   {
     imageRoute:
@@ -85,6 +89,7 @@ const teacherCourses = [
       { lessonTitle: "Testing en React", lessonVideoSource: "" },
       { lessonTitle: "Manejo de dependencias y hooks", lessonVideoSource: "" },
     ],
+    uuid: "4",
   },
 ];
 
