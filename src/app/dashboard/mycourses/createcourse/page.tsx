@@ -138,11 +138,11 @@ export default function UploadCourses() {
               </button>
 
               <input
-                value={coverImage}
+                value={inputTextURL}
                 id="coverImage"
                 type="text"
                 placeholder="URL pública de tu imagen"
-                onChange={onChangeInputURL}
+                onChange={(e) => onChangeInputURL(e)}
                 className={styles.inputURL}
               />
               <Image
