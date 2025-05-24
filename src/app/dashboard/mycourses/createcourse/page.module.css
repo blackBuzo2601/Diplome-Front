@@ -121,8 +121,6 @@
   flex-direction: row;
   align-items: center;
   gap: 1vw;
-
-  background-color: orange;
 }
 
 .imagen_preview {
