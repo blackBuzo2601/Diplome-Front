@@ -68,17 +68,20 @@ export default function MyCourses() {
   const goToCreateCoursePage = (editing: boolean) => {
     editing = editing;
 
-    const course1 = {
-      //le puse course1 porque ya existe la variable course (estado)
-      //el objeto con la informacion del curso que voy a mandar a la ruta createcourse
-      ...course,
-    };
-    const course1String = encodeURIComponent(JSON.stringify(course1));
-    const editingString = editing.toString();
-
-    router.push(
-      `/dashboard/mycourses/createcourse?course=${course1String}&&editing=${editingString}`
-    );
+    if (editing) {
+      const course1 = {
+        //le puse course1 porque ya existe la variable course (estado)
+        //el objeto con la informacion del curso que voy a mandar a la ruta createcourse
+        ...course,
+      };
+      const course1String = encodeURIComponent(JSON.stringify(course1));
+      const editingString = editing.toString();
+      router.push(
+        `/dashboard/mycourses/createcourse?course=${course1String}&&editing=${editingString}`
+      );
+    } else {
+      router.push("/dashboard/mycourses/createcourse");
+    }
   };
 
   return (
@@ -246,7 +249,7 @@ export default function MyCourses() {
           course={course}
           isOpen={modalOpen}
           onClose={closeModal}
-          onConfirm={() => goToCreateCoursePage(true)}
+          onConfirm={() => goToCreateCoursePage(true)} //true porque es "modo editar"
         ></CourseModal>
       </main>
     </div>

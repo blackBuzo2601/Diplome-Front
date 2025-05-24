@@ -63,7 +63,7 @@ export default function UploadCourses() {
         ? JSON.parse(storedCourses)
         : [];
 
-      parsedCourses.push(newCourse);
+      parsedCourses.unshift(newCourse); //para que se posicione encima de la anterior
       localStorage.setItem("courses", JSON.stringify(parsedCourses));
     }
     router.push("/dashboard/mycourses");
