@@ -13,6 +13,7 @@ export default function UploadCourses() {
   const [coverImage, setCoverImage] = useState("/images/noimage.jpg");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [inputTextURL, setInputTextURL] = useState("");
   const router = useRouter();
   //useEffect--------------------------------------------------------
   useEffect(() => {
@@ -72,22 +73,9 @@ export default function UploadCourses() {
     router.push("/dashboard/mycourses/createcourse/lessonspage");
   };
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    const validTypes = ["image/jpeg", "image/png"]; // Ya acepta JPG y PNG
-    if (!validTypes.includes(file.type)) {
-      alert("Solo se permiten archivos JPG o PNG.");
-      event.target.value = "";
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setCoverImage(reader.result as string);
-    };
-    reader.readAsDataURL(file);
+  const onChangeInputURL = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputText = event.target.value;
+    setInputTextURL(inputText);
   };
 
   return (
@@ -127,17 +115,25 @@ export default function UploadCourses() {
           <div className={styles.imagen_portada_section}>
             <label className={styles.subtitle}>Imagen de portada:</label>
             <div className={styles.uploadGroup}>
-              <label htmlFor="coverImage" className={styles.formButton}>
-                Adjuntar Imagen
-              </label>
+              <button
+                onClick={() => {
+                  inputTextURL
+                    ? setCoverImage(inputTextURL)
+                    : setCoverImage("/images/noimage.jpg");
+                }}
+                type="button"
+                className={styles.updateImageButton}
+              >
+                Actualizar
+              </button>
+
               <input
                 id="coverImage"
-                type="file"
-                accept="image/jpeg, image/png"
-                onChange={handleFileChange}
-                style={{ display: "none" }}
+                type="text"
+                placeholder="URL pública de tu imagen"
+                onChange={onChangeInputURL}
+                className={styles.inputURL}
               />
-
               <Image
                 src={coverImage}
                 alt="course image"
