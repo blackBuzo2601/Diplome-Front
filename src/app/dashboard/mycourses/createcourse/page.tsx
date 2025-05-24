@@ -61,6 +61,7 @@ export default function UploadCourses() {
           imageRoute: coverImage,
           uuid: getUuid,
         };
+
         goToMyCoursesPage(false, modifiedCourse);
       }
     } else {
@@ -102,9 +103,11 @@ export default function UploadCourses() {
         const parsedCourses: Course[] = storedCourses
           ? JSON.parse(storedCourses)
           : [];
+
         const modifiedArray = parsedCourses.filter(
           (elemento) => elemento.uuid !== newCourse.uuid
         );
+
         modifiedArray.unshift(newCourse);
 
         localStorage.setItem("courses", JSON.stringify(modifiedArray));
