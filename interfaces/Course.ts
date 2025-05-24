@@ -1,5 +1,5 @@
 export interface Course {
-  imageRoute?: string;
+  imageRoute: string;
   courseTitle: string;
   courseTeacherName?: string;
   courseDescription: string;

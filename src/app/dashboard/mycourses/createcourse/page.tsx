@@ -9,7 +9,8 @@ import Course from "../../../../../interfaces/Course";
 export default function UploadCourses() {
   const searchParams = useSearchParams();
   const [course, setCourse] = useState<Course | null>(null);
-  const [editing, setEditing] = useState<boolean>(false);
+  const [editing, setEditing] = useState<boolean>(false); //falso inicialmente para
+  //predeterminadamente mostrar esquema de Crear curso, en lugar de editar curso.
   const [coverImage, setCoverImage] = useState("/images/noimage.jpg");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -17,20 +18,28 @@ export default function UploadCourses() {
   const router = useRouter();
   //useEffect--------------------------------------------------------
   useEffect(() => {
+    //obteniendo los parametros de url
     const courseParam = searchParams.get("course");
     const editingParam = searchParams.get("editing");
 
     if (courseParam) {
       try {
-        const convertedCourse = JSON.parse(decodeURIComponent(courseParam));
+        const convertedCourse: Course = JSON.parse(
+          decodeURIComponent(courseParam)
+        );
         setCourse(convertedCourse);
+        setTitle(convertedCourse.courseTitle);
+        setDescription(convertedCourse.courseDescription);
+        setInputTextURL(convertedCourse.imageRoute);
+        setCoverImage(convertedCourse.imageRoute);
       } catch (err) {
         console.error("Error al parsear el objeto Course:", err);
       }
     }
 
     setEditing(editingParam === "true"); //si llega exactamente true, significa que
-    //estamos editando un curso, sino, es estamos creando un curso nuevo
+    //estamos editando un curso, si no llega, simplemente no se modifica el estado que inicialmente
+    //es false, lo que significa que se está creando un curso nuevo de ser el caso.
   }, [searchParams]);
   //useEffect--------------------------------------------------------
 
@@ -55,7 +64,6 @@ export default function UploadCourses() {
     }
   };
 
-  //botón Regresar
   const goToMyCoursesPage = (newCourse?: Course) => {
     if (newCourse) {
       const storedCourses = localStorage.getItem("courses");
@@ -92,6 +100,7 @@ export default function UploadCourses() {
             <div className={styles.inputGroup}>
               <label className={styles.subtitle}>Título:</label>
               <input
+                value={title}
                 maxLength={40}
                 required
                 type="text"
@@ -103,6 +112,7 @@ export default function UploadCourses() {
             <div className={styles.inputGroup}>
               <label className={styles.subtitle}>Descripción:</label>
               <textarea
+                value={description}
                 maxLength={190}
                 required
                 placeholder="Descripción"
@@ -128,6 +138,7 @@ export default function UploadCourses() {
               </button>
 
               <input
+                value={coverImage}
                 id="coverImage"
                 type="text"
                 placeholder="URL pública de tu imagen"
