@@ -110,7 +110,7 @@ export default function UploadCourses() {
         localStorage.setItem("courses", JSON.stringify(modifiedArray));
       }
     } //concluye condicional principal (si se crea o se edita un curso)
-
+    //
     router.push("/dashboard/mycourses");
   };
 
