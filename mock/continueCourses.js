@@ -1,20 +1,39 @@
 const continueCourses = [
   {
-    imageRoute: "/images/linux-advanced.jpg",
-    courseTitle: "Linux Avanzado para SysAdmins",
-    courseTeacherName: "José Hernández",
+    imageRoute: "/images/docker-course.jpg",
+    courseTitle: "Docker para Desarrolladores",
+    courseTeacherName: "Daniela Ruiz",
     courseDescription:
-      "Domina administración de servicios, seguridad, y automatización en entornos Linux avanzados.",
-    courseTeacherImage: "/images/teacher4.jpg",
-    courseCategory: "Sistemas Operativos",
+      "Crea contenedores, imágenes y entornos portables para tus aplicaciones con Docker.",
+    courseTeacherImage: "/images/teacher7.jpg",
+    courseCategory: "Backend",
     lessons: [
+      { lessonTitle: "Conceptos básicos de Docker", lessonVideoSource: "" },
       {
-        lessonTitle: "Administración avanzada de servicios",
+        lessonTitle: "Creación y gestión de contenedores",
         lessonVideoSource: "",
       },
-      { lessonTitle: "Seguridad en Linux", lessonVideoSource: "" },
-      { lessonTitle: "Automatización con scripts", lessonVideoSource: "" },
+      {
+        lessonTitle: "Docker Compose para multi-contenedores",
+        lessonVideoSource: "",
+      },
     ],
+    uuid: "17",
+  },
+  {
+    imageRoute: "/images/javascript-course.jpg",
+    courseTitle: "JavaScript Moderno",
+    courseTeacherName: "Ana Torres",
+    courseDescription:
+      "Domina JavaScript moderno ES6 y aprende buenas prácticas para escribir código limpio y eficiente.",
+    courseTeacherImage: "/images/teacher3.jpg",
+    courseCategory: "Frontend",
+    lessons: [
+      { lessonTitle: "Sintaxis moderna de JavaScript", lessonVideoSource: "" },
+      { lessonTitle: "Funciones y Scope", lessonVideoSource: "" },
+      { lessonTitle: "Promises y Async/Await", lessonVideoSource: "" },
+    ],
+    uuid: "2",
   },
   {
     imageRoute: "/images/react-native.jpg",
@@ -30,6 +49,7 @@ const continueCourses = [
       { lessonTitle: "Consumo de APIs en móviles", lessonVideoSource: "" },
       { lessonTitle: "Despliegue en Expo", lessonVideoSource: "" },
     ],
+    uuid: "13",
   },
   {
     imageRoute: "/images/python-advanced.jpg",
@@ -48,34 +68,22 @@ const continueCourses = [
       },
       { lessonTitle: "Decoradores y generadores", lessonVideoSource: "" },
     ],
+    uuid: "3",
   },
   {
-    imageRoute: "/images/hacking-course.jpg",
-    courseTitle: "Hacking Ético y Seguridad",
-    courseTeacherName: "Carlos Ramírez",
+    imageRoute: "/images/ccna-course.jpg",
+    courseTitle: "Cisco CCNA Fundamentals",
+    courseTeacherName: "Marco Díaz",
     courseDescription:
-      "Explora técnicas de hacking ético, pruebas de penetración y ciberseguridad básica.",
-    courseTeacherImage: "/images/teacher2.jpg",
-    courseCategory: "Ciberseguridad",
+      "Prepárate para la certificación CCNA con temas de redes, switches, routers y protocolos.",
+    courseTeacherImage: "/images/teacher6.jpg",
+    courseCategory: "Redes",
     lessons: [
-      { lessonTitle: "Fundamentos del hacking ético", lessonVideoSource: "" },
-      { lessonTitle: "Reconocimiento y escaneo", lessonVideoSource: "" },
-      { lessonTitle: "Explotación de vulnerabilidades", lessonVideoSource: "" },
+      { lessonTitle: "Conceptos básicos de redes", lessonVideoSource: "" },
+      { lessonTitle: "Configuración de switches", lessonVideoSource: "" },
+      { lessonTitle: "Protocolos de enrutamiento", lessonVideoSource: "" },
     ],
-  },
-  {
-    imageRoute: "/images/vue-course.jpg",
-    courseTitle: "Aplicaciones Web con Vue.js",
-    courseTeacherName: "Ana Torres",
-    courseDescription:
-      "Aprende Vue.js desde cero, composición de componentes y gestión de estado con Vuex.",
-    courseTeacherImage: "/images/teacher3.jpg",
-    courseCategory: "Frontend",
-    lessons: [
-      { lessonTitle: "Fundamentos de Vue.js", lessonVideoSource: "" },
-      { lessonTitle: "Componentes y propiedades", lessonVideoSource: "" },
-      { lessonTitle: "Estado global con Vuex", lessonVideoSource: "" },
-    ],
+    uuid: "14",
   },
 ];
 
