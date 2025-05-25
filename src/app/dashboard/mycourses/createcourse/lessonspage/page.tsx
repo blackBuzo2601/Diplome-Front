@@ -5,18 +5,12 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
-
+import Course from "../../../../../../interfaces/Course";
 import { Lesson } from "../../../../../../interfaces/Course";
 
 export default function LessonsPage() {
   const searchParams = useSearchParams();
-  const [courseData, setCourseData] = useState<{
-    title: string;
-    description: string;
-    coverImage: string;
-    lessons?: any[]; //puede o no estar lessons, puesto que puede venir un curso recien
-    //creado o bien, uno que ya existía
-  } | null>(null);
+  const [courseData, setCourseData] = useState<Course | null>(null);
 
   const [search, setSearch] = useState("");
   const [lessonSearch, setLessonSearch] = useState(false); //condicional para filtrar por palabra
@@ -26,33 +20,30 @@ export default function LessonsPage() {
 
   useEffect(() => {
     const courseParam = searchParams.get("course");
-    const title = searchParams.get("title");
-    const description = searchParams.get("description");
-    const coverImage = searchParams.get("coverImage");
 
+    //por si acaso hacemos esta validacion, aunque si estamso aqui, siempre va a venir un
+    //'course' porque solo se puede acceder aquí desde el modo editar, no hay modo de llegar
+    //aqui desde modo crear.
     if (courseParam) {
       try {
-        const decoded = decodeURIComponent(courseParam);
-        const parsedCourse = JSON.parse(decoded); //convertir a objeto el curso
+        const convertedCourse: Course = JSON.parse(
+          decodeURIComponent(courseParam)
+        );
+        setCourseData(convertedCourse);
 
-        setCourseData(parsedCourse);
-
-        //evaluar que exista al menos una leccion, sino, no tiene porque mostrarse el buscador
-        if (parsedCourse.lessons.length > 0) {
+        //evaluar truthy o falsy, si no contienen ningun objeto en
+        //lessons, no mostrar el cuadro de busqueda si sí, hacerlo entonces
+        if (convertedCourse.lessons) {
           setIsVisibleSearchContainer(true);
         } else {
           setIsVisibleSearchContainer(false);
         }
-        return;
       } catch (error) {
         console.error("Error parsing course:", error);
       }
+    } else {
+      setIsVisibleSearchContainer(false);
     }
-
-    if (title && description && coverImage) {
-      setCourseData({ title, description, coverImage });
-    }
-    setIsVisibleSearchContainer(false); //como no hay lecciones, igual ocultamos el buscador
   }, [searchParams]);
 
   const router = useRouter();

@@ -72,7 +72,10 @@ export default function UploadCourses() {
           courseTitle: title,
           courseDescription: description,
           imageRoute: coverImage,
-          uuid: crypto.randomUUID(),
+
+          uuid: crypto.randomUUID(), //esto lo puedes eliminar para el backend, por supuesto.
+          //Yo lo puse pero para poder generar un curso y luego poder eliminarlo, porque ocupaba
+          //un id para borrarlo del arreglo.
         };
         goToMyCoursesPage(true, newCourse);
       }
@@ -117,8 +120,20 @@ export default function UploadCourses() {
     router.push("/dashboard/mycourses");
   };
 
-  const goToLessonsPage = () => {
-    router.push("/dashboard/mycourses/createcourse/lessonspage");
+  const goToLessonsPage = (course: Course) => {
+    if (course) {
+      const course1 = {
+        //le puse course1 porque ya existe la variable course (estado)
+        //el objeto con la informacion del curso que voy a mandar a la ruta createcourse
+        ...course,
+      };
+      const course1String = encodeURIComponent(JSON.stringify(course1));
+      router.push(
+        `/dashboard/mycourses/createcourse/lessonspage?course=${course1String}`
+      );
+    } else {
+      router.push("/dashboard/mycourses/createcourse/lessonspage");
+    }
   };
 
   const onChangeInputURL = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -203,7 +218,7 @@ export default function UploadCourses() {
               </button>
               <button
                 type="button"
-                onClick={goToLessonsPage}
+                onClick={() => goToLessonsPage(course!)}
                 className={styles.uploadCourseButton}
               >
                 Agregar/Editar lecciones
