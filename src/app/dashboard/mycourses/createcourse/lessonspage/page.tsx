@@ -55,6 +55,7 @@ export default function LessonsPage() {
   const searchByWord = (text: string) => {
     if (text.trim() !== "") {
       setLessonSearch(true);
+      setSearch(text);
 
       //tuve que poner esta pinche linea porque si no no me dejaba hacer el map porque no estaba seguro
       //de si elemento es un objeto. Como lecciones inicialmente va a estar vacio, tiene que haber
@@ -69,7 +70,7 @@ export default function LessonsPage() {
       //finalmente hago la busqueda por palabra, manteniendo el numero de leccion original
       //y seteando el resultado al estado de lessonsArray
       const results = arrayWithLessonNumber.filter((elemento) =>
-        elemento.lessonTitle.toLowerCase().includes(text.toLowerCase())
+        elemento.lessonTitle.toLowerCase().includes(text.trim().toLowerCase())
       );
       setLessonsArray(results);
     } else {
@@ -91,7 +92,6 @@ export default function LessonsPage() {
             <input
               onChange={(e) => {
                 const text = e.target.value;
-                setSearch(text);
                 searchByWord(text);
               }}
               type="text"
@@ -102,7 +102,7 @@ export default function LessonsPage() {
         ) : null}
       </div>
       <p className={styles.mainTitle}>
-        Lecciones de tu curso: {courseData?.title}
+        Lecciones de tu curso: {courseData?.courseTitle}
       </p>
 
       <div className={styles.addLessonDiv}>
