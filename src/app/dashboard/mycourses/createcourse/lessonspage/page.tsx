@@ -49,7 +49,14 @@ export default function LessonsPage() {
   const router = useRouter();
 
   const goToCreateCoursePage = () => {
-    router.push("/dashboard/mycourses/createcourse");
+    const course = {
+      ...courseData,
+    };
+    const courseString = encodeURIComponent(JSON.stringify(course));
+    const editing = "true";
+    router.push(
+      `/dashboard/mycourses/createcourse?course=${courseString}&&editing=${editing}`
+    );
   };
 
   const searchByWord = (text: string) => {
@@ -135,7 +142,7 @@ export default function LessonsPage() {
                 </div>
               ))
             )
-          ) : courseData?.lessons?.length === 0 ? (
+          ) : courseData?.lessons === undefined ? (
             <div className={styles.noLessonsDiv}>
               <p className={styles.noLessonsText}>
                 Tu curso no tiene ninguna lección. Comienza creando una lección
