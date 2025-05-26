@@ -1,0 +1,165 @@
+.modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modalDiv {
+  background-color: white;
+  border-radius: 10px;
+  width: 55%;
+  height: 80%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4vh;
+}
+.modalCourseName {
+  text-align: center;
+  font-size: 2.5vw;
+  word-break: break-word;
+  font-family: "The Seasons", sans-serif;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.6vw;
+  font-family: "The Seasons", serif;
+  color: #001623;
+}
+
+.inputGroup {
+  width: 100%;
+  height: 7vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+.credentialsInput {
+  border-radius: 2vw;
+  width: 70%;
+  height: 100%;
+  background-color: #a3d4f3;
+  padding-left: 2vw;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2vw;
+  border: none;
+  outline: none;
+  color: white;
+}
+.credentialsInput::placeholder {
+  color: white;
+}
+.credentialsInput:hover {
+  background-color: #1e6fbd;
+}
+.videoDivPlaceholder {
+  background-color: black;
+  width: 40%;
+  height: 23vh;
+  border-radius: 20px;
+}
+
+.modifyVideoDiv {
+  width: 50%;
+  height: 7vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 1vh;
+}
+
+.updateLessonButton {
+  cursor: pointer;
+  border: none;
+  width: 70%;
+  height: 100%;
+  font-family: "The Seasons", sans-serif;
+
+  border-radius: 30px;
+  background: linear-gradient(to right, #4ac4ff, #003ca6);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 1.3rem;
+}
+.updateLessonButton:hover {
+  background: #1e6fbd;
+}
+
+.deleteLessonButton {
+  cursor: pointer;
+  border: none;
+  width: 70%;
+  height: 100%;
+  font-family: "The Seasons", sans-serif;
+
+  border-radius: 30px;
+  background: linear-gradient(to right, #f0f0f0, #888888);
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 1.3rem;
+}
+
+.deleteLessonButton:hover {
+  background: #aac8de;
+  color: #f0f0f0;
+}
+
+.modalActions {
+  width: 100%;
+  height: 7vh;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  margin-top: 3vh;
+}
+
+.closeModalButton {
+  cursor: pointer;
+  border: none;
+  width: 40%;
+  height: 100%;
+  font-family: "The Seasons", sans-serif;
+  color: black;
+  border-radius: 30px;
+  background: linear-gradient(to right, #f0f0f0, #888888);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 1.4vw;
+}
+.closeModalButton:hover {
+  background: #aac8de;
+  color: #f0f0f0;
+}
+
+.goModalButton {
+  cursor: pointer;
+  border: none;
+  width: 40%;
+  height: 100%;
+  font-family: "The Seasons", sans-serif;
+
+  border-radius: 30px;
+  background: linear-gradient(to right, #4ac4ff, #003ca6);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 1.4vw;
+}
+.goModalButton:hover {
+  background: #aac8de;
+}

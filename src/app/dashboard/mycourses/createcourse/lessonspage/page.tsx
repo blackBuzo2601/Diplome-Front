@@ -7,10 +7,11 @@ import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import Course from "../../../../../../interfaces/Course";
 import { Lesson } from "../../../../../../interfaces/Course";
+import AddLesonModal from "../../../../../../components/AddLessonModal";
 
 export default function LessonsPage() {
   const searchParams = useSearchParams();
-  const [courseData, setCourseData] = useState<Course | null>(null);
+  const [courseData, setCourseData] = useState<Course>();
 
   const [search, setSearch] = useState("");
   const [lessonSearch, setLessonSearch] = useState(false); //condicional para filtrar por palabra
@@ -42,6 +43,7 @@ export default function LessonsPage() {
         console.error("Error parsing course:", error);
       }
     } else {
+      //siempre tiene que llegar un objeto curso por URL parametro, pero por si acaso
       setIsVisibleSearchContainer(false);
     }
   }, [searchParams]);
@@ -49,6 +51,7 @@ export default function LessonsPage() {
   const router = useRouter();
 
   const goToCreateCoursePage = () => {
+    //Regresar a la pantalla anterior (Crear/Editar curso) con el objeto completo
     const course = {
       ...courseData,
     };
@@ -173,6 +176,12 @@ export default function LessonsPage() {
           Regresar
         </button>
       </div>
+      <AddLesonModal
+        isNewLesson={true}
+        isOpen={true}
+        onClose={() => console.log("cerrar")}
+        onConfirm={() => console.log("on confirm")}
+      ></AddLesonModal>
     </div>
   );
 }
