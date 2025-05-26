@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import Course from "../../../../../../interfaces/Course";
 import { Lesson } from "../../../../../../interfaces/Course";
-import AddLesonModal from "../../../../../../components/AddLessonModal";
+import AddLessonModal from "../../../../../../components/AddLessonModal";
 import { CookingPot } from "lucide-react";
 
 export default function LessonsPage() {
@@ -42,8 +42,6 @@ export default function LessonsPage() {
           setIsVisibleSearchContainer(false);
         } else {
           setIsVisibleSearchContainer(true);
-          console.log("Imprimiendo info");
-          console.log(convertedCourse);
         }
       } catch (error) {
         console.error("Error parseando el objeto course:", error);
@@ -207,20 +205,35 @@ export default function LessonsPage() {
         </button>
       </div>
 
-      <AddLesonModal
-        addLesson={(lesson) => {
+      <AddLessonModal
+        addLesson={(lesson, isNew) => {
           const addLesson = { ...lesson }; //obtener el objeto Lesson proveniente del Modal
 
           //es necesario verificar que courseData es truthy, para que no chille typescript
           if (courseData) {
-            //construir nuevo objetoCourse para luego actualizar el estado de courseData
-            const updatedCourse: Course = {
-              ...courseData,
-              lessons: [...courseData.lessons!, addLesson], //agregar nueva lección
-            };
-            setCourseData(updatedCourse);
-          }
+            if (isNew) {
+              //si es nuevo, agregarlo al arreglo
+              const updatedCourse: Course = {
+                ...courseData,
+                lessons: [...courseData.lessons!, addLesson], //agregar nueva lección
+              };
+              setCourseData(updatedCourse);
+            } else {
+              //no es nuevo, hay que encontrar el original, eliminarlo y en su lugar
+              //poner el nuevo objeto con el Lesson modificado
+              const originalLessonsArray = courseData.lessons;
+              const deleteLessonIndex = originalLessonsArray!.findIndex(
+                (elemento) => elemento.uuid === lesson.uuid
+              );
+              originalLessonsArray?.splice(deleteLessonIndex, 1, addLesson); //sustituir con el Lesson modificado
+              const updatedCourse: Course = {
+                ...courseData,
+                lessons: [...originalLessonsArray!], //agregar nueva lección
+              };
 
+              setCourseData(updatedCourse);
+            }
+          }
           setIsAddLessonModalVisible(false);
         }}
         Lesson={lesson!} //pasamos la lesson del estado, por si el usuario quiere editar una lesson
@@ -229,7 +242,7 @@ export default function LessonsPage() {
         onClose={() => setIsAddLessonModalVisible(false)} //desactivar modal (usuario pulsó cancelar)
         //justo aquí tengo que modificar el objeto course actual que estoy recibiendo y
         //pushear el nuevo Lesson
-      ></AddLesonModal>
+      ></AddLessonModal>
     </div>
   );
 }

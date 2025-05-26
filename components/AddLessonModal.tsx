@@ -1,28 +1,26 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import styles from "./AddLessonModal.module.css";
 import Image from "next/image";
 import Course, { Lesson } from "../interfaces/Course";
-interface AddLesonModalProps {
+interface AddLessonModalProps {
   isOpen: boolean; //booleano principal para mostrar el modal o no.
   onClose: () => void; //cerrar el modal (poner en false el estado de mostrar modal)
   isNewLesson: boolean; //condicional para mostrar modal de crear leccion o editar leccion
-  addLesson: (Lesson: Lesson) => void; //esta función se encarga de obtener los datos
-  //de los inputs, para enviarlos a LessonsPage y modificar el arreglo de Lessons de cada course.
+  addLesson: (Lesson: Lesson, isNew: boolean) => void; //esta función se encarga de obtener los datos
+  //de los inputs, para enviarlos a LessonsPage y modificar el arreglo de Lessons de cada course
   Lesson?: Lesson;
 }
 
-const AddLesonModal: React.FC<AddLesonModalProps> = ({
+const AddLessonModal: React.FC<AddLessonModalProps> = ({
   isOpen,
   onClose,
   addLesson,
   Lesson,
   isNewLesson, //este condicional sirve para mostrar el modal de Crear o Editar lección
 }) => {
-  if (!isOpen) return null;
-
   const [textInput, setTextInput] = useState("");
   const [urlVideo, setUrlVideo] = useState("");
-
   useEffect(() => {
     if (!isNewLesson && Lesson) {
       setTextInput(Lesson.lessonTitle);
@@ -33,6 +31,9 @@ const AddLesonModal: React.FC<AddLesonModalProps> = ({
       setUrlVideo("");
     }
   }, [isNewLesson, Lesson]);
+
+  if (!isOpen) return null;
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (textInput !== "" && urlVideo !== "") {
@@ -44,9 +45,15 @@ const AddLesonModal: React.FC<AddLesonModalProps> = ({
           lessonVideoSource: urlVideo,
           uuid: uuid,
         };
-        addLesson(newLesson);
+        addLesson(newLesson, true);
       } else {
-        alert("Leccion modificada (logica pendiente)");
+        alert("Leccion modificada con éxito!");
+        const newLesson = {
+          lessonTitle: textInput,
+          lessonVideoSource: urlVideo,
+          uuid: Lesson?.uuid, //construir nuevo objeto, sin modificar el uuid original
+        };
+        addLesson(newLesson, false);
       }
     }
   };
@@ -124,4 +131,4 @@ const AddLesonModal: React.FC<AddLesonModalProps> = ({
   );
 };
 
-export default AddLesonModal;
+export default AddLessonModal;
