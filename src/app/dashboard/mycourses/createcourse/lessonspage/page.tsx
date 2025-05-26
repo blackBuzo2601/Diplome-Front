@@ -34,19 +34,14 @@ export default function LessonsPage() {
         );
         setCourseData(convertedCourse);
 
-        //evaluar truthy o falsy, si no contienen ningun objeto en
-        //lessons, no mostrar el cuadro de busqueda si sí, hacerlo entonces
-        if (convertedCourse.lessons) {
-          setIsVisibleSearchContainer(true);
-        } else {
+        if (convertedCourse.lessons!.length == 0) {
           setIsVisibleSearchContainer(false);
+        } else {
+          setIsVisibleSearchContainer(true);
         }
       } catch (error) {
-        console.error("Error parsing course:", error);
+        console.error("Error parseando el objeto course:", error);
       }
-    } else {
-      //siempre tiene que llegar un objeto curso por URL parametro, pero por si acaso
-      setIsVisibleSearchContainer(false);
     }
   }, [searchParams]);
 
@@ -72,7 +67,7 @@ export default function LessonsPage() {
       //tuve que poner esta pinche linea porque si no no me dejaba hacer el map porque no estaba seguro
       //de si elemento es un objeto. Como lecciones inicialmente va a estar vacio, tiene que haber
       //este caso de uso
-      const lessons: Lesson[] = courseData?.lessons ?? []; //si no tiene nada, lo dejamos como un arreglo vacio
+      const lessons: Lesson[] = courseData!.lessons ?? []; //si no tiene nada, lo dejamos como un arreglo vacio
 
       //asigno un número de lección en orden a cada lección
       const arrayWithLessonNumber = lessons.map((elemento, index) => ({
@@ -161,7 +156,7 @@ export default function LessonsPage() {
                 </div>
               ))
             )
-          ) : courseData?.lessons === undefined ? (
+          ) : courseData?.lessons?.length === 0 ? (
             <div className={styles.noLessonsDiv}>
               <p className={styles.noLessonsText}>
                 Tu curso no tiene ninguna lección. Comienza creando una lección
@@ -176,7 +171,7 @@ export default function LessonsPage() {
               />
             </div>
           ) : (
-            courseData.lessons.map((leccion: Lesson, index: number) => (
+            courseData?.lessons?.map((leccion: Lesson, index: number) => (
               <div
                 onClick={() => handleShowModal(false)}
                 key={index}

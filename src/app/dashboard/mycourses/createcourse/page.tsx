@@ -72,11 +72,12 @@ export default function UploadCourses() {
           courseTitle: title,
           courseDescription: description,
           imageRoute: coverImage,
-
+          lessons: [],
           uuid: crypto.randomUUID(), //esto lo puedes eliminar para el backend, por supuesto.
           //Yo lo puse pero para poder generar un curso y luego poder eliminarlo, porque ocupaba
           //un id para borrarlo del arreglo.
         };
+
         goToMyCoursesPage(true, newCourse);
       }
     }
