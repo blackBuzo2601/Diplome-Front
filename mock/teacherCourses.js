@@ -9,12 +9,21 @@ const teacherCourses = [
     courseTeacherImage: "/images/teacher1.jpg",
     courseCategory: "Frontend",
     lessons: [
-      { lessonTitle: "Introducción a Next.js", lessonVideoSource: "" },
+      {
+        lessonTitle: "Introducción a Next.js",
+        lessonVideoSource: "",
+        uuid: "101",
+      },
       {
         lessonTitle: "Enrutamiento con Pages y App Router",
         lessonVideoSource: "",
+        uuid: "102",
       },
-      { lessonTitle: "Renderizado Estático y SSR", lessonVideoSource: "" },
+      {
+        lessonTitle: "Renderizado Estático y SSR",
+        lessonVideoSource: "",
+        uuid: "103",
+      },
     ],
     uuid: "0",
   },
@@ -28,10 +37,22 @@ const teacherCourses = [
     courseTeacherImage: "/images/teacher1.jpg",
     courseCategory: "Frontend",
     lessons: [
-      { lessonTitle: "HTML5 moderno", lessonVideoSource: "" },
-      { lessonTitle: "CSS con Tailwind y Bootstrap", lessonVideoSource: "" },
-      { lessonTitle: "JavaScript para el frontend", lessonVideoSource: "" },
-      { lessonTitle: "Diseño responsivo avanzado", lessonVideoSource: "" },
+      { lessonTitle: "HTML5 moderno", lessonVideoSource: "", uuid: "104" },
+      {
+        lessonTitle: "CSS con Tailwind y Bootstrap",
+        lessonVideoSource: "",
+        uuid: "105",
+      },
+      {
+        lessonTitle: "JavaScript para el frontend",
+        lessonVideoSource: "",
+        uuid: "106",
+      },
+      {
+        lessonTitle: "Diseño responsivo avanzado",
+        lessonVideoSource: "",
+        uuid: "107",
+      },
     ],
     uuid: "11",
   },
@@ -45,9 +66,21 @@ const teacherCourses = [
     courseTeacherImage: "/images/teacher1.jpg",
     courseCategory: "Frontend",
     lessons: [
-      { lessonTitle: "Introducción a Git y GitHub", lessonVideoSource: "" },
-      { lessonTitle: "Commits y ramas básicas", lessonVideoSource: "" },
-      { lessonTitle: "Resolución de conflictos", lessonVideoSource: "" },
+      {
+        lessonTitle: "Introducción a Git y GitHub",
+        lessonVideoSource: "",
+        uuid: "108",
+      },
+      {
+        lessonTitle: "Commits y ramas básicas",
+        lessonVideoSource: "",
+        uuid: "109",
+      },
+      {
+        lessonTitle: "Resolución de conflictos",
+        lessonVideoSource: "",
+        uuid: "110",
+      },
     ],
     uuid: "16",
   },
@@ -60,14 +93,20 @@ const teacherCourses = [
     courseTeacherImage: "/images/teacher1.jpg",
     courseCategory: "Frontend",
     lessons: [
-      { lessonTitle: "Tipos básicos y variables", lessonVideoSource: "" },
+      {
+        lessonTitle: "Tipos básicos y variables",
+        lessonVideoSource: "",
+        uuid: "111",
+      },
       {
         lessonTitle: "Interfaces y tipos personalizados",
         lessonVideoSource: "",
+        uuid: "112",
       },
       {
         lessonTitle: "Programación orientada a objetos en TypeScript",
         lessonVideoSource: "",
+        uuid: "113",
       },
     ],
     uuid: "18",
@@ -85,9 +124,14 @@ const teacherCourses = [
       {
         lessonTitle: "Estructura y organización del proyecto",
         lessonVideoSource: "",
+        uuid: "114",
       },
-      { lessonTitle: "Testing en React", lessonVideoSource: "" },
-      { lessonTitle: "Manejo de dependencias y hooks", lessonVideoSource: "" },
+      { lessonTitle: "Testing en React", lessonVideoSource: "", uuid: "115" },
+      {
+        lessonTitle: "Manejo de dependencias y hooks",
+        lessonVideoSource: "",
+        uuid: "116",
+      },
     ],
     uuid: "24",
   },

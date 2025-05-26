@@ -12,6 +12,7 @@ export interface Course {
 export interface Lesson {
   lessonTitle: string;
   lessonVideoSource: string;
+  uuid?: string;
 }
 
 export default Course;
