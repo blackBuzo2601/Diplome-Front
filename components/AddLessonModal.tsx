@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./AddLessonModal.module.css";
 import Image from "next/image";
 import Course, { Lesson } from "../interfaces/Course";
@@ -23,6 +23,16 @@ const AddLesonModal: React.FC<AddLesonModalProps> = ({
   const [textInput, setTextInput] = useState("");
   const [urlVideo, setUrlVideo] = useState("");
 
+  useEffect(() => {
+    if (!isNewLesson && Lesson) {
+      setTextInput(Lesson.lessonTitle);
+      setUrlVideo(Lesson.lessonVideoSource);
+    } else {
+      //Si es nueva lección, limpia los inputs
+      setTextInput("");
+      setUrlVideo("");
+    }
+  }, [isNewLesson, Lesson]);
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (textInput !== "" && urlVideo !== "") {
@@ -53,7 +63,7 @@ const AddLesonModal: React.FC<AddLesonModalProps> = ({
         <div className={styles.inputGroup}>
           <label className={styles.subtitle}>Título de lección:</label>
           <input
-            value={Lesson ? Lesson.lessonTitle : textInput}
+            value={textInput}
             maxLength={40}
             required
             type="text"
@@ -69,7 +79,7 @@ const AddLesonModal: React.FC<AddLesonModalProps> = ({
         <div className={styles.modifyVideoDiv}>
           <label className={styles.subtitle}>Enlace del vídeo:</label>
           <input
-            value={Lesson ? Lesson.lessonVideoSource : urlVideo}
+            value={urlVideo}
             maxLength={40}
             required
             type="text"
