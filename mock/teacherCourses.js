@@ -11,17 +11,19 @@ const teacherCourses = [
     lessons: [
       {
         lessonTitle: "Introducción a Next.js",
-        lessonVideoSource: "",
+        lessonVideoSource:
+          "https://www.youtube.com/watch?v=_DHKhLTO4tQ&pp=ygUWcGVuZGVqbyBjYW4gdG91Y2ggdGhpcw%3D%3D",
         uuid: "101",
       },
       {
         lessonTitle: "Enrutamiento con Pages y App Router",
-        lessonVideoSource: "",
+        lessonVideoSource: "https://www.youtube.com/shorts/UKyvhTXqQZo",
         uuid: "102",
       },
       {
         lessonTitle: "Renderizado Estático y SSR",
-        lessonVideoSource: "",
+        lessonVideoSource:
+          "https://www.youtube.com/watch?v=gJ73nwp2uIM&pp=ygUWcGVuZGVqbyBjYW4gdG91Y2ggdGhpcw%3D%3D",
         uuid: "103",
       },
     ],

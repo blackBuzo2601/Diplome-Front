@@ -8,12 +8,14 @@ interface AddLesonModalProps {
   isNewLesson: boolean; //condicional para mostrar modal de crear leccion o editar leccion
   addLesson: (Lesson: Lesson) => void; //esta función se encarga de obtener los datos
   //de los inputs, para enviarlos a LessonsPage y modificar el arreglo de Lessons de cada course.
+  Lesson?: Lesson;
 }
 
 const AddLesonModal: React.FC<AddLesonModalProps> = ({
   isOpen,
   onClose,
   addLesson,
+  Lesson,
   isNewLesson, //este condicional sirve para mostrar el modal de Crear o Editar lección
 }) => {
   if (!isOpen) return null;
@@ -51,7 +53,7 @@ const AddLesonModal: React.FC<AddLesonModalProps> = ({
         <div className={styles.inputGroup}>
           <label className={styles.subtitle}>Título de lección:</label>
           <input
-            value={textInput}
+            value={Lesson ? Lesson.lessonTitle : textInput}
             maxLength={40}
             required
             type="text"
@@ -67,7 +69,7 @@ const AddLesonModal: React.FC<AddLesonModalProps> = ({
         <div className={styles.modifyVideoDiv}>
           <label className={styles.subtitle}>Enlace del vídeo:</label>
           <input
-            value={urlVideo}
+            value={Lesson ? Lesson.lessonVideoSource : urlVideo}
             maxLength={40}
             required
             type="text"

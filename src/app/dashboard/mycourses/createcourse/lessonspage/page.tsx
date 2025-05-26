@@ -21,6 +21,9 @@ export default function LessonsPage() {
     useState(false);
   const [isAddLessonModalVisible, setIsAddLessonModalVisible] = useState(false);
   const [isNewLesson, setIsNewLesson] = useState(true);
+  const [lesson, setLesson] = useState<Lesson | null>(null); //Este estado lo vamos a utilizar
+  //para cuando obtengamos el objeto de una Lesson existente, que podamos mandar esa información
+  //al modal.
 
   useEffect(() => {
     const courseParam = searchParams.get("course");
@@ -88,10 +91,18 @@ export default function LessonsPage() {
     }
   };
 
-  //esta función abre el modal, dependiendo si es el de crear o editar lección
-  const handleShowModal = (isNewLesson: boolean) => {
+  //Esta función, abre el modal. Si se recibe true, se activa el Modal para crear NUEVA lección.
+  //Si es false, corresponde a Editar Modal (para esto también se recibe el paraemtro Lesson correspondiente)
+  const handleShowModal = (isNewLesson: boolean, lesson?: Lesson) => {
     setIsNewLesson(isNewLesson);
     setIsAddLessonModalVisible(true);
+    if (lesson) {
+      //si se recibió una lección existente, actualizar el estado
+      setLesson(lesson);
+    } else {
+      //no se recibió una lección existente, establecer en null la lección
+      setLesson(null);
+    }
   };
 
   return (
@@ -150,7 +161,7 @@ export default function LessonsPage() {
             ) : (
               lessonsArray.map((leccion, index) => (
                 <div
-                  onClick={() => handleShowModal(false)}
+                  onClick={() => handleShowModal(false, leccion)}
                   key={index}
                   className={styles.singleLesson}
                 >
@@ -177,7 +188,7 @@ export default function LessonsPage() {
           ) : (
             courseData?.lessons?.map((leccion: Lesson, index: number) => (
               <div
-                onClick={() => handleShowModal(false)}
+                onClick={() => handleShowModal(false, leccion)}
                 key={index}
                 className={styles.singleLesson}
               >
@@ -199,8 +210,10 @@ export default function LessonsPage() {
       <AddLesonModal
         addLesson={(lesson) => {
           const addLesson = { ...lesson }; //obtener el objeto Lesson proveniente del Modal
+
+          //es necesario verificar que courseData es truthy, para que no chille typescript
           if (courseData) {
-            //es necesario poner esto para que no chille Typescript
+            //construir nuevo objetoCourse para luego actualizar el estado de courseData
             const updatedCourse: Course = {
               ...courseData,
               lessons: [...courseData.lessons!, addLesson], //agregar nueva lección
@@ -210,6 +223,7 @@ export default function LessonsPage() {
 
           setIsAddLessonModalVisible(false);
         }}
+        Lesson={lesson!} //pasamos la lesson del estado, por si el usuario quiere editar una lesson
         isNewLesson={isNewLesson}
         isOpen={isAddLessonModalVisible}
         onClose={() => setIsAddLessonModalVisible(false)} //desactivar modal (usuario pulsó cancelar)
