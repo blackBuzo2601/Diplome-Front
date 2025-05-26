@@ -8,6 +8,7 @@ import { useSearchParams } from "next/navigation";
 import Course from "../../../../../../interfaces/Course";
 import { Lesson } from "../../../../../../interfaces/Course";
 import AddLesonModal from "../../../../../../components/AddLessonModal";
+import { CookingPot } from "lucide-react";
 
 export default function LessonsPage() {
   const searchParams = useSearchParams();
@@ -38,6 +39,8 @@ export default function LessonsPage() {
           setIsVisibleSearchContainer(false);
         } else {
           setIsVisibleSearchContainer(true);
+          console.log("Imprimiendo info");
+          console.log(convertedCourse);
         }
       } catch (error) {
         console.error("Error parseando el objeto course:", error);
@@ -85,13 +88,11 @@ export default function LessonsPage() {
     }
   };
 
+  //esta función abre el modal, dependiendo si es el de crear o editar lección
   const handleShowModal = (isNewLesson: boolean) => {
     setIsNewLesson(isNewLesson);
     setIsAddLessonModalVisible(true);
   };
-
-  //editar o crear lecciones
-  const handleEditLesson = (isNewLesson: boolean) => {};
 
   return (
     <div className={styles.mainDiv}>
@@ -194,18 +195,17 @@ export default function LessonsPage() {
           Regresar
         </button>
       </div>
+
       <AddLesonModal
-        course={courseData!} //siempre va a llegar un objeto en este punto
+        addLesson={(lesson) => {
+          console.log("Imprimiendo leccion creada");
+          console.log(lesson);
+        }}
         isNewLesson={isNewLesson}
         isOpen={isAddLessonModalVisible}
-        onClose={() => setIsAddLessonModalVisible(false)}
-        onConfirm={(Lesson) => {
-          console.log("Imprimiendo información");
-          console.log(Lesson);
-          console.log(Lesson.lessonTitle);
-          console.log(Lesson.lessonVideoSource);
-        }}
-        onDelete={() => console.log("hola")}
+        onClose={() => setIsAddLessonModalVisible(false)} //desactivar modal (usuario pulsó cancelar)
+        //justo aquí tengo que modificar el objeto course actual que estoy recibiendo y
+        //pushear el nuevo Lesson
       ></AddLesonModal>
     </div>
   );

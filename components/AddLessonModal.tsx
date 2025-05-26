@@ -3,21 +3,17 @@ import styles from "./AddLessonModal.module.css";
 import Image from "next/image";
 import Course, { Lesson } from "../interfaces/Course";
 interface AddLesonModalProps {
-  isOpen: boolean;
-  course: Course;
-  onClose: () => void;
-  onConfirm: (Lesson: Lesson) => void;
-  onDelete: () => void;
-  isNewLesson: boolean;
+  isOpen: boolean; //booleano principal para mostrar el modal o no.
+  onClose: () => void; //cerrar el modal (poner en false el estado de mostrar modal)
+  isNewLesson: boolean; //condicional para mostrar modal de crear leccion o editar leccion
+  lesson: (Lesson: Lesson) => void;
 }
 
 const AddLesonModal: React.FC<AddLesonModalProps> = ({
   isOpen,
   onClose,
-  onConfirm,
-  isNewLesson,
-  onDelete,
-  // course,
+  lesson,
+  isNewLesson, //este condicional sirve para mostrar el modal de Crear o Editar lección
 }) => {
   if (!isOpen) return null;
 
@@ -27,8 +23,18 @@ const AddLesonModal: React.FC<AddLesonModalProps> = ({
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (textInput !== "" && urlVideo !== "") {
-      alert("datos actualizados");
-      onConfirm({ lessonTitle: textInput, lessonVideoSource: urlVideo });
+      if (isNewLesson) {
+        alert("Lección agregada con éxito!");
+        const uuid = crypto.randomUUID();
+        const newLesson = {
+          lessonTitle: textInput,
+          lessonVideoSource: urlVideo,
+          uuid: uuid,
+        };
+        lesson(newLesson);
+      } else {
+        alert("Leccion modificada (logica pendiente)");
+      }
     }
   };
 
@@ -79,10 +85,7 @@ const AddLesonModal: React.FC<AddLesonModalProps> = ({
         </div>
         <div className={styles.modifyVideoDiv}>
           {isNewLesson ? null : (
-            <button
-              className={styles.deleteLessonButton}
-              onClick={() => onDelete}
-            >
+            <button className={styles.deleteLessonButton}>
               Borrar lección
             </button>
           )}
