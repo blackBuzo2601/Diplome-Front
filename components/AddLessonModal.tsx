@@ -64,7 +64,7 @@ const AddLesonModal: React.FC<AddLesonModalProps> = ({
 
         <div className={styles.modalActions}>
           <button className={styles.closeModalButton} onClick={onClose}>
-            Regresar
+            Cancelar
           </button>
 
           {isNewLesson ? (
@@ -73,7 +73,7 @@ const AddLesonModal: React.FC<AddLesonModalProps> = ({
             </button>
           ) : (
             <button className={styles.goModalButton} onClick={onConfirm}>
-              Editar lección
+              Aplicar cambios
             </button>
           )}
         </div>

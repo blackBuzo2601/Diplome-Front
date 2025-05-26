@@ -150,7 +150,11 @@ export default function LessonsPage() {
               </div>
             ) : (
               lessonsArray.map((leccion, index) => (
-                <div key={index} className={styles.singleLesson}>
+                <div
+                  onClick={() => handleShowModal(false)}
+                  key={index}
+                  className={styles.singleLesson}
+                >
                   <p className={styles.singleLessonTitle}>
                     {leccion.lessonTitle}
                   </p>
@@ -172,7 +176,7 @@ export default function LessonsPage() {
               />
             </div>
           ) : (
-            courseData?.lessons?.map((leccion: Lesson, index: number) => (
+            courseData.lessons.map((leccion: Lesson, index: number) => (
               <div
                 onClick={() => handleShowModal(false)}
                 key={index}
