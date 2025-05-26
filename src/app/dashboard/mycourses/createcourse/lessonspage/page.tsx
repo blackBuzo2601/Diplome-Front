@@ -218,6 +218,22 @@ export default function LessonsPage() {
                 lessons: [...courseData.lessons!, addLesson], //agregar nueva lección
               };
               setCourseData(updatedCourse);
+              const storedCourses = localStorage.getItem("courses");
+              const parsedCourses: Course[] = storedCourses
+                ? JSON.parse(storedCourses)
+                : [];
+
+              //usaremos filter para obtener los objetos cuyo uuid sea diferente del Course que
+              //estamos manejando. De esta forma, agregaremos el mismo Course pero con los
+              //Lessons modificados.
+              const reemplazandoCourses = parsedCourses.filter(
+                (elemento) => elemento.uuid !== courseData.uuid
+              );
+              reemplazandoCourses.unshift(updatedCourse);
+              localStorage.setItem(
+                "courses",
+                JSON.stringify(reemplazandoCourses)
+              );
             } else {
               //no es nuevo, hay que encontrar el original, eliminarlo y en su lugar
               //poner el nuevo objeto con el Lesson modificado
@@ -230,8 +246,24 @@ export default function LessonsPage() {
                 ...courseData,
                 lessons: [...originalLessonsArray!], //agregar nueva lección
               };
-
               setCourseData(updatedCourse);
+
+              const storedCourses = localStorage.getItem("courses");
+              const parsedCourses: Course[] = storedCourses
+                ? JSON.parse(storedCourses)
+                : [];
+
+              //usaremos filter para obtener los objetos cuyo uuid sea diferente del Course que
+              //estamos manejando. De esta forma, agregaremos el mismo Course pero con los
+              //Lessons modificados.
+              const reemplazandoCourses = parsedCourses.filter(
+                (elemento) => elemento.uuid !== courseData.uuid
+              );
+              reemplazandoCourses.unshift(updatedCourse);
+              localStorage.setItem(
+                "courses",
+                JSON.stringify(reemplazandoCourses)
+              );
             }
           }
           setIsAddLessonModalVisible(false);
@@ -239,7 +271,6 @@ export default function LessonsPage() {
         onDelete={() => {
           setIsAddLessonModalVisible(false);
           const allLessons = courseData?.lessons;
-          console.log("Cantidad lecciones " + allLessons);
           const arrayWithDeletedLesson = allLessons?.filter(
             (elemento) => elemento.uuid !== lesson?.uuid
           );
@@ -248,6 +279,19 @@ export default function LessonsPage() {
             lessons: [...arrayWithDeletedLesson!],
           };
           setCourseData(updatedCourse);
+          const storedCourses = localStorage.getItem("courses");
+          const parsedCourses: Course[] = storedCourses
+            ? JSON.parse(storedCourses)
+            : [];
+
+          //usaremos filter para obtener los objetos cuyo uuid sea diferente del Course que
+          //estamos manejando. De esta forma, agregaremos el mismo Course pero con los
+          //Lessons modificados.
+          const reemplazandoCourses = parsedCourses.filter(
+            (elemento) => elemento.uuid !== courseData!.uuid
+          );
+          reemplazandoCourses.unshift(updatedCourse);
+          localStorage.setItem("courses", JSON.stringify(reemplazandoCourses));
         }}
         Lesson={lesson!} //pasamos la lesson del estado, por si el usuario quiere editar una lesson
         isNewLesson={isNewLesson}
