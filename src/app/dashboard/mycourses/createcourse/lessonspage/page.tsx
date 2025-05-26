@@ -92,7 +92,7 @@ export default function LessonsPage() {
   //Esta función, abre el modal. Si se recibe true, se activa el Modal para crear NUEVA lección.
   //Si es false, corresponde a Editar Modal (para esto también se recibe el paraemtro Lesson correspondiente)
   const handleShowModal = (isNewLesson: boolean, lesson?: Lesson) => {
-    setIsNewLesson(isNewLesson);
+    setIsNewLesson(isNewLesson); //Este estado lo recibe el modal
     setIsAddLessonModalVisible(true);
     if (lesson) {
       //si se recibió una lección existente, actualizar el estado
@@ -239,9 +239,10 @@ export default function LessonsPage() {
         Lesson={lesson!} //pasamos la lesson del estado, por si el usuario quiere editar una lesson
         isNewLesson={isNewLesson}
         isOpen={isAddLessonModalVisible}
-        onClose={() => setIsAddLessonModalVisible(false)} //desactivar modal (usuario pulsó cancelar)
-        //justo aquí tengo que modificar el objeto course actual que estoy recibiendo y
-        //pushear el nuevo Lesson
+        onClose={() => {
+          setIsAddLessonModalVisible(false);
+          setLesson(null);
+        }}
       ></AddLessonModal>
     </div>
   );

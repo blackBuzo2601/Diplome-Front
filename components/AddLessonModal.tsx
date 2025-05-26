@@ -45,6 +45,8 @@ const AddLessonModal: React.FC<AddLessonModalProps> = ({
           lessonVideoSource: urlVideo,
           uuid: uuid,
         };
+        setTextInput("");
+        setUrlVideo("");
         addLesson(newLesson, true);
       } else {
         alert("Leccion modificada con éxito!");
@@ -105,14 +107,21 @@ const AddLessonModal: React.FC<AddLessonModalProps> = ({
         </div>
         <div className={styles.modifyVideoDiv}>
           {isNewLesson ? null : (
-            <button className={styles.deleteLessonButton}>
+            <button type="button" className={styles.deleteLessonButton}>
               Borrar lección
             </button>
           )}
         </div>
 
         <div className={styles.modalActions}>
-          <button className={styles.closeModalButton} onClick={onClose}>
+          <button
+            className={styles.closeModalButton}
+            onClick={() => {
+              onClose();
+              setTextInput("");
+              setUrlVideo("");
+            }}
+          >
             Cancelar
           </button>
 
