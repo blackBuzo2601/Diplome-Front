@@ -6,13 +6,14 @@ interface AddLesonModalProps {
   isOpen: boolean; //booleano principal para mostrar el modal o no.
   onClose: () => void; //cerrar el modal (poner en false el estado de mostrar modal)
   isNewLesson: boolean; //condicional para mostrar modal de crear leccion o editar leccion
-  lesson: (Lesson: Lesson) => void;
+  addLesson: (Lesson: Lesson) => void; //esta función se encarga de obtener los datos
+  //de los inputs, para enviarlos a LessonsPage y modificar el arreglo de Lessons de cada course.
 }
 
 const AddLesonModal: React.FC<AddLesonModalProps> = ({
   isOpen,
   onClose,
-  lesson,
+  addLesson,
   isNewLesson, //este condicional sirve para mostrar el modal de Crear o Editar lección
 }) => {
   if (!isOpen) return null;
@@ -31,7 +32,7 @@ const AddLesonModal: React.FC<AddLesonModalProps> = ({
           lessonVideoSource: urlVideo,
           uuid: uuid,
         };
-        lesson(newLesson);
+        addLesson(newLesson);
       } else {
         alert("Leccion modificada (logica pendiente)");
       }

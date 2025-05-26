@@ -198,8 +198,17 @@ export default function LessonsPage() {
 
       <AddLesonModal
         addLesson={(lesson) => {
-          console.log("Imprimiendo leccion creada");
-          console.log(lesson);
+          const addLesson = { ...lesson }; //obtener el objeto Lesson proveniente del Modal
+          if (courseData) {
+            //es necesario poner esto para que no chille Typescript
+            const updatedCourse: Course = {
+              ...courseData,
+              lessons: [...courseData.lessons!, addLesson], //agregar nueva lección
+            };
+            setCourseData(updatedCourse);
+          }
+
+          setIsAddLessonModalVisible(false);
         }}
         isNewLesson={isNewLesson}
         isOpen={isAddLessonModalVisible}
