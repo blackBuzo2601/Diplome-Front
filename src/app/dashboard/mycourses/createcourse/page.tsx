@@ -52,8 +52,6 @@ export default function UploadCourses() {
       //modo editar curso
       if (title && description !== "") {
         alert("Curso modificado exitosamente");
-        //debo obtener el local storage y modificarlo
-
         const modifiedCourse: Course = {
           ...course,
           courseTitle: title,
@@ -61,7 +59,10 @@ export default function UploadCourses() {
           imageRoute: coverImage,
           uuid: getUuid,
         };
-
+        //lo mismo con este uuid, en algun punto lo ocupé para filtrar elementos con el localstorage
+        //quitalo si te estorba.
+        console.log("objeto modificado: ");
+        console.log(modifiedCourse); //para ver el objeto modificado
         goToMyCoursesPage(false, modifiedCourse);
       }
     } else {
@@ -73,7 +74,11 @@ export default function UploadCourses() {
           courseDescription: description,
           imageRoute: coverImage,
           lessons: [],
-          uuid: crypto.randomUUID(), //esto lo puedes eliminar para el backend, por supuesto.
+          uuid: crypto.randomUUID(),
+          //esto de randomUUID
+          //lo puedes eliminar para el backend, por supuesto. Cuando hacía las pruebas con
+          //localStorage ocupaba un Id para poder filtrar los elementos que no tenian ese ID, y
+          //asi eliminar el objeto que ocupaba
           //Yo lo puse pero para poder generar un curso y luego poder eliminarlo, porque ocupaba
           //un id para borrarlo del arreglo.
         };
@@ -83,49 +88,30 @@ export default function UploadCourses() {
     }
   };
 
-  //Como los objetos no tienen un identificador único, no puedo borrar el objeto del
-  //por ejemplo haciendo un filter y filtrando los elementos que sean diferentes del que
-  //quiero eliminar, entonces para eso uso el parametro 'isNew'.
-  //Los pongo como opcionales porque esta misma función la uso para cuando el usuario
-  //toca el botón de "Regresar"
+  //Esta es la función que usaba para modificar el LocalStorage. Si llegaba un true, era porque
+  //era un Curso creado desde cero. Si era false, era porque se estaba modificando un curso ya
+  //existente. Ambos parametros los puse opcionales porque reutilizaba esta función para
+  //mandar al usuario a MyCoursesPage
   const goToMyCoursesPage = (isNew?: boolean, newCourse?: Course) => {
-    //cuando se esta creando un curso
     if (isNew) {
+      //si el curso es nuevo, lo unshifteaba al arreglo del localstorage.
       if (newCourse) {
-        const storedCourses = localStorage.getItem("courses");
-        const parsedCourses: Course[] = storedCourses
-          ? JSON.parse(storedCourses)
-          : [];
-
-        parsedCourses.unshift(newCourse); //para que se posicione encima de la anterior
-        localStorage.setItem("courses", JSON.stringify(parsedCourses));
       }
     } else {
-      //cuando se está modificando un curso
+      //si el curso no es nuevo, modificaba el localstorage usando filter para
+      //guardar los elementos cuyo uuid era diferente del que queria modificar (de esta
+      //forma no lo guardaba) y en ese mismo arreglo metia el objeto Curso ya modificado
       if (newCourse) {
-        const storedCourses = localStorage.getItem("courses");
-        const parsedCourses: Course[] = storedCourses
-          ? JSON.parse(storedCourses)
-          : [];
-
-        const modifiedArray = parsedCourses.filter(
-          (elemento) => elemento.uuid !== newCourse.uuid
-        );
-
-        modifiedArray.unshift(newCourse);
-
-        localStorage.setItem("courses", JSON.stringify(modifiedArray));
       }
-    } //concluye condicional principal (si se crea o se edita un curso)
-    //
+    }
+
     router.push("/dashboard/mycourses");
   };
 
   const goToLessonsPage = (course: Course) => {
     if (course) {
       const course1 = {
-        //le puse course1 porque ya existe la variable course (estado)
-        //el objeto con la informacion del curso que voy a mandar a la ruta createcourse
+        //copiar el estado de course para mandarlo por URL a LessonsPage
         ...course,
       };
       const course1String = encodeURIComponent(JSON.stringify(course1));

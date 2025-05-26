@@ -27,21 +27,7 @@ export default function MyCourses() {
   const [courses, setCourses] = useState<Course[]>([]);
 
   useEffect(() => {
-    const storedCourses = localStorage.getItem("courses");
-    let parsedCourses: Course[] = [];
-
-    if (storedCourses) {
-      try {
-        parsedCourses = JSON.parse(storedCourses);
-      } catch (error) {
-        console.error("Error parseando cursos desde localStorage", error);
-      }
-    } else {
-      //la primera vez no habrá nada en LocalStorage
-      localStorage.setItem("courses", JSON.stringify(teacherCourses));
-    }
-    //traer objetos de local Storage y luego los del arreglo local.
-    setCourses([...parsedCourses]);
+    setCourses([...teacherCourses]);
   }, []);
 
   const searchByWord = (searchText: string) => {

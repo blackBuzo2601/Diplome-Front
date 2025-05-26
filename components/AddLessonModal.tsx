@@ -22,15 +22,13 @@ const AddLessonModal: React.FC<AddLessonModalProps> = ({
   isNewLesson, //este condicional sirve para mostrar el modal de Crear o Editar lección
 }) => {
   const [textInput, setTextInput] = useState("");
-  const [urlVideo, setUrlVideo] = useState("");
+
   useEffect(() => {
     if (!isNewLesson && Lesson) {
       setTextInput(Lesson.lessonTitle);
-      setUrlVideo(Lesson.lessonVideoSource);
     } else {
       //Si es nueva lección, limpia los inputs
       setTextInput("");
-      setUrlVideo("");
     }
   }, [isNewLesson, Lesson]);
 
@@ -38,23 +36,23 @@ const AddLessonModal: React.FC<AddLessonModalProps> = ({
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (textInput !== "" && urlVideo !== "") {
+    if (textInput !== "") {
       if (isNewLesson) {
         alert("Lección agregada con éxito!");
         const uuid = crypto.randomUUID();
         const newLesson = {
           lessonTitle: textInput,
-          lessonVideoSource: urlVideo,
+          lessonVideoSource: "",
           uuid: uuid,
         };
         setTextInput("");
-        setUrlVideo("");
+
         addLesson(newLesson, true);
       } else {
         alert("Leccion modificada con éxito!");
         const newLesson = {
           lessonTitle: textInput,
-          lessonVideoSource: urlVideo,
+          lessonVideoSource: "",
           uuid: Lesson?.uuid, //construir nuevo objeto, sin modificar el uuid original
         };
         addLesson(newLesson, false);
@@ -87,21 +85,7 @@ const AddLessonModal: React.FC<AddLessonModalProps> = ({
           />
         </div>
         <div className={styles.videoDivPlaceholder}></div>
-        <div className={styles.modifyVideoDiv}>
-          <label className={styles.subtitle}>Enlace del vídeo:</label>
-          <input
-            value={urlVideo}
-            maxLength={40}
-            required
-            type="text"
-            placeholder="URL del vídeo"
-            className={styles.credentialsInput}
-            onChange={(e) => {
-              const urlVideo = e.target.value;
-              setUrlVideo(urlVideo);
-            }}
-          />
-        </div>
+
         <div className={styles.modifyVideoDiv}>
           <button className={styles.updateLessonButton} type="button">
             Subir vídeo
@@ -125,7 +109,6 @@ const AddLessonModal: React.FC<AddLessonModalProps> = ({
             onClick={() => {
               onClose();
               setTextInput("");
-              setUrlVideo("");
             }}
           >
             Cancelar

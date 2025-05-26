@@ -68,12 +68,11 @@ export default function LessonsPage() {
       setLessonSearch(true);
       setSearch(text);
 
-      //tuve que poner esta pinche linea porque si no no me dejaba hacer el map porque no estaba seguro
-      //de si elemento es un objeto. Como lecciones inicialmente va a estar vacio, tiene que haber
-      //este caso de uso
+      //tuve que poner esta pinche linea porque si no no me dejaba hacer el map porque typescript no estaba seguro
+      //de si elemento es un objeto.
       const lessons: Lesson[] = courseData!.lessons ?? []; //si no tiene nada, lo dejamos como un arreglo vacio
 
-      //asigno un número de lección en orden a cada lección
+      //(decoración, asignamos "Leccion N:" antes de cada titulo de cada leccion)
       const arrayWithLessonNumber = lessons.map((elemento, index) => ({
         ...elemento,
         lessonTitle: `Lección ${index + 1}: ${elemento.lessonTitle}`,
@@ -92,10 +91,12 @@ export default function LessonsPage() {
   //Esta función, abre el modal. Si se recibe true, se activa el Modal para crear NUEVA lección.
   //Si es false, corresponde a Editar Modal (para esto también se recibe el paraemtro Lesson correspondiente)
   const handleShowModal = (isNewLesson: boolean, lesson?: Lesson) => {
-    setIsNewLesson(isNewLesson); //Este estado lo recibe el modal
+    setIsNewLesson(isNewLesson); //Este estado es de esste archivo, pero ese estado
+    //lo recibe el AddLessonModal también para definir si mostrar modal de Editar o Agregar
     setIsAddLessonModalVisible(true);
     if (lesson) {
       //si se recibió una lección existente, actualizar el estado
+      //el estado lesson, tambien lo recibe el mismo modal para mostrar la información a editar
       setLesson(lesson);
     } else {
       //no se recibió una lección existente, establecer en null la lección
@@ -190,6 +191,7 @@ export default function LessonsPage() {
                 key={index}
                 className={styles.singleLesson}
               >
+                {/*/ aqui tambien modifico las lecciones para que muestren "Leccion N:"*/}
                 <p className={styles.singleLessonTitle}>
                   Lección {index + 1}: {leccion.lessonTitle}
                 </p>
@@ -218,22 +220,6 @@ export default function LessonsPage() {
                 lessons: [...courseData.lessons!, addLesson], //agregar nueva lección
               };
               setCourseData(updatedCourse);
-              const storedCourses = localStorage.getItem("courses");
-              const parsedCourses: Course[] = storedCourses
-                ? JSON.parse(storedCourses)
-                : [];
-
-              //usaremos filter para obtener los objetos cuyo uuid sea diferente del Course que
-              //estamos manejando. De esta forma, agregaremos el mismo Course pero con los
-              //Lessons modificados.
-              const reemplazandoCourses = parsedCourses.filter(
-                (elemento) => elemento.uuid !== courseData.uuid
-              );
-              reemplazandoCourses.unshift(updatedCourse);
-              localStorage.setItem(
-                "courses",
-                JSON.stringify(reemplazandoCourses)
-              );
             } else {
               //no es nuevo, hay que encontrar el original, eliminarlo y en su lugar
               //poner el nuevo objeto con el Lesson modificado
@@ -247,23 +233,6 @@ export default function LessonsPage() {
                 lessons: [...originalLessonsArray!], //agregar nueva lección
               };
               setCourseData(updatedCourse);
-
-              const storedCourses = localStorage.getItem("courses");
-              const parsedCourses: Course[] = storedCourses
-                ? JSON.parse(storedCourses)
-                : [];
-
-              //usaremos filter para obtener los objetos cuyo uuid sea diferente del Course que
-              //estamos manejando. De esta forma, agregaremos el mismo Course pero con los
-              //Lessons modificados.
-              const reemplazandoCourses = parsedCourses.filter(
-                (elemento) => elemento.uuid !== courseData.uuid
-              );
-              reemplazandoCourses.unshift(updatedCourse);
-              localStorage.setItem(
-                "courses",
-                JSON.stringify(reemplazandoCourses)
-              );
             }
           }
           setIsAddLessonModalVisible(false);
@@ -279,19 +248,6 @@ export default function LessonsPage() {
             lessons: [...arrayWithDeletedLesson!],
           };
           setCourseData(updatedCourse);
-          const storedCourses = localStorage.getItem("courses");
-          const parsedCourses: Course[] = storedCourses
-            ? JSON.parse(storedCourses)
-            : [];
-
-          //usaremos filter para obtener los objetos cuyo uuid sea diferente del Course que
-          //estamos manejando. De esta forma, agregaremos el mismo Course pero con los
-          //Lessons modificados.
-          const reemplazandoCourses = parsedCourses.filter(
-            (elemento) => elemento.uuid !== courseData!.uuid
-          );
-          reemplazandoCourses.unshift(updatedCourse);
-          localStorage.setItem("courses", JSON.stringify(reemplazandoCourses));
         }}
         Lesson={lesson!} //pasamos la lesson del estado, por si el usuario quiere editar una lesson
         isNewLesson={isNewLesson}
