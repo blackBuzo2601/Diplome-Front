@@ -86,9 +86,12 @@ export default function LessonsPage() {
   };
 
   const handleShowModal = (isNewLesson: boolean) => {
-    setIsAddLessonModalVisible(true);
     setIsNewLesson(isNewLesson);
+    setIsAddLessonModalVisible(true);
   };
+
+  //editar o crear lecciones
+  const handleEditLesson = (isNewLesson: boolean) => {};
 
   return (
     <div className={styles.mainDiv}>
@@ -196,7 +199,13 @@ export default function LessonsPage() {
         isNewLesson={isNewLesson}
         isOpen={isAddLessonModalVisible}
         onClose={() => setIsAddLessonModalVisible(false)}
-        onConfirm={() => console.log("on confirm")}
+        onConfirm={(Lesson) => {
+          console.log("Imprimiendo información");
+          console.log(Lesson);
+          console.log(Lesson.lessonTitle);
+          console.log(Lesson.lessonVideoSource);
+        }}
+        onDelete={() => console.log("hola")}
       ></AddLesonModal>
     </div>
   );
