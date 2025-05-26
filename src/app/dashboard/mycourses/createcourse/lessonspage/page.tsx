@@ -12,7 +12,7 @@ import { CookingPot } from "lucide-react";
 
 export default function LessonsPage() {
   const searchParams = useSearchParams();
-  const [courseData, setCourseData] = useState<Course>();
+  const [courseData, setCourseData] = useState<Course | null>(null);
 
   const [search, setSearch] = useState("");
   const [lessonSearch, setLessonSearch] = useState(false); //condicional para filtrar por palabra
@@ -235,6 +235,19 @@ export default function LessonsPage() {
             }
           }
           setIsAddLessonModalVisible(false);
+        }}
+        onDelete={() => {
+          setIsAddLessonModalVisible(false);
+          const allLessons = courseData?.lessons;
+          console.log("Cantidad lecciones " + allLessons);
+          const arrayWithDeletedLesson = allLessons?.filter(
+            (elemento) => elemento.uuid !== lesson?.uuid
+          );
+          const updatedCourse: Course = {
+            ...courseData!,
+            lessons: [...arrayWithDeletedLesson!],
+          };
+          setCourseData(updatedCourse);
         }}
         Lesson={lesson!} //pasamos la lesson del estado, por si el usuario quiere editar una lesson
         isNewLesson={isNewLesson}

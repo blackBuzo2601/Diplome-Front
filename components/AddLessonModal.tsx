@@ -10,6 +10,7 @@ interface AddLessonModalProps {
   addLesson: (Lesson: Lesson, isNew: boolean) => void; //esta función se encarga de obtener los datos
   //de los inputs, para enviarlos a LessonsPage y modificar el arreglo de Lessons de cada course
   Lesson?: Lesson;
+  onDelete?: () => void;
 }
 
 const AddLessonModal: React.FC<AddLessonModalProps> = ({
@@ -17,6 +18,7 @@ const AddLessonModal: React.FC<AddLessonModalProps> = ({
   onClose,
   addLesson,
   Lesson,
+  onDelete,
   isNewLesson, //este condicional sirve para mostrar el modal de Crear o Editar lección
 }) => {
   const [textInput, setTextInput] = useState("");
@@ -107,7 +109,11 @@ const AddLessonModal: React.FC<AddLessonModalProps> = ({
         </div>
         <div className={styles.modifyVideoDiv}>
           {isNewLesson ? null : (
-            <button type="button" className={styles.deleteLessonButton}>
+            <button
+              type="button"
+              onClick={onDelete}
+              className={styles.deleteLessonButton}
+            >
               Borrar lección
             </button>
           )}
