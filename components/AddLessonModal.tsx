@@ -4,7 +4,7 @@ import Image from "next/image";
 import Course from "../interfaces/Course";
 interface AddLesonModalProps {
   isOpen: boolean;
-  //course: Course;
+  course: Course;
   onClose: () => void;
   onConfirm: () => any;
   isNewLesson: boolean;

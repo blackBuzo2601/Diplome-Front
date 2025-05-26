@@ -18,6 +18,8 @@ export default function LessonsPage() {
   const [lessonsArray, setLessonsArray] = useState<Lesson[]>([]); //arreglo con las lecciones a mostrar tras filtrar
   const [isVisibleSearchContainer, setIsVisibleSearchContainer] = //condicional para ocultar el buscador si no hay ninguna leccion creada
     useState(false);
+  const [isAddLessonModalVisible, setIsAddLessonModalVisible] = useState(false);
+  const [isNewLesson, setIsNewLesson] = useState(true);
 
   useEffect(() => {
     const courseParam = searchParams.get("course");
@@ -88,6 +90,11 @@ export default function LessonsPage() {
     }
   };
 
+  const handleShowModal = (isNewLesson: boolean) => {
+    setIsAddLessonModalVisible(true);
+    setIsNewLesson(isNewLesson);
+  };
+
   return (
     <div className={styles.mainDiv}>
       <div className={styles.searchContainer}>
@@ -116,7 +123,12 @@ export default function LessonsPage() {
       </p>
 
       <div className={styles.addLessonDiv}>
-        <button className={styles.addLessonButton}>Agregar lección</button>
+        <button
+          onClick={() => handleShowModal(true)}
+          className={styles.addLessonButton}
+        >
+          Agregar lección
+        </button>
       </div>
       {/*este father basicamente es un row para que no se rompa el diseño del scrollbar, ya que como tiene
       border radius, el scrollbar pareciera que está afuera. entonces este div vacio arregla eso */}
@@ -161,7 +173,11 @@ export default function LessonsPage() {
             </div>
           ) : (
             courseData?.lessons?.map((leccion: Lesson, index: number) => (
-              <div key={index} className={styles.singleLesson}>
+              <div
+                onClick={() => handleShowModal(false)}
+                key={index}
+                className={styles.singleLesson}
+              >
                 <p className={styles.singleLessonTitle}>
                   Lección {index + 1}: {leccion.lessonTitle}
                 </p>
@@ -177,9 +193,10 @@ export default function LessonsPage() {
         </button>
       </div>
       <AddLesonModal
-        isNewLesson={true}
-        isOpen={true}
-        onClose={() => console.log("cerrar")}
+        course={courseData!} //siempre va a llegar un objeto en este punto
+        isNewLesson={isNewLesson}
+        isOpen={isAddLessonModalVisible}
+        onClose={() => setIsAddLessonModalVisible(false)}
         onConfirm={() => console.log("on confirm")}
       ></AddLesonModal>
     </div>
