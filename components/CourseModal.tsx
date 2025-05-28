@@ -6,7 +6,7 @@ interface CourseModalProps {
   isOpen: boolean;
   course: Course | null;
   onClose: () => void;
-  onConfirm: () => void;
+  onConfirm: () => any;
   isTeacher?: boolean;
   children?: React.ReactNode;
 }
@@ -28,13 +28,14 @@ const CourseModal: React.FC<CourseModalProps> = ({
       <div className={isTeacher ? styles.modalDivTeacher : styles.modalDiv}>
         {children}
         <Image
-          src={course.imageRoute}
+          src={course.imageUrl!}
           alt="Image course"
           className={styles.modalCourseImage}
           width={200}
           height={100}
+          unoptimized
         />
-        <p className={styles.modalCourseName}>{course.courseTitle}</p>
+        <p className={styles.modalCourseName}>{course.title}</p>
         <div className={styles.modalCourseDescDiv}>
           <p className={styles.modalCourseDescription}>
             {course.courseDescription}
@@ -44,11 +45,12 @@ const CourseModal: React.FC<CourseModalProps> = ({
           //del teacher.
           <div className={styles.courseTeacherDiv}>
             <Image
-              src={course.courseTeacherImage}
+              src={course.courseTeacherImage!}
               alt="Image course"
               className={styles.courseTeacherImage}
               width={200}
               height={70}
+              unoptimized
             />
             <div className={styles.courseTeacherInfo}>
               <p className={styles.courseTeacherName}>

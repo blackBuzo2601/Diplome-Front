@@ -15,6 +15,7 @@ const courses = [
       },
       { lessonTitle: "Renderizado Estático y SSR", lessonVideoSource: "" },
     ],
+    uuid: "0",
   },
   {
     imageRoute: "/images/flutter-course.jpg",
@@ -36,6 +37,7 @@ const courses = [
         lessonVideoSource: "",
       },
     ],
+    uuid: "1",
   },
 
   {
@@ -51,6 +53,7 @@ const courses = [
       { lessonTitle: "Funciones y Scope", lessonVideoSource: "" },
       { lessonTitle: "Promises y Async/Await", lessonVideoSource: "" },
     ],
+    uuid: "2",
   },
 
   {
@@ -70,6 +73,7 @@ const courses = [
       },
       { lessonTitle: "Decoradores y generadores", lessonVideoSource: "" },
     ],
+    uuid: "3",
   },
   {
     imageRoute: "/images/go-course.jpg",
@@ -87,6 +91,7 @@ const courses = [
       },
       { lessonTitle: "Creación de APIs REST con Go", lessonVideoSource: "" },
     ],
+    uuid: "4",
   },
   {
     imageRoute: "/images/java-course.jpg",
@@ -105,6 +110,7 @@ const courses = [
       },
       { lessonTitle: "Excepciones y manejo de errores", lessonVideoSource: "" },
     ],
+    uuid: "5",
   },
   {
     imageRoute: "/images/cpp-course.jpg",
@@ -119,6 +125,8 @@ const courses = [
       { lessonTitle: "Punteros y memoria dinámica", lessonVideoSource: "" },
       { lessonTitle: "POO en C++", lessonVideoSource: "" },
     ],
+
+    uuid: "6",
   },
   {
     imageRoute: "/images/computer-networks.jpg",
@@ -137,6 +145,7 @@ const courses = [
         lessonVideoSource: "",
       },
     ],
+    uuid: "7",
   },
   {
     imageRoute: "/images/linux-course.jpg",
@@ -154,6 +163,7 @@ const courses = [
       { lessonTitle: "Comandos básicos de la terminal", lessonVideoSource: "" },
       { lessonTitle: "Permisos y usuarios en Linux", lessonVideoSource: "" },
     ],
+    uuid: "8",
   },
   {
     imageRoute: "/images/os-course.jpg",
@@ -169,6 +179,7 @@ const courses = [
       { lessonTitle: "Sistemas de archivos", lessonVideoSource: "" },
       { lessonTitle: "Planificación de la CPU", lessonVideoSource: "" },
     ],
+    uuid: "9",
   },
   {
     imageRoute: "/images/hacking-course.jpg",
@@ -183,6 +194,7 @@ const courses = [
       { lessonTitle: "Reconocimiento y escaneo", lessonVideoSource: "" },
       { lessonTitle: "Explotación de vulnerabilidades", lessonVideoSource: "" },
     ],
+    uuid: "10",
   },
   {
     imageRoute: "/images/frontend-dev.jpg",
@@ -198,6 +210,7 @@ const courses = [
       { lessonTitle: "JavaScript para el frontend", lessonVideoSource: "" },
       { lessonTitle: "Diseño responsivo avanzado", lessonVideoSource: "" },
     ],
+    uuid: "11",
   },
   {
     imageRoute: "/images/vue-course.jpg",
@@ -212,6 +225,7 @@ const courses = [
       { lessonTitle: "Componentes y propiedades", lessonVideoSource: "" },
       { lessonTitle: "Estado global con Vuex", lessonVideoSource: "" },
     ],
+    uuid: "12",
   },
   {
     imageRoute: "/images/react-native.jpg",
@@ -227,6 +241,7 @@ const courses = [
       { lessonTitle: "Consumo de APIs en móviles", lessonVideoSource: "" },
       { lessonTitle: "Despliegue en Expo", lessonVideoSource: "" },
     ],
+    uuid: "13",
   },
   {
     imageRoute: "/images/ccna-course.jpg",
@@ -241,6 +256,7 @@ const courses = [
       { lessonTitle: "Configuración de switches", lessonVideoSource: "" },
       { lessonTitle: "Protocolos de enrutamiento", lessonVideoSource: "" },
     ],
+    uuid: "14",
   },
   {
     imageRoute: "/images/bash-course.jpg",
@@ -256,6 +272,7 @@ const courses = [
       { lessonTitle: "Condicionales y bucles", lessonVideoSource: "" },
       { lessonTitle: "Manejo de archivos en scripts", lessonVideoSource: "" },
     ],
+    uuid: "15",
   },
   {
     imageRoute: "/images/git-course.jpg",
@@ -270,6 +287,7 @@ const courses = [
       { lessonTitle: "Commits y ramas básicas", lessonVideoSource: "" },
       { lessonTitle: "Resolución de conflictos", lessonVideoSource: "" },
     ],
+    uuid: "16",
   },
   {
     imageRoute: "/images/docker-course.jpg",
@@ -290,6 +308,7 @@ const courses = [
         lessonVideoSource: "",
       },
     ],
+    uuid: "17",
   },
   {
     imageRoute: "/images/typescript-course.jpg",
@@ -310,6 +329,7 @@ const courses = [
         lessonVideoSource: "",
       },
     ],
+    uuid: "18",
   },
   {
     imageRoute: "/images/javascript-pro.jpg",
@@ -328,6 +348,7 @@ const courses = [
       },
       { lessonTitle: "ES6+ y mejores prácticas", lessonVideoSource: "" },
     ],
+    uuid: "19",
   },
   {
     imageRoute: "/images/python-beginners.jpg",
@@ -342,6 +363,7 @@ const courses = [
       { lessonTitle: "Tipos de datos y variables", lessonVideoSource: "" },
       { lessonTitle: "Control de flujo y funciones", lessonVideoSource: "" },
     ],
+    uuid: "20",
   },
   {
     imageRoute: "/images/cybersecurity-advanced.jpg",
@@ -359,6 +381,7 @@ const courses = [
       },
       { lessonTitle: "Respuesta a incidentes", lessonVideoSource: "" },
     ],
+    uuid: "21",
   },
   {
     imageRoute: "/images/networking-cloud.jpg",
@@ -373,7 +396,10 @@ const courses = [
       { lessonTitle: "Servicios en la nube", lessonVideoSource: "" },
       { lessonTitle: "Integración de redes y cloud", lessonVideoSource: "" },
     ],
+
+    uuid: "22",
   },
+
   {
     imageRoute: "/images/vue-advanced.jpg",
     courseTitle: "Vue.js Avanzado con Pinia y Vue Router",
@@ -390,6 +416,8 @@ const courses = [
       { lessonTitle: "Gestión de rutas con Vue Router", lessonVideoSource: "" },
       { lessonTitle: "Estado global con Pinia", lessonVideoSource: "" },
     ],
+
+    uuid: "23",
   },
   {
     imageRoute: "/images/react-architecture.jpg",
@@ -407,6 +435,7 @@ const courses = [
       { lessonTitle: "Testing en React", lessonVideoSource: "" },
       { lessonTitle: "Manejo de dependencias y hooks", lessonVideoSource: "" },
     ],
+    uuid: "24",
   },
   {
     imageRoute: "/images/linux-advanced.jpg",
@@ -424,6 +453,7 @@ const courses = [
       { lessonTitle: "Seguridad en Linux", lessonVideoSource: "" },
       { lessonTitle: "Automatización con scripts", lessonVideoSource: "" },
     ],
+    uuid: "25",
   },
   {
     imageRoute: "/images/kubernetes-course.jpg",
@@ -441,6 +471,7 @@ const courses = [
       },
       { lessonTitle: "Administración de clústeres", lessonVideoSource: "" },
     ],
+    uuid: "26",
   },
 ];
 

@@ -270,6 +270,7 @@
 .courseTitle {
   margin-left: 2vw;
   font-size: 1.6rem;
+  word-break: break-word;
 }
 .noCoincidencesDiv {
   background-color: transparent;

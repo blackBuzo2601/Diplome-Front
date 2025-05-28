@@ -12,6 +12,7 @@
 
 /* Contenedor del formulario */
 .form {
+  margin-top: 3vh;
   width: 60vw;
   height: 100%;
   background-color: #f5f5f5;
@@ -20,7 +21,6 @@
   flex-direction: column;
   background-color: white;
   border-radius: 30px;
-  margin-top: 3vh;
 }
 
 /* Título principal */
@@ -29,9 +29,9 @@
   font-size: 2.5vw;
   font-weight: bold;
   color: #001623;
-  margin-top: 1vh;
-  margin-bottom: 4vh;
+
   text-align: center;
+  margin-bottom: 3vh;
 }
 
 /* Etiquetas */
@@ -47,7 +47,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 2vh;
 }
 
 /* Input del formulario */
@@ -75,7 +74,6 @@
   border: none;
   outline: none;
   color: white;
-  margin-bottom: 1vh;
   resize: none;
 }
 
@@ -103,7 +101,7 @@
 
 .imagen_portada_section {
   width: 100%;
-  height: 40%;
+  height: 30%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -112,8 +110,8 @@
 }
 
 .imagen_portada_section img {
-  width: 30vh;
-  height: 20vh;
+  width: 33vw;
+  height: 16vh;
   object-fit: cover;
 }
 
@@ -127,10 +125,9 @@
 }
 
 .imagen_preview {
-  width: 32%;
+  width: 33%;
   height: 90%;
   border-radius: 20px;
-  margin-left: 8vh;
 }
 
 /* Botón de imagen */
@@ -194,17 +191,18 @@
 
 /* Botones */
 .form_actions {
+  padding-top: 3vh;
   width: 100%;
 
   height: 30%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .formButton {
   border-radius: 2vw;
-  padding-top: 1vh;
-  width: 30%;
+
+  width: 50%;
   height: 5vh;
   background: linear-gradient(to right, #5cd2ff, #004aad);
   color: white;
@@ -216,16 +214,36 @@
   cursor: pointer;
   margin-left: 1vw;
 }
+.inputURL {
+  border-radius: 2vw;
+  width: 100%;
+  height: 7vh;
+  background-color: #a3d4f3;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1vw;
+  border: none;
+  outline: none;
+  color: white;
+  text-align: center;
+}
+
+.inputURL::placeholder {
+  color: white;
+}
+.inputURL:hover {
+  background-color: #1e6fbd;
+}
 
 .uploadCourseButton {
   border-radius: 2vw;
-  margin-top: 2vh;
+  margin-top: 1vh;
   width: 40%;
   height: 7vh;
   background: linear-gradient(to right, #5cd2ff, #004aad);
   color: white;
   text-align: center;
-  font-family: "The Seasons", serif;
+  font-family: "Montserrat", serif;
+
   font-size: 1.3rem;
   border: none;
   outline: none;
@@ -235,6 +253,24 @@
   background: #1e6fbd;
 }
 
+.updateImageButton {
+  border-radius: 2vw;
+
+  width: 50%;
+  height: 7vh;
+  background: linear-gradient(to right, #5cd2ff, #004aad);
+  color: white;
+  text-align: center;
+  font-family: "The Seasons", serif;
+  font-size: 1.2vw;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.updateImageButton:hover {
+  background: #1e6fbd;
+}
 .formButtonBack {
   border-radius: 2vw;
   width: 12%;

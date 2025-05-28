@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
 		const response = await axios.get('http://localhost:5005/diplome/user', { withCredentials: true });
 		const { user } = response.data;
 		setCurrentUser(user);
-
+		return user
     } catch (error) {
       console.error('Error al refrescar token:', error);
     //   logout();
@@ -96,6 +96,7 @@ export const AuthProvider = ({ children }) => {
   
   const value = {
     currentUser,
+	getUserData,
     isAuthenticated: !!currentUser,
     isLoading,
 	register,

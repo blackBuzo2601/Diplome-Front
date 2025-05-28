@@ -1,67 +1,156 @@
 "use client";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import Course from "../../../../../interfaces/Course";
+import { createCourse } from '../../../../helpers/course.js';
+import { useAuth } from "@/hooks/useAuth";
+
 
 export default function UploadCourses() {
+  const { currentUser } = useAuth();
+  const searchParams = useSearchParams();
+  const [course, setCourse] = useState<Course | null>(null);
+  const [editing, setEditing] = useState<boolean>(false); //falso inicialmente para
+  //predeterminadamente mostrar esquema de Crear curso, en lugar de editar curso.
   const [coverImage, setCoverImage] = useState("/images/noimage.jpg");
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [inputTextURL, setInputTextURL] = useState("");
+  const router = useRouter();
+  //useEffect--------------------------------------------------------
+  useEffect(() => {
+    //obteniendo los parametros de url
+    const courseParam = searchParams.get("course");
+    const editingParam = searchParams.get("editing");
 
-    router.push("/dashboard/mycourses/createcourse/lessonspage");
+    if (courseParam) {
+      try {
+        const convertedCourse: Course = JSON.parse(
+          decodeURIComponent(courseParam)
+        );
+        setCourse(convertedCourse);
+        setTitle(convertedCourse.title);
+        setDescription(convertedCourse.courseDescription);
+        setInputTextURL(convertedCourse.imageUrl);
+        setCoverImage(convertedCourse.imageUrl);
+      } catch (err) {
+        console.error("Error al parsear el objeto Course:", err);
+      }
+    }
+
+    setEditing(editingParam === "true"); //si llega exactamente true, significa que
+    //estamos editando un curso, si no llega, simplemente no se modifica el estado que inicialmente
+    //es false, lo que significa que se está creando un curso nuevo de ser el caso.
+  }, [searchParams]);
+  //useEffect--------------------------------------------------------
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (editing) {
+      //modo editar curso
+      if (title && description !== "") {
+        alert("Curso modificado exitosamente");
+        const modifiedCourse: Course = {
+          ...course,
+          title: title,
+          courseDescription: description,
+          imageUrl: coverImage,
+        };
+        console.log("objeto modificado: ");
+        console.log(modifiedCourse); //para ver el objeto modificado
+        goToMyCoursesPage(false, modifiedCourse);
+      }
+    } else {
+      //modo crear curso
+      if (title && description !== "") {
+        alert("Curso creado con exito");
+        const newCourse: Course = {
+          title: title,
+          courseDescription: description,
+          imageUrl: coverImage,
+          lessons: [],
+        };
+		await createCourse(title, description, coverImage, currentUser._id);
+        goToMyCoursesPage(true, newCourse);
+      }
+    }
   };
 
-  const lecciones = [
-    "Introducción a JS",
-    "Objetos literales",
-    "Funciones",
-    "Funciones de flecha",
-  ];
-  const router = useRouter();
+  //Esta es la función que usaba para modificar el LocalStorage. Si llegaba un true, era porque
+  //era un Curso creado desde cero. Si era false, era porque se estaba modificando un curso ya
+  //existente. Ambos parametros los puse opcionales porque reutilizaba esta función para
+  //mandar al usuario a MyCoursesPage
+  const goToMyCoursesPage = (isNew?: boolean, newCourse?: Course) => {
+    if (isNew) {
+      //si el curso es nuevo, lo unshifteaba al arreglo del localstorage.
+      if (newCourse) {
+      }
+    } else {
+      //si el curso no es nuevo, modificaba el localstorage usando filter para
+      //guardar los elementos cuyo uuid era diferente del que queria modificar (de esta
+      //forma no lo guardaba) y en ese mismo arreglo metia el objeto Curso ya modificado
+      if (newCourse) {
+      }
+    }
 
-  const goToMyCoursesPage = () => {
     router.push("/dashboard/mycourses");
   };
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    const validTypes = ["image/jpeg", "image/png"]; // Ya acepta JPG y PNG
-    if (!validTypes.includes(file.type)) {
-      alert("Solo se permiten archivos JPG o PNG.");
-      event.target.value = "";
-      return;
+  const goToLessonsPage = (course: Course) => {
+    if (course) {
+      const course1 = {
+        //copiar el estado de course para mandarlo por URL a LessonsPage
+        ...course,
+      };
+      const course1String = encodeURIComponent(JSON.stringify(course1));
+      router.push(
+        `/dashboard/mycourses/createcourse/lessonspage?course=${course1String}`
+      );
+    } else {
+      router.push("/dashboard/mycourses/createcourse/lessonspage");
     }
+  };
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setCoverImage(reader.result as string);
-    };
-    reader.readAsDataURL(file);
+  const onChangeInputURL = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputText = event.target.value;
+    setInputTextURL(inputText);
   };
 
   return (
     <div className={styles.mainDiv}>
       <div className={styles.form}>
-        <h2 className={styles.mainTitle}>Crear Nuevo Curso</h2>
+        {editing ? (
+          <h2 className={styles.mainTitle}>Editar curso</h2>
+        ) : (
+          <h2 className={styles.mainTitle}>Crear nuevo curso</h2>
+        )}
 
-        <form className={styles.restInformationContainer}>
+        <form onSubmit={onSubmit} className={styles.restInformationContainer}>
           <div className={styles.credentialsDiv}>
             <div className={styles.inputGroup}>
               <label className={styles.subtitle}>Título:</label>
               <input
+                value={title}
+                maxLength={40}
+                required
                 type="text"
                 placeholder="Título"
                 className={styles.credentialsInput}
+                onChange={(e) => setTitle(e.target.value)}
               />
             </div>
             <div className={styles.inputGroup}>
               <label className={styles.subtitle}>Descripción:</label>
               <textarea
+                value={description}
+                maxLength={190}
+                required
                 placeholder="Descripción"
                 className={styles.textAreaDescription}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </div>
           </div>
@@ -69,41 +158,62 @@ export default function UploadCourses() {
           <div className={styles.imagen_portada_section}>
             <label className={styles.subtitle}>Imagen de portada:</label>
             <div className={styles.uploadGroup}>
-              <label htmlFor="coverImage" className={styles.formButton}>
-                Adjuntar Imagen
-              </label>
-              <input
-                id="coverImage"
-                type="file"
-                accept="image/jpeg, image/png"
-                onChange={handleFileChange}
-                style={{ display: "none" }}
-              />
+              <button
+                onClick={() => {
+                  inputTextURL
+                    ? setCoverImage(inputTextURL)
+                    : setCoverImage("/images/noimage.jpg");
+                }}
+                type="button"
+                className={styles.updateImageButton}
+              >
+                Actualizar
+              </button>
 
+              <input
+                value={inputTextURL}
+                id="coverImage"
+                type="text"
+                placeholder="URL pública de tu imagen"
+                onChange={(e) => onChangeInputURL(e)}
+                className={styles.inputURL}
+              />
               <Image
                 src={coverImage}
                 alt="course image"
                 width={200}
                 height={100}
                 className={styles.imagen_preview}
+                unoptimized
               />
             </div>
           </div>
 
-          <div className={styles.form_actions}>
-            <button
-              onClick={handleSubmit}
-              type="submit"
-              className={styles.uploadCourseButton}
-            >
-              Subir curso
-            </button>
-          </div>
+          {editing ? (
+            <div className={styles.form_actions}>
+              <button type="submit" className={styles.uploadCourseButton}>
+                Confirmar cambios
+              </button>
+              <button
+                type="button"
+                onClick={() => goToLessonsPage(course!)}
+                className={styles.uploadCourseButton}
+              >
+                Agregar/Editar lecciones
+              </button>
+            </div>
+          ) : (
+            <div className={styles.form_actions}>
+              <button type="submit" className={styles.uploadCourseButton}>
+                Subir curso
+              </button>
+            </div>
+          )}
         </form>
       </div>
       <div className={styles.newRow}>
         <button
-          onClick={goToMyCoursesPage}
+          onClick={() => goToMyCoursesPage()}
           type="button"
           className={styles.formButtonBack}
         >

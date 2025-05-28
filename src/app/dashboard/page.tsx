@@ -27,6 +27,8 @@ import { useEffect, useRef } from "react";
 import { useAuth } from "../../hooks/useAuth.js";
 
 import { ClipLoader } from "react-spinners";
+import Loader from '../../../components/Loader'
+
 
 export default function AdminDashboard() {
   const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
@@ -90,14 +92,14 @@ export default function AdminDashboard() {
   //--------------------------------------------------------------------
   //Concluye codigo necesario para animacion
   
-    useEffect(() => {
-		const wait = () => {return new Promise(resolve => setTimeout(resolve, 3000))};
-		wait().then(() => {
-			if (!currentUser) {
-				router.replace('/')
-			}
-		})
-  }, []);
+//     useEffect(() => {
+// 		const wait = () => {return new Promise(resolve => setTimeout(resolve, 3000))};
+// 		wait().then(() => {
+// 			if (!currentUser) {
+// 				router.replace('/')
+// 			}
+// 		})
+//   }, []);
 
   const getCourseInfo = (course: Course) => {
     setCourse(course);
@@ -194,39 +196,6 @@ export default function AdminDashboard() {
         </div>
         {mainPage ? (
           <div>
-            <h3 className={styles.sectionTitle}>Categorías</h3>
-            <div className={styles.categoryDiv}>
-              <div
-                onClick={() => searchByCategory("Frontend")}
-                className={styles.categoryCard}
-              >
-                <p>Frontend</p>
-              </div>
-              <div
-                onClick={() => searchByCategory("Backend")}
-                className={styles.categoryCard}
-              >
-                <p>Backend</p>
-              </div>
-              <div
-                onClick={() => searchByCategory("Redes")}
-                className={styles.categoryCard}
-              >
-                <p>Redes</p>
-              </div>
-              <div
-                onClick={() => searchByCategory("Ciberseguridad")}
-                className={styles.categoryCard}
-              >
-                <p>Ciberseguridad</p>
-              </div>
-              <div
-                onClick={() => searchByCategory("Sistemas Operativos")}
-                className={styles.categoryCard}
-              >
-                <p>S.O</p>
-              </div>
-            </div>
             <h3 className={styles.sectionTitle}>Seguir aprendiendo</h3>
 
             <div className={styles.recomendationsDiv}>
@@ -359,16 +328,16 @@ export default function AdminDashboard() {
                     className={styles.courseCard}
                   >
                     <Image
-                      src={elemento.imageRoute}
+                      src={elemento.imageUrl}
                       alt="course image"
                       width={200}
                       height={100}
                       className={styles.courseCardImage}
                     />
-                    <p className={styles.courseTitle}>{elemento.courseTitle}</p>
+                    <p className={styles.courseTitle}>{elemento.title}</p>
                     <div className={styles.courseTeacherDiv}>
                       <Image
-                        src={elemento.courseTeacherImage}
+                        src={elemento.courseTeacherImage!}
                         alt="teacher photo"
                         width={100}
                         height={100}
@@ -466,8 +435,6 @@ export default function AdminDashboard() {
     </div>
   ) 
   :
-  <div>
-	<ClipLoader color="#4f46e5" />
-  </div> 
+  <Loader />
   ;
 }

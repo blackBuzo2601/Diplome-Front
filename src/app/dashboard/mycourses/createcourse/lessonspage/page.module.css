@@ -1,3 +1,198 @@
-.main {
-  background-color: yellow;
+.mainDiv {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+.addLessonDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-left: 8vw;
+}
+
+.addLessonButton {
+  border-radius: 20px;
+  padding: 1.5vh 1.5vw;
+  width: 15vw;
+
+  background: linear-gradient(to right, #5cd2ff, #004aad);
+  color: white;
+  font-family: "The Seasons", serif;
+  font-size: 1.6vw;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+.addLessonButton:hover {
+  background: #1e6fbd;
+}
+
+.goBackButton {
+  border-radius: 20px;
+  padding: 1.5vh 1.5vw;
+  width: 15vw;
+
+  background: linear-gradient(to right, #f0f0f0, #888888);
+  color: white;
+  font-family: "The Seasons", serif;
+  font-size: 1.6vw;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.goBackButton:hover {
+  background: #aac8de;
+  color: #f0f0f0;
+}
+
+.mainTitle {
+  font-family: "The Seasons", serif;
+  font-size: 2.5vw;
+  color: #001623;
+  margin-top: 2.5vh;
+  text-align: center;
+}
+
+.searchContainer {
+  padding-left: 12vw;
+  margin-top: 1.8vh;
+  width: 100%;
+  height: 6vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.inputRow {
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  width: 30%;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  outline: none;
+  height: 100%;
+  font-size: 1.3rem;
+  font-family: "The Seasons", serif;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inputRow img {
+  margin-left: 3%;
+  width: 2.3vw;
+  height: 5vh;
+}
+
+.searchInput {
+  margin-left: 1vw;
+  border: none;
+  width: 100%;
+  outline: none;
+  height: 100%;
+  font-size: 1.3rem;
+  font-family: "The Seasons", serif;
+  background: transparent;
+}
+.father {
+  padding-top: 2vh;
+  box-sizing: border-box;
+  width: 100%;
+  height: 66vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 1.5vh;
+  overflow-y: auto;
+}
+.emptyDiv {
+  width: 20px;
+  height: 100%;
+
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background-color: #aac8de;
+}
+.lessonsContainer {
+  width: 80%;
+  height: 100%;
+  background-color: #aac8de;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  box-sizing: border-box;
+}
+
+.lessonsContainer::-webkit-scrollbar {
+  border-radius: 5px;
+  background-color: rgb(239, 235, 235);
+  width: 12px;
+}
+.lessonsContainer::-webkit-scrollbar-thumb {
+  background-color: #283f4f;
+  border-radius: 5px;
+}
+
+.singleLesson {
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 2vw;
+  width: 80%;
+  height: 8vh;
+  border-radius: 30px;
+  background-color: white;
+}
+
+.singleLessonTitle {
+  font-family: "Montserrat", serif;
+  font-size: 1.8rem;
+  color: #001623;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.singleLesson:hover {
+  background-color: #1e6fbd;
+}
+.singleLessonTitle:hover {
+  color: white;
+}
+
+.noLessonsDiv {
+  background-color: transparent;
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+.noLessonsText {
+  text-align: center;
+  align-items: center;
+  font-weight: 300;
+  font-size: 2vw;
+}
+
+.noLessonsImage {
+  width: 30%;
+  height: 60%;
 }

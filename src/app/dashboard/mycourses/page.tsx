@@ -14,16 +14,33 @@ import user from "../../../../public/images/user-example.png";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Course from "../../../../interfaces/Course";
 import teacherCourses from "../../../../mock/teacherCourses";
+import { useAuth } from "@/hooks/useAuth";
+import { ClipLoader } from "react-spinners";
+import Loader from "../../../../components/Loader";
+import { getAllCourses } from "@/helpers/course";
 export default function MyCourses() {
   const [modalOpen, setModalOpen] = useState(false); //modal en false inicialmente
   const [course, setCourse] = useState<Course | null>(null); //curso vacio al iniico
   const [search, setSearch] = useState("");
   const [myCourses, setMyCourses] = useState(true);
   const [label, setLabel] = useState(false);
+  const [courses, setCourses] = useState<Course[]>([]);
+
+    const { currentUser, getUserData } = useAuth();
+
+  useEffect(() => {
+	getAllCourses().then((response) => {
+		getUserData().then((user: any) => {
+			const filteredCourses = response.filter((course: any) => course.userId == user._id)
+			setCourses(filteredCourses);
+		});
+	});
+  }, []);
+
   const searchByWord = (searchText: string) => {
     if (searchText.trim() !== "") {
       setMyCourses(false);
@@ -36,26 +53,43 @@ export default function MyCourses() {
   };
 
   const router = useRouter();
+
   const getCourseInfo = (course: Course) => {
     setCourse(course);
     openModal();
-    console.log("imprimiendo data:" + course);
   };
+
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
-  const goToCreateCoursePage = () => {
-    router.push("/dashboard/mycourses/createcourse");
-  };
-  const goToEditCoursePage = () => {
-    setModalOpen(false);
-    router.push("/dashboard/mycourses/editcourse");
+  //el valor de editing, nos ayuda como bandera para si mostrar las opciones de Creando Curso o Editando Curso
+  //en la ruta de CreateCourse.
+  const goToCreateCoursePage = (editing: boolean) => {
+    editing = editing;
+
+    if (editing) {
+      const course1 = {
+        //le puse course1 porque ya existe la variable course (estado)
+        //el objeto con la informacion del curso que voy a mandar a la ruta createcourse
+        ...course,
+      };
+      const course1String = encodeURIComponent(JSON.stringify(course1));
+      const editingString = editing.toString();
+      router.push(
+        `/dashboard/mycourses/createcourse?course=${course1String}&&editing=${editingString}`
+      );
+    } else {
+      router.push("/dashboard/mycourses/createcourse");
+    }
   };
 
-  return (
+  return currentUser?.first_name ? (
     <div className={styles.dashboard}>
       {/* Barra/Menu lateral */}
-
+		{ (() => { console.log(currentUser) 
+			return <></> 
+		})()
+			 }
       <aside className={styles.sidebar}>
         <div className={styles.logoContainer}>
           <Image
@@ -74,7 +108,7 @@ export default function MyCourses() {
             width={200}
             height={65}
           />
-          <p className={styles.sidebarUserName}>Elian Buzo</p>
+          <p className={styles.sidebarUserName}>{`${currentUser.first_name} ${currentUser.last_name}`}</p>
         </div>
         <nav className={styles.sidebarNav}>
           <Link href="/dashboard/" className={styles.sidebarLink}>
@@ -100,7 +134,7 @@ export default function MyCourses() {
         <h3 className={styles.sectionHeaderName}>Mis cursos</h3>
         <div className={styles.searchContainer}>
           <button
-            onClick={goToCreateCoursePage}
+            onClick={() => goToCreateCoursePage(false)}
             className={styles.goModalButton}
           >
             Crear nuevo curso
@@ -143,27 +177,28 @@ export default function MyCourses() {
         <div className={styles.father}>
           {myCourses ? (
             <div className={styles.recomendationsDiv}>
-              {teacherCourses.map((elemento, key) => (
+              {courses.map((course, key) => (
                 <div
-                  onClick={() => getCourseInfo(elemento)}
+                  onClick={() => getCourseInfo(course)}
                   key={key}
                   className={styles.courseCard}
                 >
                   <Image
-                    src={elemento.imageRoute}
+                    src={course.imageUrl!}
                     alt="course image"
                     width={200}
                     height={100}
+                    unoptimized
                     className={styles.courseCardImage}
                   />
-                  <p className={styles.courseTitle}>{elemento.courseTitle}</p>
+                  <p className={styles.courseTitle}>{course.title}</p>
                 </div>
               ))}
             </div>
           ) : (
             <div className={styles.recomendationsDiv}>
-              {teacherCourses.filter((elemento) =>
-                elemento.courseTitle
+              {courses.filter((course) =>
+                course.title
                   .toLowerCase()
                   .includes(search.trim().toLowerCase())
               ).length === 0 ? (
@@ -180,27 +215,28 @@ export default function MyCourses() {
                   />
                 </div>
               ) : (
-                teacherCourses
-                  .filter((elemento) =>
-                    elemento.courseTitle
+                courses
+                  .filter((course) =>
+                    course.title
                       .toLowerCase()
                       .includes(search.trim().toLowerCase())
                   )
-                  .map((elemento, key) => (
+                  .map((course, key) => (
                     <div
-                      onClick={() => getCourseInfo(elemento)}
+                      onClick={() => getCourseInfo(course)}
                       key={key}
                       className={styles.courseCard}
                     >
                       <Image
-                        src={elemento.imageRoute}
+                        src={course.imageUrl!}
                         alt="course image"
                         width={200}
                         height={100}
+                        unoptimized
                         className={styles.courseCardImage}
                       />
                       <p className={styles.courseTitle}>
-                        {elemento.courseTitle}
+                        {course.title}
                       </p>
                     </div>
                   ))
@@ -215,9 +251,10 @@ export default function MyCourses() {
           course={course}
           isOpen={modalOpen}
           onClose={closeModal}
-          onConfirm={goToEditCoursePage}
+          onConfirm={() => goToCreateCoursePage(true)} //true porque es "modo editar"
         ></CourseModal>
       </main>
     </div>
-  );
+  ):
+  <Loader />
 }
