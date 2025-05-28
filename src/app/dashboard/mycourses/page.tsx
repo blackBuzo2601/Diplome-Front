@@ -86,10 +86,10 @@ export default function MyCourses() {
   return currentUser?.first_name ? (
     <div className={styles.dashboard}>
       {/* Barra/Menu lateral */}
-		{ (() => { console.log(currentUser) 
+		{/* { (() => { console.log(currentUser) 
 			return <></> 
 		})()
-			 }
+		} */}
       <aside className={styles.sidebar}>
         <div className={styles.logoContainer}>
           <Image
