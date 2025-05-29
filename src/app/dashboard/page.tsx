@@ -345,7 +345,7 @@ export default function AdminDashboard() {
                       />
                       <div className={styles.courseTeacherInfo}>
                         <p className={styles.courseTeacherName}>
-                          {elemento.courseTeacherName}
+                          {elemento.userId}
                         </p>
                         <p className={styles.courseTeacherLabel}>Instructor</p>
                       </div>

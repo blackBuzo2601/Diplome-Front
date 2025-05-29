@@ -1,9 +1,13 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./AddLessonModal.module.css";
 import Image from "next/image";
 import Course, { Lesson } from "../interfaces/Course";
+import { createLesson } from '../src/helpers/lesson.js';
+import { useAuth } from "@/hooks/useAuth";
+
 interface AddLessonModalProps {
+	courseData: any;
   isOpen: boolean; //booleano principal para mostrar el modal o no.
   onClose: () => void; //cerrar el modal (poner en false el estado de mostrar modal)
   isNewLesson: boolean; //condicional para mostrar modal de crear leccion o editar leccion
@@ -14,6 +18,7 @@ interface AddLessonModalProps {
 }
 
 const AddLessonModal: React.FC<AddLessonModalProps> = ({
+	courseData,
   isOpen,
   onClose,
   addLesson,
@@ -21,11 +26,32 @@ const AddLessonModal: React.FC<AddLessonModalProps> = ({
   onDelete,
   isNewLesson, //este condicional sirve para mostrar el modal de Crear o Editar lección
 }) => {
+	const { getUserData } = useAuth();
   const [textInput, setTextInput] = useState("");
+  const [selectedFile, setSelectedFile] = useState<File>();
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+	const handleUploadClick = () => {
+		console.log("Clicked")
+		if (fileInputRef.current) {
+			fileInputRef.current.click(); // dispara el input invisible
+		}
+	};
+
+	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const file = e.target.files?.[0];
+		if (file) {
+			// Aquí haces lo que necesites con el archivo
+			console.log("Video seleccionado:", file);
+			setSelectedFile(file);
+		}
+	};
+
 
   useEffect(() => {
     if (!isNewLesson && Lesson) {
-      setTextInput(Lesson.lessonTitle);
+      setTextInput(Lesson.title);
     } else {
       //Si es nueva lección, limpia los inputs
       setTextInput("");
@@ -34,31 +60,22 @@ const AddLessonModal: React.FC<AddLessonModalProps> = ({
 
   if (!isOpen) return null;
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (textInput !== "") {
       if (isNewLesson) {
-        alert("Lección agregada con éxito!");
-        const uuid = crypto.randomUUID();
-        const newLesson = {
-          lessonTitle: textInput,
-          lessonVideoSource: "",
-          uuid: uuid,
-        };
-        setTextInput("");
-
-        addLesson(newLesson, true);
+			alert("Lección agregada con éxito!");
+			const newLesson = await createLesson(textInput, courseData._id, selectedFile)
+			addLesson(newLesson, true);
       } else {
-        alert("Leccion modificada con éxito!");
-        const newLesson = {
-          lessonTitle: textInput,
-          lessonVideoSource: "",
-          uuid: Lesson?.uuid, //construir nuevo objeto, sin modificar el uuid original
-        };
-        addLesson(newLesson, false);
+			alert("Leccion modificada con éxito!");
+			const newLesson = await createLesson(textInput, courseData._id, selectedFile)
+			addLesson(newLesson, false);
       }
     }
   };
+
+  
 
   return (
     <form onSubmit={onSubmit} className={styles.modalBackground}>
@@ -84,13 +101,21 @@ const AddLessonModal: React.FC<AddLessonModalProps> = ({
             }}
           />
         </div>
-        <div className={styles.videoDivPlaceholder}></div>
-
+		
+		{isNewLesson ? (
         <div className={styles.modifyVideoDiv}>
-          <button className={styles.updateLessonButton} type="button">
+          <button className={styles.updateLessonButton} type="button" onClick={handleUploadClick}>
             Subir vídeo
           </button>
+		    <input
+				type="file"
+				accept="video/*"
+				style={{ display: "none" }}
+				ref={fileInputRef}
+				onChange={handleFileChange}
+			/>
         </div>
+	): null }
         <div className={styles.modifyVideoDiv}>
           {isNewLesson ? null : (
             <button

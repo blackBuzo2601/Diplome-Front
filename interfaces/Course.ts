@@ -1,16 +1,19 @@
 export interface Course {
+  _id?: string;
   imageUrl: string;
   title: string;
-  courseTeacherName?: string;
-  courseDescription: string;
+  userId?: string;
+  description: string;
   courseTeacherImage?: string;
   courseCategory?: string;
   lessons?: Lesson[];
 }
 
 export interface Lesson {
-  lessonTitle: string;
-  lessonVideoSource: string;
+  _id?: string;
+  title: string;
+  filename: string;
+  courseId?: string;
 }
 
 export default Course;

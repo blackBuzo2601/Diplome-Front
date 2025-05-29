@@ -38,7 +38,7 @@ const CourseModal: React.FC<CourseModalProps> = ({
         <p className={styles.modalCourseName}>{course.title}</p>
         <div className={styles.modalCourseDescDiv}>
           <p className={styles.modalCourseDescription}>
-            {course.courseDescription}
+            {course.description}
           </p>
         </div>
         {isTeacher ?? ( //evaluamos que isTeacher sea nulo o undefined, de ser asi, mostrar informacion
@@ -54,7 +54,7 @@ const CourseModal: React.FC<CourseModalProps> = ({
             />
             <div className={styles.courseTeacherInfo}>
               <p className={styles.courseTeacherName}>
-                {course.courseTeacherName}
+                {course.userId}
               </p>
               <p className={styles.courseTeacherLabel}>Instructor</p>
             </div>

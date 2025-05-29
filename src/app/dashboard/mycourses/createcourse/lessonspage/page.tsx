@@ -9,6 +9,8 @@ import Course from "../../../../../../interfaces/Course";
 import { Lesson } from "../../../../../../interfaces/Course";
 import AddLessonModal from "../../../../../../components/AddLessonModal";
 import { CookingPot } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { deleteLesson, getAllLessons } from "@/helpers/lesson";
 
 export default function LessonsPage() {
   const searchParams = useSearchParams();
@@ -27,17 +29,21 @@ export default function LessonsPage() {
 
   useEffect(() => {
     const courseParam = searchParams.get("course");
-
-    //por si acaso hacemos esta validacion, aunque si estamso aqui, siempre va a venir un
-    //'course' porque solo se puede acceder aquí desde el modo editar, no hay modo de llegar
-    //aqui desde modo crear.
     if (courseParam) {
       try {
         const convertedCourse: Course = JSON.parse(
           decodeURIComponent(courseParam)
         );
-        setCourseData(convertedCourse);
-
+		getAllLessons().then((response) => {
+			console.log("Lessons data")
+			console.log(response)
+			const filteredLessons = response.filter((lesson: Lesson) => lesson.courseId == convertedCourse._id)
+			setLessonsArray(filteredLessons);
+			convertedCourse.lessons = filteredLessons
+			console.log(convertedCourse);
+			setCourseData(convertedCourse);
+		});
+		
         if (convertedCourse.lessons!.length == 0) {
           setIsVisibleSearchContainer(false);
         } else {
@@ -68,14 +74,12 @@ export default function LessonsPage() {
       setLessonSearch(true);
       setSearch(text);
 
-      //tuve que poner esta pinche linea porque si no no me dejaba hacer el map porque typescript no estaba seguro
-      //de si elemento es un objeto.
       const lessons: Lesson[] = courseData!.lessons ?? []; //si no tiene nada, lo dejamos como un arreglo vacio
 
       //(decoración, asignamos "Leccion N:" antes de cada titulo de cada leccion)
       const arrayWithLessonNumber = lessons.map((elemento, index) => ({
         ...elemento,
-        lessonTitle: `Lección ${index + 1}: ${elemento.lessonTitle}`,
+        lessonTitle: `Lección ${index + 1}: ${elemento.title}`,
       }));
       //finalmente hago la busqueda por palabra, manteniendo el numero de leccion original
       //y seteando el resultado al estado de lessonsArray
@@ -165,7 +169,7 @@ export default function LessonsPage() {
                   className={styles.singleLesson}
                 >
                   <p className={styles.singleLessonTitle}>
-                    {leccion.lessonTitle}
+                    {leccion.title}
                   </p>
                 </div>
               ))
@@ -193,7 +197,7 @@ export default function LessonsPage() {
               >
                 {/*/ aqui tambien modifico las lecciones para que muestren "Leccion N:"*/}
                 <p className={styles.singleLessonTitle}>
-                  Lección {index + 1}: {leccion.lessonTitle}
+                  Lección {index + 1}: {leccion.title}
                 </p>
               </div>
             ))
@@ -208,16 +212,20 @@ export default function LessonsPage() {
       </div>
 
       <AddLessonModal
-        addLesson={(lesson, isNew) => {
+	  courseData={courseData}
+        addLesson={async (lesson, isNew) => {
           const addLesson = { ...lesson }; //obtener el objeto Lesson proveniente del Modal
 
+			const fetchedLessons = await getAllLessons();
           //es necesario verificar que courseData es truthy, para que no chille typescript
           if (courseData) {
+			  const courseLessons = fetchedLessons.filter((lesson: Lesson) => lesson.courseId == courseData._id)
             if (isNew) {
               //si es nuevo, agregarlo al arreglo
               const updatedCourse: Course = {
                 ...courseData,
-                lessons: [...courseData.lessons!, addLesson], //agregar nueva lección
+				
+                lessons: [...courseLessons], //agregar nueva lección
               };
               setCourseData(updatedCourse);
             } else {
@@ -225,27 +233,26 @@ export default function LessonsPage() {
               //poner el nuevo objeto con el Lesson modificado
               const originalLessonsArray = courseData.lessons;
               const deleteLessonIndex = originalLessonsArray!.findIndex(
-                (elemento) => elemento.uuid === lesson.uuid
+                (elemento) => elemento._id === lesson._id
               );
               originalLessonsArray?.splice(deleteLessonIndex, 1, addLesson); //sustituir con el Lesson modificado
               const updatedCourse: Course = {
                 ...courseData,
-                lessons: [...originalLessonsArray!], //agregar nueva lección
+                lessons: [...courseLessons], //agregar nueva lección
               };
               setCourseData(updatedCourse);
             }
           }
           setIsAddLessonModalVisible(false);
         }}
-        onDelete={() => {
+        onDelete={async () => {
           setIsAddLessonModalVisible(false);
-          const allLessons = courseData?.lessons;
-          const arrayWithDeletedLesson = allLessons?.filter(
-            (elemento) => elemento.uuid !== lesson?.uuid
-          );
+		  await deleteLesson(lesson?._id)
+			const fetchedLessons = await getAllLessons();
+			const courseLessons = fetchedLessons.filter((lesson: Lesson) => lesson.courseId == courseData!._id);
           const updatedCourse: Course = {
             ...courseData!,
-            lessons: [...arrayWithDeletedLesson!],
+            lessons: [...courseLessons!],
           };
           setCourseData(updatedCourse);
         }}

@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import Course from "../../../../../interfaces/Course";
-import { createCourse } from '../../../../helpers/course.js';
+import { createCourse, updateCourse } from '../../../../helpers/course.js';
 import { useAuth } from "@/hooks/useAuth";
 
 
@@ -28,12 +28,12 @@ export default function UploadCourses() {
 
     if (courseParam) {
       try {
-        const convertedCourse: Course = JSON.parse(
-          decodeURIComponent(courseParam)
-        );
+		  const convertedCourse: Course = JSON.parse(
+			  decodeURIComponent(courseParam)
+			);
         setCourse(convertedCourse);
         setTitle(convertedCourse.title);
-        setDescription(convertedCourse.courseDescription);
+        setDescription(convertedCourse.description);
         setInputTextURL(convertedCourse.imageUrl);
         setCoverImage(convertedCourse.imageUrl);
       } catch (err) {
@@ -56,11 +56,12 @@ export default function UploadCourses() {
         const modifiedCourse: Course = {
           ...course,
           title: title,
-          courseDescription: description,
+          description: description,
           imageUrl: coverImage,
         };
         console.log("objeto modificado: ");
         console.log(modifiedCourse); //para ver el objeto modificado
+		updateCourse(modifiedCourse._id, title, description, coverImage, currentUser._id)
         goToMyCoursesPage(false, modifiedCourse);
       }
     } else {
@@ -69,7 +70,7 @@ export default function UploadCourses() {
         alert("Curso creado con exito");
         const newCourse: Course = {
           title: title,
-          courseDescription: description,
+          description: description,
           imageUrl: coverImage,
           lessons: [],
         };

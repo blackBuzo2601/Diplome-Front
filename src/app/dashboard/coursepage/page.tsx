@@ -55,7 +55,7 @@ export default function CoursePage() {
                     : styles.lessonCard
                 }
               >
-                <p className={styles.lessonTitle}>{elemento.lessonTitle}</p>
+                <p className={styles.lessonTitle}>{elemento.title}</p>
               </div>
             ))}
           </div>
